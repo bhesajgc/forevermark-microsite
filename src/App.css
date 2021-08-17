@@ -1,11 +1,8 @@
 .App {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   position: relative;
   min-height: 100vh;
 }
-
 
 .home_bg {
   height: 100%;
@@ -90,8 +87,7 @@
   border: 0;
 }
 
-
-.container-after-register{
+.container-after-register {
   height: 100vh;
   width: 100%;
   background: url(./images/after-register.png);
@@ -99,11 +95,10 @@
   background-size: cover;
 }
 
-.container-coming-soon{
+.container-coming-soon {
   height: 100vh;
   width: 100%;
   background: url(./images/after-register.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
-

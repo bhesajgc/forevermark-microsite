@@ -30,7 +30,6 @@ code {
 }
 
 #studio {
-  margin: 0%;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -56,16 +55,18 @@ code {
   padding: 0.1rem 1rem;
   background: #512da8a6;
   height: auto;
+  justify-content: flex-end;
 }
 
 .modal-header .close {
   outline: none;
+  border: none;
+  background: none;
 }
 
 .close {
   text-shadow: none;
   opacity: 1;
-  margin-right: -27px !important;
   color: #fff;
   font-weight: 400;
 }

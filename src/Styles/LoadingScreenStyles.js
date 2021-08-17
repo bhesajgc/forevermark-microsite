@@ -1,5 +1,4 @@
 const LoadingScreenStyles = () => ({
-
   root: {
     height: '100vh',
     position: 'fixed',

@@ -205,8 +205,9 @@ class ViewerPage extends Component<{}, {}> {
     const thumbnailTexture = mediaData.get(screenName);
     const screenMat = new BABYLON.StandardMaterial('screenMat', this.scene);
     screenObject.material = screenMat;
-    screenObject.material.diffuseTexture = thumbnailTexture.thumbnail;
-    screenObject.material.emissiveColor = new BABYLON.Color3.White();
+    screenObject.material.emissiveTexture = thumbnailTexture.thumbnail;
+    screenObject.material.diffuseColor = new BABYLON.Color3.Black();
+    screenObject.material.specularColor = new BABYLON.Color3.Black();
   };
 
   setupStudio = () => {
