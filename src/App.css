@@ -1,0 +1,109 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-height: 100vh;
+}
+
+
+.home_bg {
+  height: 100%;
+  background: url(./images/bg.png) no-repeat 0;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-attachment: fixed;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+.about_bg {
+  height: 100%;
+  background: url(./images/about-bg.png) no-repeat bottom center;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+.schedule_bg {
+  height: 100%;
+  background: url(./images/bg.png) no-repeat bottom center;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+.contact-bg {
+  height: 100%;
+  background: url(./images/contact-bg.png) no-repeat bottom center;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+.agenda-bg {
+  height: 100%;
+  background: url(./images/bg_agenda.png) no-repeat bottom center;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+.register-bg {
+  height: 100%;
+  background: url(./images/register-bg.png) no-repeat bottom center;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+}
+.footer-links li a.last {
+  border: 0;
+}
+
+
+.container-after-register{
+  height: 100vh;
+  width: 100%;
+  background: url(./images/after-register.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container-coming-soon{
+  height: 100vh;
+  width: 100%;
+  background: url(./images/after-register.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+

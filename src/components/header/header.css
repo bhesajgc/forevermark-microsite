@@ -1,0 +1,33 @@
+header {
+  position: relative;
+}
+.logo {
+  margin: 30px auto;
+  display: table;
+}
+.logo img {
+  max-width: 250px;
+}
+.side_menu {
+  display: flex;
+  position: absolute;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.side_menu a {
+  color: var(--primary);
+  padding: 0 6px;
+  cursor: pointer;
+}
+.side_menu a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+.side_menu button {
+  color: #67715f;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}

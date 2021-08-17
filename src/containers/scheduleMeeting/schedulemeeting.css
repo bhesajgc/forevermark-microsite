@@ -1,0 +1,169 @@
+.schedule-meeting-wrap {
+  padding: 20px 2em;
+  border: 1px solid #d3d3d3;
+  min-height: 450px;
+}
+.schedule-meeting-wrap .register-btn {
+  margin: 20px auto;
+  padding: 10px 30px;
+  display: table;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 4px;
+  font-size: 1rem;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+.abt-event .nav {
+  margin-bottom: 2.5em;
+}
+
+.abt-event .nav li a {
+  color: var(--primary);
+  font-size: 0.9em;
+  border-bottom: 1px solid var(--white);
+  padding: 0;
+  margin: 0 20px;
+  line-height: 30px;
+  text-decoration: none;
+}
+
+.abt-event .nav li a:hover,
+.abt-event .nav li a:focus,
+.abt-event .nav li a.active {
+  border-color: var(--primary);
+}
+.guest-wrap {
+  border: 1px solid #d3d3d3;
+  padding: 10px;
+  background-color: transparent;
+  margin: 10px 0;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  outline: none;
+}
+
+.checkicon {
+  display: none;
+}
+
+.guest-wrap p {
+  font-size: 1em;
+  margin: 0;
+}
+
+.guest-wrap i {
+  font-size: 1.2em;
+}
+
+.guest-wrap:hover,
+.guest-wrap:focus,
+.guest-wrap:active,
+.guest-wrap.active {
+  background-color: #323a49;
+  border-color: #323a49;
+  color: var(--white);
+}
+
+.guest-wrap:hover .checkicon,
+.guest-wrap:focus .checkicon,
+.guest-wrap.active .checkicon {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 0.9em;
+}
+
+.guest-container {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.abt-event p span.guestnm {
+  font-style: italic;
+  color: #294579;
+}
+
+/*************************************************/
+.abt-event .tabs-left {
+  border: 0;
+  margin: 0;
+}
+.abt-event .tabs-left li {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+.abt-event .tabs-left li button {
+  display: block;
+  text-align: center;
+  color: #294579;
+  border: 1px solid #294579;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 20px;
+}
+.abt-event .tabs-left > li.active > button,
+.abt-event .tabs-left > li.active > button:hover,
+.abt-event .tabs-left > li.active > button:focus {
+  border-color: #294579;
+  background: #294579;
+  color: #ffffff;
+  text-decoration: none;
+}
+.timeslot {
+  background-color: #cfd6c9;
+  color: var(--primary);
+  padding: 5px 10px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 1em;
+  display: block;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.timeslot i {
+  padding-right: 10px;
+}
+
+.timeslot:hover,
+.timeslot:focus,
+.timeslot.active {
+  background-color: #67715f;
+  color: var(--white);
+}
+/******************Confirm Meeting************************/
+.confirmmeeting-wrap p {
+  font-size: 1.3em;
+  color: var(--primary);
+  text-align: center;
+}
+.confirmmeeting-wrap p span {
+  display: block;
+  font-weight: normal;
+}
+.usersicn {
+  display: block;
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 15px;
+}
+.confirmmeeting-wrap .timeslot {
+  display: table;
+  padding: 5px 20px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.confirmmeeting-wrap .back-btn {
+  background-color: #c5c3c3;
+  color: var(--primary);
+}
+
+.btns-container {
+  display: flex;
+}

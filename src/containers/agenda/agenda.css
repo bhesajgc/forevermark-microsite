@@ -1,0 +1,62 @@
+.abt-event .nav {
+  margin-bottom: 2.5em;
+}
+
+.abt-event .nav li button {
+  color: var(--primary);
+  font-size: 1em;
+  border: none;
+  border-bottom: 1px solid var(--white);
+  background-color: transparent;
+  padding: 0;
+  margin: 0 20px;
+  line-height: 30px;
+}
+
+.abt-event .nav li button:hover,
+.abt-event .nav li button:focus,
+.abt-event .nav li button.active {
+  border-color: var(--primary);
+}
+.abt-event table p {
+  margin: 0;
+}
+.abt-event table p span {
+  display: block;
+  font-weight: normal;
+  font-size: 1em;
+}
+.abt-event table ul {
+  padding-left: 15px;
+  margin: 10px 0;
+}
+.abt-event table tr th {
+  text-transform: uppercase;
+  font-weight: normal;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.abt-event table tr th span {
+  background-color: #e29966 !important;
+  width: 90%;
+  display: block;
+  padding: 10px;
+}
+.abt-event table tr th.starttm {
+  width: 140px;
+  text-align: center;
+}
+.abt-event table tr td {
+  border: 0;
+}
+
+.abt-event table tr td.bgcolor {
+  background-color: #e29a6680;
+}
+.abt-event table tr th .time_header {
+  width: 100%;
+  margin: 0 auto;
+}
+.time-cell {
+  font-weight: bold;
+}

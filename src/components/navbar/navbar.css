@@ -1,0 +1,31 @@
+.cmn-menu {
+  list-style: none;
+  margin: 15px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  position: relative;
+  padding-left: 0px;
+}
+.cmn-menu li {
+  width: 22%;
+}
+.cmn-menu li button {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 4px 8px;
+  display: block;
+  margin: 1%;
+  width: 100%;
+  border: 2px solid transparent;
+}
+.cmn-menu li button:hover,
+.cmn-menu li button:focus,
+.cmn-menu li button.active {
+  background-color: var(--hover);
+  color: var(--primary);
+  text-decoration: none;
+  border-color: var(--primary);
+  background-color: var(--white);
+}

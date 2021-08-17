@@ -1,0 +1,9 @@
+.meetings table tr th {
+  text-transform: uppercase;
+  font-weight: normal;
+  background-color: #e6dce3 !important;
+}
+
+.abt-event table th {
+  vertical-align: middle;
+}

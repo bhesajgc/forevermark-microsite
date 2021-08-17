@@ -1,0 +1,47 @@
+.countdown-container {
+  position: relative;
+  margin: 1em 0;
+  margin-top: 9rem;
+}
+
+.countdown-container ~ .container .footer-links a {
+  color: white;
+  border-color: white;
+}
+
+.text {
+  color: #101918;
+  font-size: 3em;
+  font-weight: 500;
+  margin-top: -45px;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  width: 100%;
+}
+
+.text .val {
+  font-size: 1em;
+  margin: 10px 0;
+}
+
+.type-time {
+  font-size: 18px;
+  margin: 10px 0;
+}
+.time-wrapper {
+  font-size: 3.5rem;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+.time-wrapper .time {
+  margin-right: 8px;
+  font-family: "DIN";
+}
+.countdown-container p {
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-top: 5px;
+}
