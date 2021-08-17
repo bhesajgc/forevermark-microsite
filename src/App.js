@@ -17,6 +17,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./Styles/global.css";
 import AfterRegister from "./containers/afterRegister/AfterRegister";
 import Footer from './components/footer/Footer'
+import Viewer from "./containers/experience/scene/Viewer";
 
 function App() {
   return (
@@ -98,7 +99,7 @@ function App() {
               <Header logo={Logo} />
               <Navbar key={8} />
               <CommingSoon />
-            
+
             </div>
           </Route>
           <Route exact path="/after-register">
@@ -108,8 +109,10 @@ function App() {
               <AfterRegister />
             </div>
           </Route>
+          <Route exact path="/experience">
+            <Viewer />
+          </Route>
         </Switch>
-
       </div>
     </Router>
   );
