@@ -181,6 +181,10 @@ img {
   color: #fff;
   background-color: #dc3545;
 }
+.badge-resheduled{
+  color: #fff;
+  background-color: #5f5859;
+}
 /* @   Media Queries */
 /* *************************************************/
 @media only screen and (max-width: 360px){

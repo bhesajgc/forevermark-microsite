@@ -11,6 +11,7 @@ import Timer from "./containers/timer/Timer";
 import Header from "./components/header/Header";
 import CommingSoon from "./containers/commingsoon/CommingSoon";
 import Meetings from "./containers/meetings/Meetings";
+// import MyMeeting from './components/MyMeetings/MyMeeting';
 import Logo from "./images/logo.png";
 import WhiteLogo from "./images/white_logo.png";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -53,7 +54,7 @@ function App() {
           </Route>
           <Route exact path="/schedule-meetings">
             <div className="container">
-              <Header logo={Logo} />
+              <Header logo={Logo} optionsShow={true} />
               <Navbar key={3} />
               <ScheduleMeeting />
               <Footer />
@@ -87,7 +88,7 @@ function App() {
           </Route>
           <Route exact path="/my-meetings">
             <div className="container">
-              <Header logo={Logo} />
+              <Header logo={Logo} optionsShow={true} />
               <Navbar key={7} />
               <Meetings />
               <Footer />
@@ -98,7 +99,7 @@ function App() {
               <Header logo={Logo} />
               <Navbar key={8} />
               <CommingSoon />
-            
+
             </div>
           </Route>
           <Route exact path="/after-register">
