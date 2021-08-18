@@ -44,10 +44,10 @@ function App() {
             <div className="about_bg"></div>
           </Route>
           <Route exact path="/agenda">
-            <div className="container-agenda">
+            <div className="container-coming-soon">
               <Header logo={Logo} />
               <Navbar key={2} />
-              <Agenda />
+              <CommingSoon />
               <Footer />
             </div>
             <div className="agenda-bg"></div>
