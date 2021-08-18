@@ -39,7 +39,7 @@ class ViewerPage extends Component<{}, {}> {
       showModal: false,
       interactables: '',
       url: '',
-      currentAnalytics: ''
+      currentAnalytics: '',
     };
     this.interactablesData = '';
     this.hotspots = '';
@@ -64,7 +64,7 @@ class ViewerPage extends Component<{}, {}> {
     // #region Reticle Setup
     this.reticle = BABYLON.MeshBuilder.CreateDisc('reticle', {
       radius: 0.2,
-      sideOrientation: BABYLON.Mesh.DOUBLESIDE
+      sideOrientation: BABYLON.Mesh.DOUBLESIDE,
     });
     this.reticle.isPickable = false;
 
@@ -95,7 +95,7 @@ class ViewerPage extends Component<{}, {}> {
       }
     });
 
-    scene.onPointerObservable.add(pointerInfo => {
+    scene.onPointerObservable.add((pointerInfo) => {
       switch (pointerInfo.type) {
         case BABYLON.PointerEventTypes.POINTERTAP: {
           switch (this.result.pickedMesh.metadata.tag) {
@@ -135,7 +135,10 @@ class ViewerPage extends Component<{}, {}> {
               break;
             }
             case 'Screen': {
-              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).Video_url, true)
+              this.setModalView(
+                mediaData.get(this.result.pickedMesh.metadata.name).Video_url,
+                true
+              );
               break;
             }
             case 'wayPoint': {
@@ -152,8 +155,13 @@ class ViewerPage extends Component<{}, {}> {
               this.animate(targetLocation, targetRotation);
               break;
             }
+            default:
+              break;
           }
+          break;
         }
+        default:
+          break;
       }
     });
 
@@ -165,7 +173,11 @@ class ViewerPage extends Component<{}, {}> {
   };
 
   setupCamera = () => {
-    this.camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0.34, 2.9, -92), this.scene);
+    this.camera = new BABYLON.FreeCamera(
+      'camera1',
+      new BABYLON.Vector3(0.34, 2.9, -92),
+      this.scene
+    );
     this.camera.setTarget(BABYLON.Vector3.Zero());
     this.camera.attachControl(this.canvas, true);
     this.camera.rotation = new BABYLON.Vector3(-0.03, 0.02, 0);
@@ -198,7 +210,6 @@ class ViewerPage extends Component<{}, {}> {
       this.scene
     );
     light2.intensity = 13;
-
   };
 
   setTextureonScreen = (screenName, screenObject) => {
@@ -211,30 +222,42 @@ class ViewerPage extends Component<{}, {}> {
   };
 
   setupStudio = () => {
-    const loadingCalc = data => {
+    const loadingCalc = (data) => {
       const { loaded } = data;
       const sceneLoadedPercent = ((loaded * 100) / 26210304).toFixed();
-      this.setState(prevState => ({ ...prevState, sceneLoadedPercent, showLoading: true }));
+      this.setState((prevState) => ({
+        ...prevState,
+        sceneLoadedPercent,
+        showLoading: true,
+      }));
 
       this.scene.executeWhenReady(() => {
-        this.setState(prevState => ({ ...prevState, sceneLoadedPercent: 100, showLoading: false }));
+        this.setState((prevState) => ({
+          ...prevState,
+          sceneLoadedPercent: 100,
+          showLoading: false,
+        }));
       });
-    }
+    };
 
     BABYLON.DracoCompression.Configuration = {
       decoder: {
-        wasmUrl: 'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.js',
-        wasmBinaryUrl: 'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.wasm',
-        fallbackUrl: 'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_wasm_wrapper.js',
-      }
+        wasmUrl:
+          'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.js',
+        wasmBinaryUrl:
+          'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.wasm',
+        fallbackUrl:
+          'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_wasm_wrapper.js',
+      },
     };
     BABYLON.SceneLoader.ImportMeshAsync(
       '',
-      'https://storage.googleapis.com/forevermarkforum2021.appspot.com/', 'FFM.glb',
+      'https://storage.googleapis.com/forevermarkforum2021.appspot.com/',
+      'FFM.glb',
       this.scene,
       loadingCalc
-    ).then(studio => {
-      this.scene.materials.forEach(mat => (mat.unlit = true));
+    ).then((studio) => {
+      this.scene.materials.forEach((mat) => (mat.unlit = true));
 
       const { meshes } = studio;
       this.mainModel = meshes;
@@ -259,16 +282,13 @@ class ViewerPage extends Component<{}, {}> {
           element.metadata.tag = 'broucher';
         } else if (element.name === 'Booth Kisok Branding_02') {
           element.metadata.tag = 'URL';
-        } else if (
-          element.name === 'ground' ||
-          element.name === 'Booth Base'
-        ) {
+        } else if (element.name === 'ground' || element.name === 'Booth Base') {
           element.metadata.tag = 'navigationFloor';
         }
       }
 
       // Putting Videos on Screen
-      Object.keys(boothMap).forEach(booth => {
+      Object.keys(boothMap).forEach((booth) => {
         const screen = Object.keys(boothMap[booth].TV)[0];
         this.makeWaypoint(
           boothMap[booth].Transform.name,
@@ -289,7 +309,7 @@ class ViewerPage extends Component<{}, {}> {
     });
   };
 
-  getMeshfromMainModel = name => {
+  getMeshfromMainModel = (name) => {
     for (
       let index = 0;
       index < this.mainModel[0]._children.length;
@@ -306,25 +326,29 @@ class ViewerPage extends Component<{}, {}> {
   setModalView = (Url, show) => {
     this.setState(() => ({
       url: Url,
-      showModal: show
+      showModal: show,
     }));
   };
 
   // function to fetch data from database and load it based on URL
   loadMediaData = () => {
-    db.collection('boothdata').get().then(async doc => {
-      doc.docs.map((data) => {
-        const fetchedData = data.data();
-        const thumbnail = new BABYLON.Texture(fetchedData['thumbnail-URL'], this.scene)
-        const tempObject = {
-          'thumbnail': thumbnail,
-          'Video_url': fetchedData.asset_url
-        };
-        mediaData.set(data.id, { ...tempObject })
-        return null
-      }
-      )
-    })
+    db.collection('boothdata')
+      .get()
+      .then(async (doc) => {
+        doc.docs.map((data) => {
+          const fetchedData = data.data();
+          const thumbnail = new BABYLON.Texture(
+            fetchedData['thumbnail-URL'],
+            this.scene
+          );
+          const tempObject = {
+            thumbnail: thumbnail,
+            Video_url: fetchedData.asset_url,
+          };
+          mediaData.set(data.id, { ...tempObject });
+          return null;
+        });
+      });
   };
 
   raycast = () => {
@@ -387,19 +411,19 @@ class ViewerPage extends Component<{}, {}> {
     );
   };
 
-  tutorialbutton = open => {
+  tutorialbutton = (open) => {
     this.setState({
       ...this.state,
-      tutorialopen: open
+      tutorialopen: open,
     });
   };
 
   makeWaypoint = (name, x, y, z, rotX, rotY, rotZ) => {
     const wayPoint = BABYLON.MeshBuilder.CreateDisc(name, {
       radius: 0.5,
-      sideOrientation: BABYLON.Mesh.DOUBLESIDE
+      sideOrientation: BABYLON.Mesh.DOUBLESIDE,
     });
-    wayPoint.metadata = 'wayPoint';
+    wayPoint.metadata = { tag: 'wayPoint' };
     wayPoint.position = new BABYLON.Vector3(x, y, z);
     wayPoint.rotation = new BABYLON.Vector3(rotX, rotY, rotZ);
 
@@ -412,7 +436,7 @@ class ViewerPage extends Component<{}, {}> {
     wayPoint.material = wpMat;
   };
 
-  moveToWayPoint = name => {
+  moveToWayPoint = (name) => {
     const transform = boothMap[name].Transform;
     this.animate(
       new BABYLON.Vector3(
@@ -450,9 +474,9 @@ class ViewerPage extends Component<{}, {}> {
   checkTime = () => {
     const getTime = setTimeout(() => {
       const today = new Date();
-      const currentTime = `${today
-        .getHours()
-        .toLocaleString()}:${today.getMinutes().toLocaleString()}`;
+      const currentTime = `${today.getHours().toLocaleString()}:${today
+        .getMinutes()
+        .toLocaleString()}`;
       if (currentTime === advertisementData.time) {
         this.setModalView(advertisementData.URL, true);
         clearInterval(getTime);
@@ -493,7 +517,7 @@ class ViewerPage extends Component<{}, {}> {
               style={{
                 position: 'fixed',
                 bottom: '1rem',
-                right: '1rem'
+                right: '1rem',
               }}
               onClick={this.goToHome}
             >
@@ -506,7 +530,7 @@ class ViewerPage extends Component<{}, {}> {
               style={{
                 position: 'fixed',
                 bottom: '1rem',
-                right: '5rem'
+                right: '5rem',
               }}
               onClick={this.goToFirstFloor}
             >
@@ -519,7 +543,7 @@ class ViewerPage extends Component<{}, {}> {
               style={{
                 position: 'fixed',
                 bottom: '1rem',
-                left: '1rem'
+                left: '1rem',
               }}
               onClick={() => {
                 this.tutorialbutton(true);
@@ -528,7 +552,7 @@ class ViewerPage extends Component<{}, {}> {
               <HelpIcon />
             </Fab>
             <Minimap
-              moveToWayPoint={name => {
+              moveToWayPoint={(name) => {
                 this.moveToWayPoint(name);
               }}
             />
