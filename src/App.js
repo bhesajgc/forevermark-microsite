@@ -19,6 +19,7 @@ import "./Styles/global.css";
 import AfterRegister from "./containers/afterRegister/AfterRegister";
 import Footer from './components/footer/Footer'
 import Viewer from "./containers/experience/scene/Viewer";
+import { addtoData } from "./config/add";
 
 function App() {
   return (

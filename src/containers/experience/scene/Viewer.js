@@ -6,9 +6,10 @@ import HelpIcon from '@material-ui/icons/Help';
 import PublishIcon from '@material-ui/icons/Publish';
 
 import CustomModal from '../../../components/modal/CustomModal';
+import studio from '../assets/FFM.glb'
 import BabylonScene from './Scene';
 import type { SceneEventArgs } from './Scene';
-import { mediaData, boothMap, advertisementData } from './Database';
+import { mediaData, FM_ZoneData, boothMap, advertisementData } from './Database';
 import LoadingScreen from '../../../components/loading-screen/LoadingScreen';
 import Home from '../assets/home.png';
 import Reticle from '../assets/Reticle.png';
@@ -54,11 +55,13 @@ class ViewerPage extends Component<{}, {}> {
     this.canvas = canvas;
     this.engine = engine;
     this.scene = scene;
+    scene.debugLayer.show();
     this.setupCamera();
     this.setupLights();
     this.loadMediaData();
     this.setupStudio();
     this.checkTime();
+    console.log(FM_ZoneData)
     // this.addObservable();
 
     // #region Reticle Setup
@@ -90,7 +93,8 @@ class ViewerPage extends Component<{}, {}> {
           this.result.pickedPoint.z
         );
         this.reticle.rotation.set(Math.PI / 2, this.camera.rotation.y, Math.PI);
-      } else {
+      }
+      else {
         this.reticle.isVisible = false;
       }
     });
@@ -119,19 +123,24 @@ class ViewerPage extends Component<{}, {}> {
               }
               break;
             }
-            case 'chat': {
+            case 'Chat': {
               this.setModalView(
                 'https://tawk.to/chat/603df02c385de407571b8982/1evov4cn5#',
                 true
               );
               break;
             }
-            case 'URL': {
-              this.setModalView('https://www.forevermark.com/', true);
+            case 'URL_Button': {
+              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).site_URL, true);
               break;
             }
-            case 'broucher': {
-              this.setModalView('Test.pdf', true);
+            case 'Broucher': {
+              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).PDF_Url, true);
+              break;
+            }
+            case 'PlayButton': {
+              console.log(this.result.pickedMesh.metadata.screenName)
+              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).Video_url, true)
               break;
             }
             case 'Screen': {
@@ -230,11 +239,11 @@ class ViewerPage extends Component<{}, {}> {
     };
     BABYLON.SceneLoader.ImportMeshAsync(
       '',
-      'https://storage.googleapis.com/forevermarkforum2021.appspot.com/', 'FFM.glb',
+      studio, '',
       this.scene,
       loadingCalc
     ).then(studio => {
-      this.scene.materials.forEach(mat => (mat.unlit = true));
+      // this.scene.materials.forEach(mat => (mat.unlit = true));
 
       const { meshes } = studio;
       this.mainModel = meshes;
@@ -253,12 +262,8 @@ class ViewerPage extends Component<{}, {}> {
           this.setTextureonScreen('Audi Screen', element);
           element.metadata.tag = 'Screen';
           element.metadata.name = 'Audi Screen';
-        } else if (element.name === 'XRC_Image_01_TV') {
-          element.metadata.tag = 'chat';
         } else if (element.name === 'Booth  Kiosk Branding') {
           element.metadata.tag = 'broucher';
-        } else if (element.name === 'Booth Kisok Branding_02') {
-          element.metadata.tag = 'URL';
         } else if (
           element.name === 'ground' ||
           element.name === 'Booth Base'
@@ -270,6 +275,11 @@ class ViewerPage extends Component<{}, {}> {
       // Putting Videos on Screen
       Object.keys(boothMap).forEach(booth => {
         const screen = Object.keys(boothMap[booth].TV)[0];
+        const playButton = Object.keys(boothMap[booth].TV)[1];
+        const chatButton = Object.keys(boothMap[booth].TV)[2];
+        const urlButton = Object.keys(boothMap[booth].TV)[3];
+        const broucherButton = Object.keys(boothMap[booth].TV)[4];
+        console.log(broucherButton)
         this.makeWaypoint(
           boothMap[booth].Transform.name,
           boothMap[booth].Transform.posX,
@@ -280,11 +290,30 @@ class ViewerPage extends Component<{}, {}> {
           boothMap[booth].Transform.rotZ
         );
         const element = this.getMeshfromMainModel(screen);
+        const buttonElement = this.getMeshfromMainModel(playButton);
+        const chatElement = this.getMeshfromMainModel(chatButton);
+        const urlElement = this.getMeshfromMainModel(urlButton);
+        const broucherElement = this.getMeshfromMainModel(broucherButton);
+
         if (element) {
           this.setTextureonScreen(boothMap[booth].TV[screen], element);
-          element.metadata.tag = 'Screen';
-          element.metadata.name = boothMap[booth].TV[screen];
         }
+        if (buttonElement) {
+          buttonElement.metadata.tag = boothMap[booth].TV[playButton];
+          buttonElement.metadata.name = boothMap[booth].TV[screen];
+        }
+        if (chatElement) {
+          chatElement.metadata.tag = boothMap[booth].TV[chatButton];
+        }
+        if (urlElement) {
+          urlElement.metadata.tag = boothMap[booth].TV[urlButton];
+          urlElement.metadata.name = boothMap[booth].TV[screen];
+        }
+        if (broucherElement) {
+          broucherElement.metadata.tag = boothMap[booth].TV[broucherButton];
+          broucherElement.metadata.name = boothMap[booth].TV[screen];
+        }
+
       });
     });
   };
@@ -317,13 +346,23 @@ class ViewerPage extends Component<{}, {}> {
         const fetchedData = data.data();
         const thumbnail = new BABYLON.Texture(fetchedData['thumbnail-URL'], this.scene)
         const tempObject = {
+          'name': fetchedData.name,
           'thumbnail': thumbnail,
-          'Video_url': fetchedData.asset_url
+          'Video_url': fetchedData.asset_url,
+          'PDF_Url': fetchedData.PDF_Url,
+          'site_URL': fetchedData.site_URL,
+          'pamplate_Url': fetchedData.pamplate_Url
         };
         mediaData.set(data.id, { ...tempObject })
         return null
       }
       )
+    })
+    db.collection("FM-Zone Data").get().then(async doc => {
+      doc.docs.map((data) => {
+        const fetchedData = data.data();
+        FM_ZoneData.set(data.id, { ...fetchedData })
+      })
     })
   };
 
@@ -399,10 +438,9 @@ class ViewerPage extends Component<{}, {}> {
       radius: 0.5,
       sideOrientation: BABYLON.Mesh.DOUBLESIDE
     });
-    wayPoint.metadata = 'wayPoint';
+    wayPoint.metadata = { tag: 'wayPoint' }
     wayPoint.position = new BABYLON.Vector3(x, y, z);
     wayPoint.rotation = new BABYLON.Vector3(rotX, rotY, rotZ);
-
     const wpMat = new BABYLON.StandardMaterial('wpMat', this.scene);
     wpMat.diffuseTexture = new BABYLON.Texture(Reticle, this.scene);
     wpMat.unlit = true;
@@ -410,6 +448,7 @@ class ViewerPage extends Component<{}, {}> {
     wpMat.opacityTexture = new BABYLON.Texture(Reticle, this.scene);
 
     wayPoint.material = wpMat;
+    return wayPoint;
   };
 
   moveToWayPoint = name => {
