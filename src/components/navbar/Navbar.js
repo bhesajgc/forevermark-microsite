@@ -50,7 +50,7 @@ function Navbar() {
           Agenda
         </button>
       </li>
-      <li>
+      {/* <li>
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -65,7 +65,7 @@ function Navbar() {
         >
           Schedule a Meeting
         </button>
-      </li>
+      </li> */}
       <li>
         <button
           onClick={(e) => {

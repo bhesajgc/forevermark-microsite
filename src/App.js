@@ -52,14 +52,14 @@ function App() {
             </div>
             <div className="agenda-bg"></div>
           </Route>
-          <Route exact path="/schedule-meetings">
+          {/* <Route exact path="/schedule-meetings">
             <div className="container">
               <Header logo={Logo} optionsShow={true} />
               <Navbar key={3} />
               <ScheduleMeeting />
               <Footer />
             </div>
-          </Route>
+          </Route> */}
           <Route exact path="/contact-us">
             <div className="container">
               <Header logo={Logo} />
@@ -86,14 +86,14 @@ function App() {
             </div>
             <div className="register-bg"></div>
           </Route>
-          <Route exact path="/my-meetings">
+          {/* <Route exact path="/my-meetings">
             <div className="container">
               <Header logo={Logo} optionsShow={true} />
               <Navbar key={7} />
               <Meetings />
               <Footer />
             </div>
-          </Route>
+          </Route> */}
           <Route exact path="/comming-soon">
             <div className="container-coming-soon">
               <Header logo={Logo} />
