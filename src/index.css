@@ -1,3 +1,6 @@
+html {
+  outline: none;
+}
 body {
   margin: 0;
   font-size: 17px;
@@ -17,4 +20,97 @@ code {
   --hover: #121212;
   --white: #fff;
   --gray: #e2dedc;
+}
+
+#pop-box-placholder {
+  border: none;
+  border-radius: 0.3rem;
+  width: 100%;
+  height: 100%;
+}
+
+#studio {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+/*----------------------------BOOTSTRAP OVERRIDES--------------------------------*/
+
+.modal-title {
+  font-weight: 900;
+}
+
+.modal-content {
+  border: none;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.modal-header {
+  border-bottom: none;
+  color: #fff;
+  padding: 0.1rem 1rem;
+  background: #512da8a6;
+  height: auto;
+  justify-content: flex-end;
+}
+
+.modal-header .close {
+  outline: none;
+  border: none;
+  background: none;
+}
+
+.close {
+  text-shadow: none;
+  opacity: 1;
+  color: #fff;
+  font-weight: 400;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+.modal-dialog {
+  max-width: 80%;
+  height: 80%;
+  width: 100%;
+  border-radius: 0.5rem;
+  background: transparent;
+}
+
+.modal-body {
+  height: 100%;
+  width: 100%;
+  background: #ffffff;
+  padding: 0.3rem;
+  border-radius: 0 0 0.3rem 0.3rem;
+}
+
+button:focus {
+  outline: none;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #525252;
+}
+
+@media (max-width: 576px) {
+  .modal-dialog {
+    margin: 0.5rem auto;
+  }
 }

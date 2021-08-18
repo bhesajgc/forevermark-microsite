@@ -1,0 +1,179 @@
+@charset "utf-8";
+/* CSS Document */
+/*.background {*/
+/*  background: url(assets/background.jpg) no-repeat center center fixed;*/
+/*  -webkit-background-size: cover;*/
+/*  -moz-background-size: cover;*/
+/*  -o-background-size: cover;*/
+/*  background-size: cover;*/
+/*}*/
+
+.stripe {
+  background: #6806c2;
+}
+
+.top_head {
+  width: 100%;
+  text-align: center;
+  padding: 30px 30px 30px 30px;
+}
+.form-wrapper {
+  width: 70%;
+  position: relative;
+  margin: 50px auto;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+}
+.form {
+  padding: 50px 30px 50px 30px;
+}
+.form-wrapper h1 {
+  background: #6806c2;
+  color: #fff;
+  font-size: 22px;
+  text-align: left;
+  padding: 30px 30px 30px 30px;
+  margin: 0;
+}
+.form-group {
+  position: relative;
+}
+.form-group + .form-group {
+  margin-top: 20px;
+}
+.form-label {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: #000;
+  z-index: 10;
+  padding-left: 10px;
+  transition: transform 150ms ease-out, font-size 150ms ease-out;
+}
+.focused .form-label {
+  transform: translateY(-125%);
+  font-size: 0.75em;
+  left: -10px;
+}
+.form-input {
+  position: relative;
+  padding: 5px 0 5px 0;
+  width: 100%;
+  top: 5px;
+  border-radius: 2px;
+  outline: 0;
+  padding-left: 10px;
+  border: 1px solid #fff;
+  border-bottom: 2px solid #6806c2;
+}
+.form-input:focus {
+  border-bottom: 2px solid #6806c2;
+  top: 5px;
+}
+.form-input.filled {
+  border-bottom: 2px solid #6806c2;
+  top: 5px;
+}
+.form-select {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: #000;
+  z-index: 10;
+  padding: 4px 0;
+  transition: transform 150ms ease-out, font-size 150ms ease-out;
+}
+.focused .form-select {
+  transform: translateY(-125%);
+  font-size: 0.75em;
+  left: -10px;
+}
+.form-select {
+  position: relative;
+  width: 100%;
+  top: 5px;
+  border-radius: 2px;
+  outline: 0;
+  padding: 5px 0 5px 5px;
+  border: 1px solid #fff;
+  border-bottom: 2px solid #6806c2;
+}
+.form-select:focus {
+  border-bottom: 2px solid #6806c2;
+  top: 5px;
+}
+.form-select.filled {
+  border-bottom: 2px solid #6806c2;
+  top: 5px;
+}
+.checkbox {
+  margin-left: 20px;
+}
+.form p {
+  margin: 0;
+  font-weight: 600;
+}
+.subbtn {
+  background: #6806c2;
+  color: #fff;
+}
+.subbtn:hover {
+  background: #6806c2;
+  color: #fff;
+}
+.border-bot {
+  position: absolute;
+  bottom: -9px;
+}
+
+.validationError {
+  text-align: left;
+  margin-left: 0.6em;
+  color: red;
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.buttonsContainer a {
+  background-color: #6806c2;
+  color: white;
+  padding: 0.7em 4em;
+  border-radius: 0.6em;
+  text-decoration: none;
+}
+
+.registerButtonContainer,
+.loginButtonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .form-wrapper h1 {
+    font-size: 18px;
+  }
+  .form-wrapper {
+    width: 100%;
+    font-size: 13px;
+    padding-bottom: 30px;
+  }
+  .form {
+    padding: 30px 15px 30px 15px;
+  }
+  .form-label {
+    font-size: 12px;
+  }
+
+  .buttonsContainer a {
+    padding: 0.7rem 3rem;
+  }
+  .MuiFormLabel-root {
+    font-size: .7rem;
+  }
+}
