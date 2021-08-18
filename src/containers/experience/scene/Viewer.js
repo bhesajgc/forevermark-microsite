@@ -258,7 +258,7 @@ class ViewerPage extends Component<{}, {}> {
       this.scene,
       loadingCalc
     ).then((studio) => {
-      this.scene.materials.forEach((mat) => (mat.unlit = true));
+      // this.scene.materials.forEach((mat) => (mat.unlit = true));
 
       const { meshes } = studio;
       this.mainModel = meshes;
