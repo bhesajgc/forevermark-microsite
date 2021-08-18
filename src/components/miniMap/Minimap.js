@@ -20,39 +20,11 @@ const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex'
     },
-    appBar: {
-        transition: theme.transitions.create(
-            [
-                'margin', 'width'
-            ],
-            {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.leavingScreen
-            }
-        )
-    },
-    appBarShift: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
-        transition: theme.transitions.create(
-            [
-                'margin', 'width'
-            ],
-            {
-                easing: theme.transitions.easing.easeOut,
-                duration: theme.transitions.duration.enteringScreen
-            }
-        )
-    },
-    menuButton: {
-        marginRight: theme.spacing(2)
-    },
-    hide: {
-        display: 'none'
-    },
+
     drawer: {
         width: drawerWidth,
-        flexShrink: 0
+        flexShrink: 0,
+        opacity: 0.7,
     },
     drawerPaper: {
         width: drawerWidth
@@ -65,33 +37,29 @@ const useStyles = makeStyles(theme => ({
         ...theme.mixins.toolbar,
         justifyContent: 'flex-end'
     },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen
-        }),
-        marginLeft: - drawerWidth
-    },
-    contentShift: {
-        transition: theme.transitions.create('margin', {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen
-        }),
-        marginLeft: 0
-    },
-    Button: {
-        position:'fix',
+    ButtonMenuIcon: {
+        position: 'fixed',
         backgroundColor: 'black',
         color: 'white',
-        height: '48px',
-        borderRadius: '30px'
+        height: '60px',
+        borderRadius: '30px',
+        marginLeft: '10px',
+        marginTop: '10px',
     },
     MyBoothList:{
-      // marginTop: '2px',
-      backgroundColor: '#e4e7ed'
+        backgroundColor: 'black',
+        marginBottom: '5px',
+        color: '#f9faf2',
+        hover:'none'
+    },
+    MyListButton:{
+
+        hover:'none',
+        marginBottom: '2px',
+        backgroundColor:'#78b086'
     }
+
+
 }));
 
 function Minimap({moveToWayPoint}) {
@@ -112,7 +80,7 @@ function Minimap({moveToWayPoint}) {
             classes.root
         }>
             <Button className={
-                    classes.Button
+                    classes.ButtonMenuIcon
                 }
                 position="fixed">
                 <MenuIcon color="inherit" aria-label="open drawer"
@@ -161,6 +129,7 @@ function Minimap({moveToWayPoint}) {
                         'Booth 18'
                     ].map((text, index) => (
                         <ListItem button
+                        className={classes.MyListButton}
                             key={text}
                             onClick={
                                 () => {

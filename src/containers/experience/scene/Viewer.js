@@ -493,7 +493,8 @@ class ViewerPage extends Component<{}, {}> {
               style={{
                 position: 'fixed',
                 bottom: '1rem',
-                right: '1rem'
+                right: '1rem',
+                backgroundColor:'black'
               }}
               onClick={this.goToHome}
             >
@@ -506,7 +507,8 @@ class ViewerPage extends Component<{}, {}> {
               style={{
                 position: 'fixed',
                 bottom: '1rem',
-                right: '5rem'
+                right: '5rem',
+                backgroundColor:'black'
               }}
               onClick={this.goToFirstFloor}
             >
@@ -519,7 +521,8 @@ class ViewerPage extends Component<{}, {}> {
               style={{
                 position: 'fixed',
                 bottom: '1rem',
-                left: '1rem'
+                left: '1rem',
+                backgroundColor:'black'
               }}
               onClick={() => {
                 this.tutorialbutton(true);
