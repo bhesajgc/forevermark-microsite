@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { auth } from "../../config/Firebase";
 // import firebase from 'firebase';
 
-function Header({ logo, optionsShow }) {
+function Header({ logo }) {
   // const currentUser = firebase.auth().currentUser;
   const state = useContext(Statecontext)[0];
   const history = useHistory();
@@ -34,34 +34,32 @@ function Header({ logo, optionsShow }) {
         <a href="/" className="logo">
           <img src={logo} alt="logo" />{" "}
         </a>
-        {!optionsShow && (
-          <div
-            style={{ display: state.user ? "flex" : "none" }}
-            className="side_menu"
+        <div
+          style={{ display: state.user ? "flex" : "none" }}
+          className="side_menu"
+        >
+          <a
+            onClick={(e) => {
+              e.preventDefault();
+              history.push("/my-meetings");
+            }}
           >
-            <a
-              onClick={(e) => {
-                e.preventDefault();
-                history.push("/my-meetings");
-              }}
+            My meetings
+          </a>
+          <span>|</span>
+          <button onClick={() => {
+            auth.signOut();
+            history.push('/');
+          }}>
+            <span
+              style={{ marginRight: "5px", fontSize: "inherit" }}
+              className="material-icons"
             >
-              My meetings
-            </a>
-            <span>|</span>
-            <button onClick={() => {
-              auth.signOut();
-              history.push('/');
-            }}>
-              <span
-                style={{ marginRight: "5px", fontSize: "inherit" }}
-                className="material-icons"
-              >
-                power_settings_new
-              </span>
-              Log out{" "}
-            </button>
-          </div>
-        )}
+              power_settings_new
+            </span>
+            Log out{" "}
+          </button>
+        </div>
       </header>
     </div>
   );

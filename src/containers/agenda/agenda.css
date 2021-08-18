@@ -1,7 +1,28 @@
-.abt-event .nav {
+.agenda_container .nav {
   margin-bottom: 2.5em;
+  display: none;
 }
-
+/* agenda */
+.agenda_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 15px;
+  background-color: #142342;
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+}
+.cmn-container .agenda_header h2 {
+  color: white;
+}
+.agenda_header button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: white;
+}
 .abt-event .nav li button {
   color: var(--primary);
   font-size: 1em;
@@ -11,6 +32,11 @@
   padding: 0;
   margin: 0 20px;
   line-height: 30px;
+}
+.abt-event .tab-pane {
+  background-color: #fcf5ef;
+  padding: 0px;
+  display: block;
 }
 
 .abt-event .nav li button:hover,
@@ -36,12 +62,7 @@
   padding-left: 15px;
   padding-right: 15px;
 }
-.abt-event table tr th span {
-  background-color: #e29966 !important;
-  width: 90%;
-  display: block;
-  padding: 10px;
-}
+
 .abt-event table tr th.starttm {
   width: 140px;
   text-align: center;
@@ -50,13 +71,15 @@
   border: 0;
 }
 
-.abt-event table tr td.bgcolor {
-  background-color: #e29a6680;
-}
 .abt-event table tr th .time_header {
   width: 100%;
   margin: 0 auto;
 }
 .time-cell {
   font-weight: bold;
+}
+.tab_header {
+  padding: 10px 2px;
+  background-color: #faebe1;
+  font-size: 1rem;
 }

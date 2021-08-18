@@ -10,7 +10,7 @@ import Navbar from "./components/navbar/Navbar";
 import Timer from "./containers/timer/Timer";
 import Header from "./components/header/Header";
 import CommingSoon from "./containers/commingsoon/CommingSoon";
-import Meetings from "./containers/meetings/Meetings";
+// import Meetings from "./containers/meetings/Meetings";
 // import MyMeeting from './components/MyMeetings/MyMeeting';
 import Logo from "./images/logo.png";
 import WhiteLogo from "./images/white_logo.png";
@@ -44,7 +44,7 @@ function App() {
             <div className="about_bg"></div>
           </Route>
           <Route exact path="/agenda">
-            <div className="container">
+            <div className="container-agenda">
               <Header logo={Logo} />
               <Navbar key={2} />
               <Agenda />
