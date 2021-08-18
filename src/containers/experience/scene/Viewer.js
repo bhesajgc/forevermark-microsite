@@ -8,7 +8,7 @@ import PublishIcon from '@material-ui/icons/Publish';
 import CustomModal from '../../../components/modal/CustomModal';
 import BabylonScene from './Scene';
 import type { SceneEventArgs } from './Scene';
-import { mediaData, boothMap, fmZone, advertisementData } from './Database';
+import { mediaData, boothMap, fmZone, stairsData,advertisementData } from './Database';
 import LoadingScreen from '../../../components/loading-screen/LoadingScreen';
 import Home from '../assets/home.png';
 import Reticle from '../assets/Reticle.png';
@@ -143,6 +143,20 @@ class ViewerPage extends Component<{}, {}> {
               break;
             }
             case 'wayPoint': {
+              const targetLocation = new BABYLON.Vector3(
+                this.result.pickedMesh.position.x,
+                this.camera.position.y,
+                this.result.pickedMesh.position.z
+              );
+              const targetRotation = new BABYLON.Vector3(
+                0,
+                this.result.pickedMesh.rotation.y,
+                this.camera.rotation.z
+              );
+              this.animate(targetLocation, targetRotation);
+              break;
+            }
+            case 'groundStairs': {
               const targetLocation = new BABYLON.Vector3(
                 this.result.pickedMesh.position.x,
                 this.camera.position.y,
@@ -310,7 +324,6 @@ class ViewerPage extends Component<{}, {}> {
       });
 
       Object.keys(fmZone).forEach((zone) => {
-        console.log(zone);
         const fmZoneWp = this.makeWaypoint(
           fmZone[zone].Transform.name,
           fmZone[zone].Transform.posX,
@@ -322,6 +335,23 @@ class ViewerPage extends Component<{}, {}> {
         );
         fmZoneWp.metadata = { tag: 'wayPoint' };
       });
+
+      Object.keys(stairsData).forEach((stairs) =>{
+        const stairsWp = this.makeWaypoint(
+          stairsData[stairs].Transform.name,
+          stairsData[stairs].Transform.posX,
+          stairsData[stairs].Transform.posY,
+          stairsData[stairs].Transform.posZ,
+          stairsData[stairs].Transform.rotX,
+          stairsData[stairs].Transform.rotY,
+          stairsData[stairs].Transform.rotZ)
+           if(stairs === 'groundStair1' || stairs === 'groundStair2'){
+             stairsWp.metadata = {tag: 'groundStairs'};
+           }
+           else{
+             stairsWp.metadata = {tag: 'upStairs'};
+           }
+      })
     });
   };
 
