@@ -9,7 +9,7 @@ import CustomModal from '../../../components/modal/CustomModal';
 import studio from '../assets/FFM.glb'
 import BabylonScene from './Scene';
 import type { SceneEventArgs } from './Scene';
-import { mediaData, FM_ZoneData, boothMap, advertisementData } from './Database';
+import { mediaData, FM_ZoneData, boothMap, advertisementData, FMZone } from './Database';
 import LoadingScreen from '../../../components/loading-screen/LoadingScreen';
 import Home from '../assets/home.png';
 import Reticle from '../assets/Reticle.png';
@@ -61,7 +61,6 @@ class ViewerPage extends Component<{}, {}> {
     this.loadMediaData();
     this.setupStudio();
     this.checkTime();
-    console.log(FM_ZoneData)
     // this.addObservable();
 
     // #region Reticle Setup
@@ -139,8 +138,11 @@ class ViewerPage extends Component<{}, {}> {
               break;
             }
             case 'PlayButton': {
-              console.log(this.result.pickedMesh.metadata.screenName)
               this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).Video_url, true)
+              break;
+            }
+            case 'ZonePlayButton': {
+              this.setModalView(FM_ZoneData.get(this.result.pickedMesh.metadata.name).Video_url, true)
               break;
             }
             case 'Screen': {
@@ -279,7 +281,7 @@ class ViewerPage extends Component<{}, {}> {
         const chatButton = Object.keys(boothMap[booth].TV)[2];
         const urlButton = Object.keys(boothMap[booth].TV)[3];
         const broucherButton = Object.keys(boothMap[booth].TV)[4];
-        console.log(broucherButton)
+
         this.makeWaypoint(
           boothMap[booth].Transform.name,
           boothMap[booth].Transform.posX,
@@ -315,6 +317,22 @@ class ViewerPage extends Component<{}, {}> {
         }
 
       });
+      console.log(FM_ZoneData)
+
+      Object.keys(FMZone.Data).forEach(booth => {
+        const PartnerTestiplayButton = Object.keys(FMZone.Data[booth])[1];
+        const PartnerTestiplayScreen = Object.keys(FMZone.Data[booth])[0];
+        const PartnerTestiplayElement = this.getMeshfromMainModel(PartnerTestiplayButton)
+        const PartnerTestiScreenElement = this.getMeshfromMainModel(PartnerTestiplayScreen)
+        if (PartnerTestiplayElement && PartnerTestiScreenElement) {
+          const tempMat = new BABYLON.StandardMaterial("screenMat", this.scene)
+          PartnerTestiScreenElement.material = tempMat;
+          tempMat.diffuseTexture = new BABYLON.Texture('home.png', this.scene);
+          PartnerTestiplayElement.metadata.tag = FMZone.Data[booth][PartnerTestiplayButton];
+          PartnerTestiplayElement.metadata.name = booth;
+        }
+      });
+
     });
   };
 
