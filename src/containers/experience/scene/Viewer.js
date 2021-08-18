@@ -8,7 +8,7 @@ import PublishIcon from '@material-ui/icons/Publish';
 import CustomModal from '../../../components/modal/CustomModal';
 import BabylonScene from './Scene';
 import type { SceneEventArgs } from './Scene';
-import { mediaData, boothMap, advertisementData } from './Database';
+import { mediaData, boothMap, fmZone, advertisementData } from './Database';
 import LoadingScreen from '../../../components/loading-screen/LoadingScreen';
 import Home from '../assets/home.png';
 import Reticle from '../assets/Reticle.png';
@@ -291,7 +291,7 @@ class ViewerPage extends Component<{}, {}> {
       // Putting Videos on Screen
       Object.keys(boothMap).forEach((booth) => {
         const screen = Object.keys(boothMap[booth].TV)[0];
-        this.makeWaypoint(
+        const waypoints = this.makeWaypoint(
           boothMap[booth].Transform.name,
           boothMap[booth].Transform.posX,
           boothMap[booth].Transform.posY,
@@ -300,12 +300,27 @@ class ViewerPage extends Component<{}, {}> {
           boothMap[booth].Transform.rotY,
           boothMap[booth].Transform.rotZ
         );
+        waypoints.metadata = { tag: 'wayPoint' };
         const element = this.getMeshfromMainModel(screen);
         if (element) {
           this.setTextureonScreen(boothMap[booth].TV[screen], element);
           element.metadata.tag = 'Screen';
           element.metadata.name = boothMap[booth].TV[screen];
         }
+      });
+
+      Object.keys(fmZone).forEach((zone) => {
+        console.log(zone);
+        const fmZoneWp = this.makeWaypoint(
+          fmZone[zone].Transform.name,
+          fmZone[zone].Transform.posX,
+          fmZone[zone].Transform.posY,
+          fmZone[zone].Transform.posZ,
+          fmZone[zone].Transform.rotX,
+          fmZone[zone].Transform.rotY,
+          fmZone[zone].Transform.rotZ
+        );
+        fmZoneWp.metadata = { tag: 'wayPoint' };
       });
     });
   };
@@ -424,7 +439,6 @@ class ViewerPage extends Component<{}, {}> {
       radius: 0.5,
       sideOrientation: BABYLON.Mesh.DOUBLESIDE,
     });
-    wayPoint.metadata = { tag: 'wayPoint' };
     wayPoint.position = new BABYLON.Vector3(x, y, z);
     wayPoint.rotation = new BABYLON.Vector3(rotX, rotY, rotZ);
 
@@ -435,6 +449,7 @@ class ViewerPage extends Component<{}, {}> {
     wpMat.opacityTexture = new BABYLON.Texture(Waypoint, this.scene);
 
     wayPoint.material = wpMat;
+    return wayPoint;
   };
 
   moveToWayPoint = (name) => {
@@ -487,6 +502,10 @@ class ViewerPage extends Component<{}, {}> {
     }, 1000);
   };
 
+  showDebugLayer = () => {
+    this.scene.debugLayer.show();
+  };
+
   render() {
     const { sceneLoadedPercent, showLoading } = this.state;
 
@@ -533,7 +552,7 @@ class ViewerPage extends Component<{}, {}> {
                 bottom: '1rem',
                 right: '5rem',
               }}
-              onClick={this.goToFirstFloor}
+              onClick={this.showDebugLayer}
             >
               <PublishIcon />
             </Fab>

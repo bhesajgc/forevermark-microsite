@@ -218,6 +218,32 @@ export const boothMap = {
   },
 };
 
+export const fmZone = {
+  'Entry 1': {
+    Transform: {
+      name: 'fmWaypoint1',
+      posX: 1.6,
+      posY: 1.35,
+      posZ: -17,
+      rotX: 1.5708,
+      rotY: 0,
+      rotZ: 0,
+    },
+  },
+
+  'Entry 2': {
+    Transform: {
+      name: 'fmWaypoint2',
+      posX: 1.6,
+      posY: 1.35,
+      posZ: 17,
+      rotX: 1.5708,
+      rotY: 3.142,
+      rotZ: 0,
+    },
+  },
+};
+
 export const advertisementData = {
   time: '16:11',
   URL: 'https://www.forevermark.com/en-us/',
