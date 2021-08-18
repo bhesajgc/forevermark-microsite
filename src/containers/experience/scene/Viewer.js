@@ -12,6 +12,7 @@ import { mediaData, boothMap, advertisementData } from './Database';
 import LoadingScreen from '../../../components/loading-screen/LoadingScreen';
 import Home from '../assets/home.png';
 import Reticle from '../assets/Reticle.png';
+import Waypoint from '../assets/teleport2.png';
 import TutorialPopup from '../../../components/tutorial-popup/TutorialPopup';
 import Minimap from '../../../components/miniMap/Minimap';
 import { db } from '../../../config/Firebase';
@@ -428,10 +429,10 @@ class ViewerPage extends Component<{}, {}> {
     wayPoint.rotation = new BABYLON.Vector3(rotX, rotY, rotZ);
 
     const wpMat = new BABYLON.StandardMaterial('wpMat', this.scene);
-    wpMat.diffuseTexture = new BABYLON.Texture(Reticle, this.scene);
+    wpMat.diffuseTexture = new BABYLON.Texture(Waypoint, this.scene);
     wpMat.unlit = true;
-    wpMat.emissiveTexture = new BABYLON.Texture(Reticle, this.scene);
-    wpMat.opacityTexture = new BABYLON.Texture(Reticle, this.scene);
+    wpMat.emissiveTexture = new BABYLON.Texture(Waypoint, this.scene);
+    wpMat.opacityTexture = new BABYLON.Texture(Waypoint, this.scene);
 
     wayPoint.material = wpMat;
   };
