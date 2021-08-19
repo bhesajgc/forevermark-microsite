@@ -125,7 +125,6 @@ function App() {
               <Header logo={WhiteLogo} />
               <Navbar key={0} />
               <TimerEnd />
-              <Footer />
             </div>
             <div className="home_bg"></div>
           </Route>

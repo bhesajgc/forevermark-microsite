@@ -45,3 +45,14 @@
   font-weight: 300;
   margin-top: 5px;
 }
+
+.button-containers{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-btn{
+  width: 215px;
+}

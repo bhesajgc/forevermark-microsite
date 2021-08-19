@@ -37,7 +37,7 @@ function Timer() {
     return (
         <>
 
-            <div className="countdown countdown-container container">
+            {/* <div className="countdown countdown-container container">
                 <div className="clock row justify-content-center">
                     <div className="row justify-content-center">
 
@@ -145,27 +145,30 @@ function Timer() {
                         </div>
                     </div>
                 </div>
-            </div>
-            {!remainingTime && (
+            </div> */}
+            <div className="button-containers">
+                {!remainingTime && (
+                    <button 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            history.push("/signin");
+                        }}
+                        className="cmn-register-btn login-btn"
+                    >
+                        Login
+                    </button>
+                )}
                 <button
                     onClick={(e) => {
                         e.preventDefault();
-                        history.push("/signin");
+                        history.push("/register");
                     }}
                     className="cmn-register-btn"
                 >
-                    Login
+                    Register Now
                 </button>
-            )}
-            <button
-                onClick={(e) => {
-                    e.preventDefault();
-                    history.push("/register");
-                }}
-                className="cmn-register-btn"
-            >
-                Register Now
-            </button>
+            </div>
+
         </>
     );
 }
