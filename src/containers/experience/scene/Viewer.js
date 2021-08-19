@@ -157,17 +157,11 @@ class ViewerPage extends Component<{}, {}> {
               break;
             }
             case 'groundStairs': {
-              const targetLocation = new BABYLON.Vector3(
-                this.result.pickedMesh.position.x,
-                this.camera.position.y,
-                this.result.pickedMesh.position.z
-              );
-              const targetRotation = new BABYLON.Vector3(
-                0,
-                this.result.pickedMesh.rotation.y,
-                this.camera.rotation.z
-              );
-              this.animate(targetLocation, targetRotation);
+            this.goToFirstFloor();
+              break;
+            }
+            case 'upStairs': {
+              this.goToHome();
               break;
             }
             default:
@@ -351,6 +345,7 @@ class ViewerPage extends Component<{}, {}> {
            else{
              stairsWp.metadata = {tag: 'upStairs'};
            }
+           console.log(stairsWp)
       })
     });
   };
@@ -582,7 +577,7 @@ class ViewerPage extends Component<{}, {}> {
                 bottom: '1rem',
                 right: '5rem',
               }}
-              onClick={this.showDebugLayer}
+              onClick={this.goToFirstFloor}
             >
               <PublishIcon />
             </Fab>
