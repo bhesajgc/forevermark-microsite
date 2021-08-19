@@ -427,8 +427,8 @@ export const FMZone = {
 export const advertisementData = [
   {
     Day: 'Day 1',
-    startTime: 1629391862000,
-    endTime: 1629391869000,
+    startTime: 1629393770000,
+    endTime: 1629393844000,
     videoURL: 'https://vimeo.com/event/1217337/embed',
     chatURL: 'https://vimeo.com/event/1217311/chat/',
   },

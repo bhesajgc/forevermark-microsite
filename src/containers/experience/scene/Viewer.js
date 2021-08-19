@@ -657,7 +657,7 @@ class ViewerPage extends Component<{}, {}> {
     const startTime = new Date(advertisementData[0].startTime);
     const endTime = new Date(advertisementData[0].endTime);
     const currentTime = new Date();
-    if (currentTime > startTime) {
+    if (currentTime > endTime) {
       return;
     }
     if (currentTime > startTime && currentTime < endTime) {
@@ -666,6 +666,9 @@ class ViewerPage extends Component<{}, {}> {
         advertisementData[0].videoURL,
         true
       );
+      setTimeout(() => {
+        this.setMyModalView('', '', false);
+      }, endTime - currentTime);
     }
     if (currentTime < startTime) {
       setTimeout(() => {
