@@ -1,6 +1,7 @@
 import React from "react";
 import "./timer.css";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import Footer from '../../components/footer/Footer'
 import { useHistory } from "react-router-dom";
 const minuteSeconds = 60;
 const hourSeconds = 3600;
@@ -148,7 +149,7 @@ function Timer() {
             </div> */}
             <div className="button-containers">
                 {!remainingTime && (
-                    <button 
+                    <button
                         onClick={(e) => {
                             e.preventDefault();
                             history.push("/signin");
@@ -167,8 +168,11 @@ function Timer() {
                 >
                     Register Now
                 </button>
+                
             </div>
-
+            <div className="footer-container">
+                <Footer/>
+            </div>
         </>
     );
 }

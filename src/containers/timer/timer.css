@@ -56,3 +56,10 @@
 .login-btn{
   width: 215px;
 }
+
+.footer-container{
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
