@@ -17,15 +17,12 @@ import TutorialPopup from '../../../components/tutorial-popup/TutorialPopup';
 import Minimap from '../../../components/miniMap/Minimap';
 import { db } from '../../../config/Firebase';
 
-const Viewer = () => {
-  return (
-    <div>
-      <ViewerPage />
-    </div>
-  );
-};
+type ViewerProps = {
+  currentLocation: string;
+  setMinimapData: any;
+}
 
-class ViewerPage extends Component<{}, {}> {
+class Viewer extends Component<ViewerProps, {}> {
   constructor(props) {
     super(props);
 
@@ -47,6 +44,7 @@ class ViewerPage extends Component<{}, {}> {
     this.result = '';
     this.reticle = '';
     this.mainModel = '';
+    console.log(this.props.currentLocation);
   }
 
   onSceneMount = (e: SceneEventArgs) => {
@@ -452,13 +450,6 @@ class ViewerPage extends Component<{}, {}> {
     );
   };
 
-  tutorialbutton = (open) => {
-    this.setState({
-      ...this.state,
-      tutorialopen: open,
-    });
-  };
-
   makeWaypoint = (name, x, y, z, rotX, rotY, rotZ) => {
     const wayPoint = BABYLON.MeshBuilder.CreateDisc(name, {
       radius: 0.5,
@@ -536,73 +527,9 @@ class ViewerPage extends Component<{}, {}> {
 
     return (
       <>
-        <TutorialPopup
-          open={this.state.tutorialopen}
-          setOpen={() => {
-            this.tutorialbutton(false);
-          }}
-        />
-
-        <CustomModal
-          url={this.state.url}
-          show={this.state.showModal}
-          onHide={() => {
-            this.setModalView('', false);
-          }}
-        />
-
         <BabylonScene onSceneMount={this.onSceneMount} />
         <LoadingScreen show={showLoading} loadedPercent={sceneLoadedPercent} />
-        {!showLoading && (
-          <div>
-            <Fab
-              color="primary"
-              aria-label="add"
-              size="large"
-              style={{
-                position: 'fixed',
-                bottom: '1rem',
-                right: '1rem',
-              }}
-              onClick={this.goToHome}
-            >
-              <img src={Home} alt="Home icon" style={{ width: '24px' }} />
-            </Fab>
-            <Fab
-              color="primary"
-              aria-label="add"
-              size="large"
-              style={{
-                position: 'fixed',
-                bottom: '1rem',
-                right: '5rem',
-              }}
-              onClick={this.goToFirstFloor}
-            >
-              <PublishIcon />
-            </Fab>
-            <Fab
-              color="primary"
-              aria-label="add"
-              size="large"
-              style={{
-                position: 'fixed',
-                bottom: '1rem',
-                left: '1rem',
-              }}
-              onClick={() => {
-                this.tutorialbutton(true);
-              }}
-            >
-              <HelpIcon />
-            </Fab>
-            <Minimap
-              moveToWayPoint={(name) => {
-                this.moveToWayPoint(name);
-              }}
-            />
-          </div>
-        )}
+
       </>
     );
   }
