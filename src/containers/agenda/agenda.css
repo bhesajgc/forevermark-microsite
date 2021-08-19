@@ -79,7 +79,54 @@
   font-weight: bold;
 }
 .tab_header {
+  height: 50px;
   padding: 10px 2px;
   background-color: #faebe1;
   font-size: 1rem;
+}
+
+/* this is the css for speakers*/
+.speaker_header {
+  display: grid;
+  grid-template-columns: 85% 15%;
+  padding: 0px 15px;
+  background-color: #142342;
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+}
+
+.speakers {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.speaker_heading {
+  margin-left: 230px;
+}
+
+.speakerInfo {
+  margin-left: 100px;
+  margin-right: 30px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  font-family: Didot-HTF-L42;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.speakerImage {
+  width: 210px;
+  height: 210px;
+}
+
+.speakerData {
+  margin: 30px;
+}
+
+.btn-cont-speaker{
+  margin-top: 100px;
 }

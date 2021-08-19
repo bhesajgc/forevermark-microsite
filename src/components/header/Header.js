@@ -35,18 +35,18 @@ function Header({ logo }) {
           <img src={logo} alt="logo" />{" "}
         </a>
         <div
-          style={{ display: state.user ? "flex" : "none" }}
+          style={{ display: state?.user ? "flex" : "none" }}
           className="side_menu"
         >
-          <a
+          {/* <a
             onClick={(e) => {
               e.preventDefault();
               history.push("/my-meetings");
             }}
           >
             My meetings
-          </a>
-          <span>|</span>
+          </a> */}
+          {/* <span>|</span> */}
           <button onClick={() => {
             auth.signOut();
             history.push('/');

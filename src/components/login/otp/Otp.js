@@ -3,7 +3,7 @@ import { Statecontext } from "../../../context/Dataprovider";
 import { useHistory } from "react-router-dom";
 
 function Otp({ confirm }) {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState("");
   const history = useHistory();
   const [state, dispatch] = useContext(Statecontext);
   const handleVerify = (e) => {
@@ -14,7 +14,7 @@ function Otp({ confirm }) {
         // User signed in successfully.
         const user = result.user;
         dispatch({ type: "ADD USER", item: user });
-        history.push("/");
+        history.push("/external-link");
         // ...
       })
       .catch((error) => {

@@ -1,5 +1,6 @@
 import "./App.css";
 import Agenda from "./containers/agenda/Agenda";
+import Speakers from "./containers/speakers/Speakers";
 import Home from "./components/home/Home";
 import ContactUs from "./containers/contactUs/ContactUs";
 import About from "./containers/about/About";
@@ -8,6 +9,7 @@ import Login from "./containers/login/Login";
 import Register from "./containers/register/Register";
 import Navbar from "./components/navbar/Navbar";
 import Timer from "./containers/timer/Timer";
+import TimerEnd from "./containers/timer/TimerEnd";
 import Header from "./components/header/Header";
 import CommingSoon from "./containers/commingsoon/CommingSoon";
 // import Meetings from "./containers/meetings/Meetings";
@@ -47,7 +49,16 @@ function App() {
             <div className="container-coming-soon">
               <Header logo={Logo} />
               <Navbar key={2} />
-              <CommingSoon />
+              <Agenda />
+              <Footer />
+            </div>
+            <div className="agenda-bg"></div>
+          </Route>
+          <Route exact path="/speakers">
+            <div className="container-coming-soon">
+              <Header logo={Logo} />
+              <Navbar key={2} />
+              <Speakers />
               <Footer />
             </div>
             <div className="agenda-bg"></div>
@@ -109,8 +120,20 @@ function App() {
               <AfterRegister />
             </div>
           </Route>
+          <Route exact path="/after-timer-end">
+            <div className="container">
+              <Header logo={WhiteLogo} />
+              <Navbar key={0} />
+              <TimerEnd />
+              <Footer />
+            </div>
+            <div className="home_bg"></div>
+          </Route>
+          <Route path='/external-link' component={() => {
+            window.location.href = 'https://ffm-traversal-dev.web.app';
+            return null;
+          }} />
         </Switch>
-
       </div>
     </Router>
   );

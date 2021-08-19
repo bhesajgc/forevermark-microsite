@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./signin.css";
 import CallingCodeSelect from "../../callingcodeSelect/CallingCodeSelect";
-import { auth } from "../../../config/Firebase";
+import { db, auth } from "../../../config/Firebase";
 import firebase from "firebase";
+import { useHistory } from 'react-router-dom';
 
 function Signin({ setObject }) {
+  const history = useHistory();
   const [phone, setPhone] = useState("");
   const [countryCode, setCountryCode] = useState("91");
 
@@ -13,14 +15,44 @@ function Signin({ setObject }) {
     let recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
       "recaptcha-container"
     );
-    auth
-      .signInWithPhoneNumber("+" + countryCode + phone, recaptchaVerifier)
-      .then((confirm) => {
-        setObject({ confirm: confirm, object: "otp" });
+    let mobilecheck = phone.toString()
+    let docRef = db.collection("users").where('mobileNumber', '==', mobilecheck)
+    docRef = docRef.where("countryCallingCode", "==", `+${countryCode}`)
+    docRef.get().then(snap => {
+      let mobileExist = false;
+      snap.docs.forEach(function (user) {
+        if (user.data().mobileNumber === mobilecheck) {
+          mobileExist = true;
+        }
       })
-      .catch((error) => {
-        alert(error);
-      });
+      if (mobileExist) {
+        auth
+          .signInWithPhoneNumber("+" + countryCode + phone, recaptchaVerifier)
+          .then((confirm) => {
+            setObject({ confirm: confirm, object: "otp" });
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      } else {
+        alert(`User doesn't exist!`)
+      }
+    })
+    // docRef.onSnapshot(snap => {
+    //   if (snap.exists) {
+    //     auth
+    //       .signInWithPhoneNumber("+" + countryCode + phone, recaptchaVerifier)
+    //       .then((confirm) => {
+    //         setObject({ confirm: confirm, object: "otp" });
+    //       })
+    //       .catch((error) => {
+    //         alert(error);
+    //       });
+    //   } else {
+    //     alert(`User doesn't exist!`)
+    //   }
+    // })
+
   };
 
   return (
@@ -78,6 +110,17 @@ function Signin({ setObject }) {
             <div style={{ width: "50%" }} id="recaptcha-container"></div>
           </div>
         </form>
+        <div>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              history.push("/register");
+            }}
+            className="cmn-register-btn"
+          >
+            Register Now
+          </button>
+        </div>
       </div>
     </div>
   );
