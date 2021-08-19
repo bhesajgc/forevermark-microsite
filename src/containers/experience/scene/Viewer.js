@@ -55,7 +55,6 @@ class ViewerPage extends Component<{}, {}> {
     this.canvas = canvas;
     this.engine = engine;
     this.scene = scene;
-    scene.debugLayer.show();
     this.setupCamera();
     this.setupLights();
     this.loadMediaData();
@@ -221,6 +220,19 @@ class ViewerPage extends Component<{}, {}> {
     screenObject.material.specularColor = new BABYLON.Color3.Black();
   };
 
+  setVideoTextureonScreen = (screenName, screenObject) => {
+    const videoTextureURL = mediaData.get(screenName).Video_url;
+    const videoTexture = new BABYLON.VideoTexture("texture", videoTextureURL, this.scene);
+    videoTexture.video.muted = true;
+    videoTexture.video.autoplay = true;
+    const screenMat = new BABYLON.StandardMaterial('screenMat', this.scene);
+    screenMat.emissiveTexture = videoTexture;
+    screenMat.diffuseColor = new BABYLON.Color3.Black();
+    screenMat.specularColor = new BABYLON.Color3.Black();
+    screenObject.material = screenMat;
+  };
+
+
   setupStudio = () => {
     const loadingCalc = data => {
       const { loaded } = data;
@@ -257,9 +269,7 @@ class ViewerPage extends Component<{}, {}> {
       for (let index = 0; index < meshes[0]._children.length; index += 1) {
         const element = meshes[0]._children[index];
         if (element.name === '893672') {
-          this.setTextureonScreen('Main Screen', element);
-          element.metadata.tag = 'Screen';
-          element.metadata.name = 'Main Screen';
+          this.setVideoTextureonScreen('Main Screen', element);
         } else if (element.name === 'Audi') {
           this.setTextureonScreen('Audi Screen', element);
           element.metadata.tag = 'Screen';
@@ -274,50 +284,7 @@ class ViewerPage extends Component<{}, {}> {
         }
       }
 
-      // Putting Videos on Screen
-      Object.keys(boothMap).forEach(booth => {
-        const screen = Object.keys(boothMap[booth].TV)[0];
-        const playButton = Object.keys(boothMap[booth].TV)[1];
-        const chatButton = Object.keys(boothMap[booth].TV)[2];
-        const urlButton = Object.keys(boothMap[booth].TV)[3];
-        const broucherButton = Object.keys(boothMap[booth].TV)[4];
-
-        this.makeWaypoint(
-          boothMap[booth].Transform.name,
-          boothMap[booth].Transform.posX,
-          boothMap[booth].Transform.posY,
-          boothMap[booth].Transform.posZ,
-          boothMap[booth].Transform.rotX,
-          boothMap[booth].Transform.rotY,
-          boothMap[booth].Transform.rotZ
-        );
-        const element = this.getMeshfromMainModel(screen);
-        const buttonElement = this.getMeshfromMainModel(playButton);
-        const chatElement = this.getMeshfromMainModel(chatButton);
-        const urlElement = this.getMeshfromMainModel(urlButton);
-        const broucherElement = this.getMeshfromMainModel(broucherButton);
-
-        if (element) {
-          this.setTextureonScreen(boothMap[booth].TV[screen], element);
-        }
-        if (buttonElement) {
-          buttonElement.metadata.tag = boothMap[booth].TV[playButton];
-          buttonElement.metadata.name = boothMap[booth].TV[screen];
-        }
-        if (chatElement) {
-          chatElement.metadata.tag = boothMap[booth].TV[chatButton];
-        }
-        if (urlElement) {
-          urlElement.metadata.tag = boothMap[booth].TV[urlButton];
-          urlElement.metadata.name = boothMap[booth].TV[screen];
-        }
-        if (broucherElement) {
-          broucherElement.metadata.tag = boothMap[booth].TV[broucherButton];
-          broucherElement.metadata.name = boothMap[booth].TV[screen];
-        }
-
-      });
-      console.log(FM_ZoneData)
+      this.setupBooths();
 
       Object.keys(FMZone.Data).forEach(booth => {
         const PartnerTestiplayButton = Object.keys(FMZone.Data[booth])[1];
@@ -350,6 +317,61 @@ class ViewerPage extends Component<{}, {}> {
     return null;
   };
 
+  setupBooths = () => {
+    // Putting Videos on Screen
+    Object.keys(boothMap).forEach(booth => {
+      const screen = Object.keys(boothMap[booth].boothInfo)[0];
+      const playButton = Object.keys(boothMap[booth].boothInfo)[1];
+      const chatButton = Object.keys(boothMap[booth].boothInfo)[2];
+      const urlButton = Object.keys(boothMap[booth].boothInfo)[3];
+      const broucherButton = Object.keys(boothMap[booth].boothInfo)[4];
+      const sec_TV = Object.keys(boothMap[booth].boothInfo)[5];
+
+      this.makeWaypoint(
+        boothMap[booth].Transform.name,
+        boothMap[booth].Transform.posX,
+        boothMap[booth].Transform.posY,
+        boothMap[booth].Transform.posZ,
+        boothMap[booth].Transform.rotX,
+        boothMap[booth].Transform.rotY,
+        boothMap[booth].Transform.rotZ
+      );
+      const element = this.getMeshfromMainModel(screen);
+      const buttonElement = this.getMeshfromMainModel(playButton);
+      const chatElement = this.getMeshfromMainModel(chatButton);
+      const urlElement = this.getMeshfromMainModel(urlButton);
+      const broucherElement = this.getMeshfromMainModel(broucherButton);
+      const sec_TVElement = this.getMeshfromMainModel(sec_TV);
+
+
+      if (element) {
+        this.setTextureonScreen(boothMap[booth].boothInfo[screen], element);
+      }
+      if (buttonElement) {
+        buttonElement.metadata.tag = boothMap[booth].boothInfo[playButton];
+        buttonElement.metadata.name = boothMap[booth].boothInfo[screen];
+      }
+      if (chatElement) {
+        chatElement.metadata.tag = boothMap[booth].boothInfo[chatButton];
+      }
+      if (urlElement) {
+        urlElement.metadata.tag = boothMap[booth].boothInfo[urlButton];
+        urlElement.metadata.name = boothMap[booth].boothInfo[screen];
+      }
+      if (broucherElement) {
+        broucherElement.metadata.tag = boothMap[booth].boothInfo[broucherButton];
+        broucherElement.metadata.name = boothMap[booth].boothInfo[screen];
+      }
+      if (sec_TVElement) {
+        const newMat = new BABYLON.StandardMaterial("screenMat", this.scene);
+        newMat.useAlphaFromDiffuseTexture = true
+        newMat.diffuseTexture = mediaData.get(boothMap[booth].boothInfo[screen])[['Sec_Tv']];
+        newMat.diffuseTexture.hasAlpha = true
+        sec_TVElement.material = newMat;
+      }
+    });
+  }
+
   setModalView = (Url, show) => {
     this.setState(() => ({
       url: Url,
@@ -362,14 +384,20 @@ class ViewerPage extends Component<{}, {}> {
     db.collection('boothdata').get().then(async doc => {
       doc.docs.map((data) => {
         const fetchedData = data.data();
-        const thumbnail = new BABYLON.Texture(fetchedData['thumbnail-URL'], this.scene)
+        const thumbnail = new BABYLON.Texture(fetchedData['thumbnail-URL'], this.scene, false, false)
+        let Sec_Tv_Texture = null;
+        if (fetchedData['Sec_TV'] != "") {
+          Sec_Tv_Texture = new BABYLON.Texture(fetchedData['Sec_TV'], this.scene, false, false)
+        }
+
         const tempObject = {
           'name': fetchedData.name,
           'thumbnail': thumbnail,
           'Video_url': fetchedData.asset_url,
           'PDF_Url': fetchedData.PDF_Url,
           'site_URL': fetchedData.site_URL,
-          'pamplate_Url': fetchedData.pamplate_Url
+          'pamplate_Url': fetchedData.pamplate_Url,
+          'Sec_Tv': Sec_Tv_Texture
         };
         mediaData.set(data.id, { ...tempObject })
         return null

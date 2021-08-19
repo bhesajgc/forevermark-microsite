@@ -5,158 +5,178 @@
     "asset_url": "https://storage.googleapis.com/planet-hcl.appspot.com/Earth.mp4",
     "PDF_Url": "",
     "site_URL": "",
-    "pamplate_Url": ""
+    "pamplate_Url": "",
+    "Sec_TV": ""
   },
   "Audi Screen": {
     "name": "Audi Screen",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Auditorium%20Screen_2048x512_1.png",
     "asset_url": "Videos/3d_ocean_1590675653.mov",
     "PDF_Url": "",
     "site_URL": "",
-    "pamplate_Url": ""
+    "pamplate_Url": "",
+    "Sec_TV": ""
   },
   "BoothScreen 1": {
     "name": "Rosy Blue (India) Pvt Ltd.",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=REz-AbC4YKw&list=PL98KgmAyNtRMAUPfpGMrczP12NimpgIT4",
     "PDF_Url": "https://drive.google.com/file/d/1tdjpgUWSnn74OBJdiKK1H23G6vvASIFb/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTYw",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMTIz"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMTIz",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 2": {
     "name": "KGK Creations (India) Pvt Ltd",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=t3dn_W_SwGo&list=PL98KgmAyNtRPlDWDqt-ngTNKyOIf5zGfz",
     "PDF_Url": "https://drive.google.com/file/d/1fxPBuLZQgkBoPjvemeH7x5DJRAvi6Tvo/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTQz",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDA3"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDA3",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 3": {
     "name": "Uni-Design Jewellery (India) Pvt. Ltd",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=MMSsUui9dks&list=PL98KgmAyNtROu9l8OWWIldLALrEw3LWs-&index=1",
     "PDF_Url": "https://drive.google.com/file/d/1D7HtPxTtv13qijHUQNbSFAubLbDGR_5Z/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTQ5",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMTE3"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMTE3",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 4": {
     "name": "Indigo Jewellery India Mfg Pvt Ltd",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=-49PGFAXe-0&list=PL98KgmAyNtROtWLI5gwA_UsrSwmqM5UmU",
     "PDF_Url": "https://drive.google.com/file/d/10Xyiy-kWpExOvyD93WyMAMN_svzeJhK8/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTM0",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMTMw"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMTMw",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 5": {
     "name": "Laxmi Dia Jewel Pvt Ltd",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=Vat2ayp8FKI&list=PL98KgmAyNtRO2Ud6wKM-tq3HL2qTtKvrN",
     "PDF_Url": "https://drive.google.com/file/d/1S9ERDQ5z65XWnKYN14trqxMBy7E3pKaW/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTQ1",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDAy"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDAy",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 6": {
     "name": "A Star Jewellery - A division of Asian Star Company Ltd",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=2y9jgvYRc7c&list=PL98KgmAyNtRPmtU_WkcFgLbJJ097VPPCF",
     "PDF_Url": "https://drive.google.com/file/d/1ej5rv1G5bvmTncIufF0MZurtdd5-aRSq/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTMz",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMTU5"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMTU5",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 7": {
     "name": "Sheetal Jewellery House LLP",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=t07R8lJKybo&list=PL98KgmAyNtROKdaA76-5br0E8utkfmo8D",
     "PDF_Url": "https://drive.google.com/file/d/10hPWhG-cWa5YFneBztlV9-BcMrRlf34k/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTQ2",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDA0"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDA0",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 8": {
     "name": "KP Sanghvi Jewels Pvt. Ltd",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=fI1kKAM-OXg&list=PL98KgmAyNtRP_NHVuCpmNXJcLxTbO03Ak",
     "PDF_Url": "https://drive.google.com/file/d/1qIKxRlgviL5ZKmstiZUlzAOtEZrthvxg/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTM4",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMTE4"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMTE4",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 9": {
     "name": "B N Jewellers",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=R9HQIdEjAMo&list=PL98KgmAyNtRP53ad4qYa5lIHs2LOv4vOa",
     "PDF_Url": "https://drive.google.com/file/d/1qIKxRlgviL5ZKmstiZUlzAOtEZrthvxg/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTM3",
-    "pamplate_Url": ""
+    "pamplate_Url": "",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 10": {
     "name": "B R Designs Pvt Ltd",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "",
     "PDF_Url": "https://drive.google.com/file/d/16xoZWrSlt_r6fnf_R6Fzia9rfN3wv02g/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTM1",
-    "pamplate_Url": ""
+    "pamplate_Url": "",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 11": {
     "name": "Prism Enterprises Pvt Ltd",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=Cz205wrc09g&list=PL98KgmAyNtRPhy3MT9SXIQ4cVg4iY3MpD",
     "PDF_Url": "https://drive.google.com/file/d/12nbzJNRSRoq1c3fHFON0jDoamdpzjYLr/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTQ3",
-    "pamplate_Url": ""
+    "pamplate_Url": "",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 12": {
     "name": "Thea Creations",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=eIAkYKNxK9A&list=PL98KgmAyNtRNo4L1vmy8P6R0IOk0Svd51",
     "PDF_Url": "https://drive.google.com/file/d/1OgkMlEHd3j7W2dEHQPag2-vI43Qly321/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTQ4",
-    "pamplate_Url": ""
+    "pamplate_Url": "",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 13": {
     "name": "Veekay Diamants",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=KlnlzL2DRno&list=PL98KgmAyNtROiNDXFPkGdoHh6i86gLvPa",
     "PDF_Url": "https://drive.google.com/file/d/1H_HqRNjdHh4bQa1lsgtsFAdWrACUXN6O/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMTUw",
-    "pamplate_Url": ""
+    "pamplate_Url": "",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 14": {
     "name": "Walking Tree",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=pDY4b-ufkXw&list=PL98KgmAyNtRNeW7E-ceP8-3GV2jjscpp3",
     "PDF_Url": "https://drive.google.com/file/d/1DnwhIZdDs_EewMP9rmA0GQJQFTY-Ng8o/view?usp=sharing",
     "site_URL": "https://thefmxindia.com/forum?id=MTEwMjAx",
-    "pamplate_Url": ""
+    "pamplate_Url": "",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 15": {
     "name": "Ankit Gems",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "",
     "PDF_Url": "https://drive.google.com/file/d/1oOnspn2MKfWbkPKd5nYV8oEdj_zr-dwl/view?usp=sharing",
     "site_URL": "",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDAx"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDAx",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 16": {
     "name": "K Girdharlal",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "https://www.youtube.com/watch?v=GdQQ9eHubuQ&list=PL98KgmAyNtRNxW5fyOIVoP-Qr6BZEWLJC",
     "PDF_Url": "https://drive.google.com/file/d/15PCAtKznwyiG6ZxcFOuT1elKCbbyTp0K/view?usp=sharing",
     "site_URL": "",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDgx"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDgx",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 17": {
     "name": "J B & Brothers",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "",
     "PDF_Url": "https://drive.google.com/file/d/1M5ni53qWpnOpHPjyJ9OexwJaoV76UBMv/view?usp=sharing",
     "site_URL": "",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDAw"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDAw",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   },
   "BoothScreen 18": {
     "name": "Venus Jewel",
-    "thumbnail-URL": "thumbnail.jpg",
+    "thumbnail-URL": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-%20center%20image.jpg",
     "asset_url": "",
     "PDF_Url": "https://drive.google.com/file/d/1tIjM9OYBEL6FpfrxCOj7M_t7udXOQKWd/view?usp=sharing",
     "site_URL": "",
-    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDgw"
+    "pamplate_Url": "https://thefmxindia.com/forum?id=MTEwMDgw",
+    "Sec_TV": "https://storage.googleapis.com/forevermarkforum2021.appspot.com/Platform%20thumbnails/Booth%20-left%20side%20image.png"
   }
 }
