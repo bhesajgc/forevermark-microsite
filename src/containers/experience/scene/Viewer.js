@@ -6,10 +6,19 @@ import HelpIcon from '@material-ui/icons/Help';
 import PublishIcon from '@material-ui/icons/Publish';
 
 import CustomModal from '../../../components/modal/CustomModal';
-import studio from '../assets/FFM.glb'
+import MyCustomModal from '../../../components/modal/MyCustomModal';
+import studio from '../assets/FFM.glb';
 import BabylonScene from './Scene';
 import type { SceneEventArgs } from './Scene';
-import { mediaData, FM_ZoneData, boothMap, advertisementData, FMZone, fmZone, stairsData } from './Database';
+import {
+  mediaData,
+  FM_ZoneData,
+  boothMap,
+  advertisementData,
+  FMZone,
+  fmZone,
+  stairsData,
+} from './Database';
 import LoadingScreen from '../../../components/loading-screen/LoadingScreen';
 import Home from '../assets/home.png';
 import Reticle from '../assets/Reticle.png';
@@ -42,6 +51,9 @@ class ViewerPage extends Component<{}, {}> {
       interactables: '',
       url: '',
       currentAnalytics: '',
+      chatURL: '',
+      videoURL: '',
+      showMyModal: false,
     };
     this.interactablesData = '';
     this.hotspots = '';
@@ -56,7 +68,6 @@ class ViewerPage extends Component<{}, {}> {
     this.canvas = canvas;
     this.engine = engine;
     this.scene = scene;
-    scene.debugLayer.show();
     this.setupCamera();
     this.setupLights();
     this.loadMediaData();
@@ -93,8 +104,7 @@ class ViewerPage extends Component<{}, {}> {
           this.result.pickedPoint.z
         );
         this.reticle.rotation.set(Math.PI / 2, this.camera.rotation.y, Math.PI);
-      }
-      else {
+      } else {
         this.reticle.isVisible = false;
       }
     });
@@ -131,15 +141,24 @@ class ViewerPage extends Component<{}, {}> {
               break;
             }
             case 'URL_Button': {
-              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).site_URL, true);
+              this.setModalView(
+                mediaData.get(this.result.pickedMesh.metadata.name).site_URL,
+                true
+              );
               break;
             }
             case 'Broucher': {
-              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).PDF_Url, true);
+              this.setModalView(
+                mediaData.get(this.result.pickedMesh.metadata.name).PDF_Url,
+                true
+              );
               break;
             }
             case 'PlayButton': {
-              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).Video_url, true)
+              this.setModalView(
+                mediaData.get(this.result.pickedMesh.metadata.name).Video_url,
+                true
+              );
               break;
             }
             case 'ZonePlayButton': {
@@ -198,20 +217,27 @@ class ViewerPage extends Component<{}, {}> {
       console.log(key);
       switch (key) {
         case 'Partner Testimonials': {
-          const mesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[0])
-          const playButton = this.getMeshfromMainModel(Object.keys(FMZone[key])[1])
+          const mesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[0]);
+          const playButton = this.getMeshfromMainModel(
+            Object.keys(FMZone[key])[1]
+          );
           playButton.metadata.tag = 'ZonePlayButton';
           playButton.metadata.name = value.Videos[0].value;
           if (mesh) {
-            const screenThumbnail = new BABYLON.Texture(value.Videos[0].thumbnail, this.scene, false, true);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            const screenThumbnail = new BABYLON.Texture(
+              value.Videos[0].thumbnail,
+              this.scene,
+              false,
+              true
+            );
+            const mat = new BABYLON.StandardMaterial('screenMat', this.scene);
             mat.diffuseTexture = screenThumbnail;
             mesh.material = mat;
           }
         }
       }
-    })
-  }
+    });
+  };
 
   setupCamera = () => {
     this.camera = new BABYLON.FreeCamera(
@@ -264,7 +290,13 @@ class ViewerPage extends Component<{}, {}> {
 
   setVideoTextureonScreen = (screenName, screenObject) => {
     const videoTextureURL = mediaData.get(screenName).Video_url;
-    const videoTexture = new BABYLON.VideoTexture("texture", videoTextureURL, this.scene, false, true);
+    const videoTexture = new BABYLON.VideoTexture(
+      'texture',
+      videoTextureURL,
+      this.scene,
+      false,
+      true
+    );
     videoTexture.video.muted = true;
     videoTexture.video.autoplay = true;
     const screenMat = new BABYLON.StandardMaterial('screenMat', this.scene);
@@ -273,7 +305,6 @@ class ViewerPage extends Component<{}, {}> {
     screenMat.specularColor = new BABYLON.Color3.Black();
     screenObject.material = screenMat;
   };
-
 
   setupStudio = () => {
     const loadingCalc = (data) => {
@@ -306,8 +337,8 @@ class ViewerPage extends Component<{}, {}> {
     };
     BABYLON.SceneLoader.ImportMeshAsync(
       '',
-      studio,
-      "",
+      'https://storage.googleapis.com/forevermarkforum2021.appspot.com/',
+      'FFM.glb',
       this.scene,
       loadingCalc
     ).then((studio) => {
@@ -330,10 +361,7 @@ class ViewerPage extends Component<{}, {}> {
           element.metadata.name = 'Audi Screen';
         } else if (element.name === 'Booth  Kiosk Branding') {
           element.metadata.tag = 'broucher';
-        } else if (
-          element.name === 'ground' ||
-          element.name === 'Booth Base'
-        ) {
+        } else if (element.name === 'ground' || element.name === 'Booth Base') {
           element.metadata.tag = 'navigationFloor';
         }
       }
@@ -362,15 +390,14 @@ class ViewerPage extends Component<{}, {}> {
           stairsData[stairs].Transform.posZ,
           stairsData[stairs].Transform.rotX,
           stairsData[stairs].Transform.rotY,
-          stairsData[stairs].Transform.rotZ)
+          stairsData[stairs].Transform.rotZ
+        );
         if (stairs === 'groundStair1' || stairs === 'groundStair2') {
           stairsWp.metadata = { tag: 'groundStairs' };
-        }
-        else {
+        } else {
           stairsWp.metadata = { tag: 'upStairs' };
         }
-      })
-
+      });
     });
   };
 
@@ -390,7 +417,7 @@ class ViewerPage extends Component<{}, {}> {
 
   setupBooths = () => {
     // Putting Videos on Screen
-    Object.keys(boothMap).forEach(booth => {
+    Object.keys(boothMap).forEach((booth) => {
       const screen = Object.keys(boothMap[booth].boothInfo)[0];
       const playButton = Object.keys(boothMap[booth].boothInfo)[1];
       const chatButton = Object.keys(boothMap[booth].boothInfo)[2];
@@ -407,14 +434,13 @@ class ViewerPage extends Component<{}, {}> {
         boothMap[booth].Transform.rotY,
         boothMap[booth].Transform.rotZ
       );
-      wayPoint.metadata = { tag: 'wayPoint' }
+      wayPoint.metadata = { tag: 'wayPoint' };
       const element = this.getMeshfromMainModel(screen);
       const buttonElement = this.getMeshfromMainModel(playButton);
       const chatElement = this.getMeshfromMainModel(chatButton);
       const urlElement = this.getMeshfromMainModel(urlButton);
       const broucherElement = this.getMeshfromMainModel(broucherButton);
       const sec_TVElement = this.getMeshfromMainModel(sec_TV);
-
 
       if (element) {
         this.setTextureonScreen(boothMap[booth].boothInfo[screen], element);
@@ -431,18 +457,21 @@ class ViewerPage extends Component<{}, {}> {
         urlElement.metadata.name = boothMap[booth].boothInfo[screen];
       }
       if (broucherElement) {
-        broucherElement.metadata.tag = boothMap[booth].boothInfo[broucherButton];
+        broucherElement.metadata.tag =
+          boothMap[booth].boothInfo[broucherButton];
         broucherElement.metadata.name = boothMap[booth].boothInfo[screen];
       }
       if (sec_TVElement) {
-        const newMat = new BABYLON.StandardMaterial("screenMat", this.scene);
-        newMat.useAlphaFromDiffuseTexture = true
-        newMat.diffuseTexture = mediaData.get(boothMap[booth].boothInfo[screen])[['Sec_Tv']];
-        newMat.diffuseTexture.hasAlpha = true
+        const newMat = new BABYLON.StandardMaterial('screenMat', this.scene);
+        newMat.useAlphaFromDiffuseTexture = true;
+        newMat.diffuseTexture = mediaData.get(
+          boothMap[booth].boothInfo[screen]
+        )[['Sec_Tv']];
+        newMat.diffuseTexture.hasAlpha = true;
         sec_TVElement.material = newMat;
       }
     });
-  }
+  };
 
   setModalView = (Url, show) => {
     this.setState(() => ({
@@ -451,37 +480,58 @@ class ViewerPage extends Component<{}, {}> {
     }));
   };
 
+  setMyModalView = (chatURL, videoURL, show) => {
+    this.setState(() => ({
+      chatURL: chatURL,
+      videoURL: videoURL,
+      showMyModal: show,
+    }));
+  };
+
   // function to fetch data from database and load it based on URL
   loadMediaData = () => {
-    db.collection('boothdata').get().then(async doc => {
-      doc.docs.map((data) => {
-        const fetchedData = data.data();
-        const thumbnail = new BABYLON.Texture(fetchedData['thumbnail-URL'], this.scene, false, false)
-        let Sec_Tv_Texture = null;
-        if (fetchedData['Sec_TV'] != "") {
-          Sec_Tv_Texture = new BABYLON.Texture(fetchedData['Sec_TV'], this.scene, false, false)
-        }
+    db.collection('boothdata')
+      .get()
+      .then(async (doc) => {
+        doc.docs.map((data) => {
+          const fetchedData = data.data();
+          const thumbnail = new BABYLON.Texture(
+            fetchedData['thumbnail-URL'],
+            this.scene,
+            false,
+            false
+          );
+          let Sec_Tv_Texture = null;
+          if (fetchedData['Sec_TV'] != '') {
+            Sec_Tv_Texture = new BABYLON.Texture(
+              fetchedData['Sec_TV'],
+              this.scene,
+              false,
+              false
+            );
+          }
 
-        const tempObject = {
-          'name': fetchedData.name,
-          'thumbnail': thumbnail,
-          'Video_url': fetchedData.asset_url,
-          'PDF_Url': fetchedData.PDF_Url,
-          'site_URL': fetchedData.site_URL,
-          'pamplate_Url': fetchedData.pamplate_Url,
-          'Sec_Tv': Sec_Tv_Texture
-        };
-        mediaData.set(data.id, { ...tempObject })
-        return null
-      }
-      )
-    })
-    db.collection("FM-Zone Data").get().then(async doc => {
-      doc.docs.map((data) => {
-        const fetchedData = data.data();
-        FM_ZoneData.set(data.id, { ...fetchedData })
-      })
-    })
+          const tempObject = {
+            name: fetchedData.name,
+            thumbnail: thumbnail,
+            Video_url: fetchedData.asset_url,
+            PDF_Url: fetchedData.PDF_Url,
+            site_URL: fetchedData.site_URL,
+            pamplate_Url: fetchedData.pamplate_Url,
+            Sec_Tv: Sec_Tv_Texture,
+          };
+          mediaData.set(data.id, { ...tempObject });
+          return null;
+        });
+      });
+    db.collection('FM-Zone Data')
+      .get()
+      .then(async (doc) => {
+        doc.docs.map((data) => {
+          const fetchedData = data.data();
+          FM_ZoneData.set(data.id, { ...fetchedData });
+        });
+      });
   };
 
   raycast = () => {
@@ -604,18 +654,28 @@ class ViewerPage extends Component<{}, {}> {
   };
 
   checkTime = () => {
-    const getTime = setTimeout(() => {
-      const today = new Date();
-      const currentTime = `${today.getHours().toLocaleString()}:${today
-        .getMinutes()
-        .toLocaleString()}`;
-      if (currentTime === advertisementData.time) {
-        this.setModalView(advertisementData.URL, true);
-        clearInterval(getTime);
-      } else {
-        this.checkTime();
-      }
-    }, 1000);
+    const startTime = new Date(advertisementData[0].startTime);
+    const endTime = new Date(advertisementData[0].endTime);
+    const currentTime = new Date();
+    if (currentTime > startTime) {
+      return;
+    }
+    if (currentTime > startTime && currentTime < endTime) {
+      this.setMyModalView(
+        advertisementData[0].chatURL,
+        advertisementData[0].videoURL,
+        true
+      );
+    }
+    if (currentTime < startTime) {
+      setTimeout(() => {
+        this.setMyModalView(
+          advertisementData[0].chatURL,
+          advertisementData[0].videoURL,
+          true
+        );
+      }, startTime - currentTime);
+    }
   };
 
   render() {
@@ -638,9 +698,18 @@ class ViewerPage extends Component<{}, {}> {
           }}
         />
 
+        <MyCustomModal
+          videoURL={this.state.videoURL}
+          chatURL={this.state.chatURL}
+          show={this.state.showMyModal}
+          onHide={() => {
+            this.setMyModalView('', '', false);
+          }}
+        />
+
         <BabylonScene onSceneMount={this.onSceneMount} />
-        <LoadingScreen show={showLoading} loadedPercent={sceneLoadedPercent} />
-        {!showLoading && (
+        {/* <LoadingScreen show={showLoading} loadedPercent={sceneLoadedPercent} /> */}
+        {
           <div>
             <Fab
               color="primary"
@@ -650,7 +719,7 @@ class ViewerPage extends Component<{}, {}> {
                 position: 'fixed',
                 bottom: '1rem',
                 right: '1rem',
-                backgroundColor: 'black'
+                backgroundColor: 'black',
               }}
               onClick={this.goToHome}
             >
@@ -664,7 +733,7 @@ class ViewerPage extends Component<{}, {}> {
                 position: 'fixed',
                 bottom: '1rem',
                 right: '5rem',
-                backgroundColor: 'black'
+                backgroundColor: 'black',
               }}
               onClick={this.goToFirstFloor}
             >
@@ -678,7 +747,7 @@ class ViewerPage extends Component<{}, {}> {
                 position: 'fixed',
                 bottom: '1rem',
                 left: '1rem',
-                backgroundColor: 'black'
+                backgroundColor: 'black',
               }}
               onClick={() => {
                 this.tutorialbutton(true);
@@ -689,11 +758,10 @@ class ViewerPage extends Component<{}, {}> {
             <Minimap
               moveToWayPoint={(name) => {
                 this.moveToWayPoint(name);
-              }
-              }
+              }}
             />
           </div>
-        )}
+        }
       </>
     );
   }
