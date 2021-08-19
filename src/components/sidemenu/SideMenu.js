@@ -17,6 +17,8 @@ import "./SideMenu.css";
 import CustomModal from '../modal/CustomModal';
 import TutorialPopup from '../tutorial-popup/TutorialPopup';
 import ForeverMarkLogo  from '../loading-screen/assets/forevermark_logo.png';
+import AirplayIcon from '@material-ui/icons/Airplay';
+import AdjustOutlinedIcon from '@material-ui/icons/AdjustOutlined';
 
 const ITEM_HEIGHT = 120;
 
@@ -88,8 +90,14 @@ export default function SimpleMenu() {
         </MenuItem>
         <MenuItem onClick={() => handleModalOpen('https://www.youtube.com/watch?v=_ZSTUGLOIzM')}>
           <Paper id={"menu-items"} elevation={0}>
-            <PlayCircleOutlineOutlinedIcon id={'menu-item-icon'}/>
-            Welcome Video
+            <AdjustOutlinedIcon id={'menu-item-icon'}/>
+            FM Zone
+          </Paper>
+        </MenuItem>
+        <MenuItem onClick={() => handleModalOpen('https://www.youtube.com/watch?v=_ZSTUGLOIzM')}>
+          <Paper id={"menu-items"} elevation={0}>
+            <AirplayIcon id={'menu-item-icon'}/>
+            Auditorium
           </Paper>
         </MenuItem>
         <MenuItem onClick={() => handleModalOpen('https://www.youtube.com/watch?v=_ZSTUGLOIzM')}>
@@ -102,12 +110,6 @@ export default function SimpleMenu() {
           <Paper id={"menu-items"} elevation={0}>
             <EqualizerOutlinedIcon id={'menu-item-icon'}/>
             Leaderboard
-          </Paper>
-        </MenuItem>
-        <MenuItem onClick={() => handleModalOpen('https://www.youtube.com/watch?v=_ZSTUGLOIzM')}>
-          <Paper id={"menu-items"} elevation={0}>
-            <GroupOutlinedIcon id={'menu-item-icon'}/>
-            Meet the team
           </Paper>
         </MenuItem>
         <MenuItem onClick={handleTutorialOpen}>

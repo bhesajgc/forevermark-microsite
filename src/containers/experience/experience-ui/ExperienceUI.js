@@ -40,16 +40,19 @@ const ExperienceUI = (props) => {
           <Fab color="primary" aria-label="add" size="large" onClick={() => handleModalOpen('https://www.youtube.com/watch?v=_ZSTUGLOIzM')}>
             <AirplayOutlinedIcon />
           </Fab>
+          Keynote
         </Grid>
         <Grid item>
           <Fab color="primary" aria-label="add" size="large" onClick={toggleMinimap}>
             <MapOutlinedIcon />
           </Fab>
+          Minimap
         </Grid>
         <Grid item>
           <Fab color="primary" aria-label="add" size="large" onClick={() => setCurrentLocation('Home')}>
             <HomeOutlinedIcon />
           </Fab>
+          Home
         </Grid>
       </Grid>
 

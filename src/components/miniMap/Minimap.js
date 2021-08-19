@@ -1,20 +1,30 @@
 import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Collapse from '@material-ui/core/Collapse';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import SendIcon from '@material-ui/icons/Send';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
+import StarBorder from '@material-ui/icons/StarBorder';
+import AdjustOutlinedIcon from '@material-ui/icons/AdjustOutlined';
+import AirplayOutlinedIcon from '@material-ui/icons/AirplayOutlined';
+import TableChartOutlinedIcon from '@material-ui/icons/TableChartOutlined';
 
-const drawerWidth = 240;
+const drawerWidth = 340;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,14 +90,23 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     height: "48px",
     borderRadius: "30px",
-  }
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
 }));
 
 function Minimap(props) {
 
   const { moveToWayPoint, open, handleMinimapClose, setCurrentLocation, minimapData } = props;
   const classes = useStyles();
-  console.log(minimapData)
+
+  const [openList, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!openList);
+  };
+
   return (
     <div className={classes.root}>
       <Drawer
@@ -103,46 +122,86 @@ function Minimap(props) {
           </IconButton>
         </div>
         <Divider />
-        {
-          minimapData=== null ? <div style={{padding:'1rem'}}>Please wait while we load booths data</div> :
-          <List >
-            {" "}
-            {[
-              "Booth 1",
-              "Booth 2",
-              "Booth 3",
-              "Booth 4",
-              "Booth 5",
-              "Booth 6",
-              "Booth 7",
-              "Booth 8",
-              "Booth 9",
-              "Booth 10",
-              "Booth 11",
-              "Booth 12",
-              "Booth 13",
-              "Booth 14",
-              "Booth 15",
-              "Booth 16",
-              "Booth 17",
-              "Booth 18",
-            ].map((text, index) => (
-              <ListItem
-                button
-                key={text}
-                onClick={() => {
-                  setCurrentLocation(text);
-                }}
-              >
-                <ListItemIcon>
+        <List
+          component="nav"
+          aria-labelledby="nested-list-subheader"
+          subheader={
+            <ListSubheader component="div" id="nested-list-subheader">
+              Level Two
+            </ListSubheader>
+          }
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <AirplayOutlinedIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Auditorium" />
+          </ListItem>
+        </List>
+        <List
+          component="nav"
+          aria-labelledby="nested-list-subheader"
+          subheader={
+            <ListSubheader component="div" id="nested-list-subheader">
+             Level One
+            </ListSubheader>
+          }
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <AdjustOutlinedIcon/>
+            </ListItemIcon>
+            <ListItemText primary="FM Zone" />
+          </ListItem>
+          <ListItem button onClick={handleClick}>
+            <ListItemIcon>
+              <TableChartOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Partner Booths" />
+            {openList ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={openList} timeout="auto" unmountOnExit>
+            {
+              minimapData !== null ? <div style={{padding:'1rem'}}>Please wait while we load booths data</div> :
+                <List className={classes.nested}>
                   {" "}
-                  {index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}{" "}
-                </ListItemIcon>
-                <ListItemText primary={text}/>
-              </ListItem>
-            ))}{" "}
-          </List>
-        }
+                  {[
+                    "Booth 1",
+                    "Booth 2",
+                    "Booth 3",
+                    "Booth 4",
+                    "Booth 5",
+                    "Booth 6",
+                    "Booth 7",
+                    "Booth 8",
+                    "Booth 9",
+                    "Booth 10",
+                    "Booth 11",
+                    "Booth 12",
+                    "Booth 13",
+                    "Booth 14",
+                    "Booth 15",
+                    "Booth 16",
+                    "Booth 17",
+                    "Booth 18",
+                  ].map((text, index) => (
+                    <ListItem
+                      button
+                      key={text}
+                      onClick={() => {
+                        setCurrentLocation(text);
+                      }}
+                    >
+                      <ListItemIcon>
+                       <TableChartOutlinedIcon/>
+                      </ListItemIcon>
+                      <ListItemText primary={text}/>
+                    </ListItem>
+                  ))}{" "}
+                </List>
+            }
+          </Collapse>
+        </List>
         <Divider />
       </Drawer>
     </div>
