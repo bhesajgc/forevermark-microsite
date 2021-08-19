@@ -16,36 +16,18 @@ import Button from '@material-ui/core/Button';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  hide: {
-    display: 'none',
-  },
+
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+    opacity: 0.7,
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: drawerWidth
   },
   drawerHeader: {
     display: 'flex',
@@ -53,35 +35,31 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-end'
   },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-  Button: {
-    position: 'fix',
+  ButtonMenuIcon: {
+    position: 'fixed',
     backgroundColor: 'black',
     color: 'white',
-    height: '48px',
+    height: '60px',
     borderRadius: '30px',
+    marginLeft: '10px',
+    marginTop: '10px',
   },
   MyBoothList: {
-    // marginTop: '2px',
-    backgroundColor: '#e4e7ed',
+    backgroundColor: 'black',
+    marginBottom: '5px',
+    color: '#f9faf2',
+    hover: 'none'
   },
+  MyListButton: {
+
+    hover: 'none',
+    marginBottom: '2px',
+    backgroundColor: '#78b086'
+  }
+
+
 }));
 
 function Minimap({ moveToWayPoint }) {
@@ -96,37 +74,41 @@ function Minimap({ moveToWayPoint }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
   return (
-    <div className={classes.root}>
-      <Button className={classes.Button} position="fixed">
-        <MenuIcon
-          color="inherit"
-          aria-label="open drawer"
+    <div className={
+      classes.root
+    }>
+      <Button className={
+        classes.ButtonMenuIcon
+      }
+        position="fixed">
+        <MenuIcon color="inherit" aria-label="open drawer"
+          className={classes.ButtonIcon}
           onClick={handleDrawerOpen}
-          edge="start"
-        />
+          edge="start" />
       </Button>
-      <Drawer
-        className={classes.drawer}
+      <Drawer className={
+        classes.drawer
+      }
         variant="persistent"
         anchor="left"
         open={open}
-        classes={{ paper: classes.drawerPaper }}
-      >
-        <div className={classes.drawerHeader}>
+        classes={
+          { paper: classes.drawerPaper }
+        }>
+        <div className={
+          classes.drawerHeader
+        }>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}{' '}
-          </IconButton>
+            {
+              theme.direction === 'ltr' ? (
+                <ChevronLeftIcon />) : (
+                <ChevronRightIcon />)
+            } </IconButton>
         </div>
         <Divider />
-        <List className={classes.MyBoothList}>
-          {' '}
-          {[
+        <List className={classes.MyBoothList}> {
+          [
             'Booth 1',
             'Booth 2',
             'Booth 3',
@@ -144,27 +126,28 @@ function Minimap({ moveToWayPoint }) {
             'Booth 15',
             'Booth 16',
             'Booth 17',
-            'Booth 18',
+            'Booth 18'
           ].map((text, index) => (
-            <ListItem
-              button
+            <ListItem button
+              className={classes.MyListButton}
               key={text}
-              onClick={() => {
-                moveToWayPoint(text);
-              }}
-            >
-              <ListItemIcon>
-                {' '}
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}{' '}
-              </ListItemIcon>
+              onClick={
+                () => {
+                  moveToWayPoint(text);
+                }
+              }>
+              <ListItemIcon> {
+                index % 2 === 0 ? <InboxIcon /> : <MailIcon />
+              } </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
-          ))}{' '}
-        </List>
+          ))
+        } </List>
 
         <Divider />
       </Drawer>
     </div>
   );
+
 }
 export default Minimap;
