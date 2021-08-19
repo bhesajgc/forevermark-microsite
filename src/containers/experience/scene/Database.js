@@ -9,13 +9,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint1',
-      posX: 33,
-      posY: 1.4,
-      posZ: 47.5,
+      posX: 35,
+      posY: 1.35,
+      posZ: 51,
       rotX: 1.5708,
       rotY: 1.5708,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 2': {
     boothInfo: {
@@ -25,13 +25,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint2',
-      posX: 33,
-      posY: 1.4,
-      posZ: 35.5,
+      posX: 35,
+      posY: 1.35,
+      posZ: 38.5,
       rotX: 1.5708,
       rotY: 1.5708,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 3': {
     boothInfo: {
@@ -41,13 +41,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint3',
-      posX: 33,
-      posY: 1.4,
-      posZ: 23,
+      posX: 35,
+      posY: 1.35,
+      posZ: 26,
       rotX: 1.5708,
       rotY: 1.5708,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 4': {
     boothInfo: {
@@ -58,13 +58,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint4',
-      posX: 33,
-      posY: 1.4,
-      posZ: 11,
+      posX: 35,
+      posY: 1.35,
+      posZ: 13.5,
       rotX: 1.5708,
       rotY: 1.5708,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 5': {
     boothInfo: {
@@ -74,13 +74,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint5',
-      posX: 33,
-      posY: 1.4,
-      posZ: -2,
+      posX: 35,
+      posY: 1.35,
+      posZ: 2,
       rotX: 1.5708,
       rotY: 1.5708,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 6': {
     boothInfo: {
@@ -90,13 +90,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint6',
-      posX: 33,
-      posY: 1.4,
-      posZ: -14,
+      posX: 35,
+      posY: 1.35,
+      posZ: -11,
       rotX: 1.5708,
       rotY: 1.5708,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 7': {
     boothInfo: {
@@ -106,13 +106,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint7',
-      posX: 33,
-      posY: 1.4,
-      posZ: -26.5,
+      posX: 35,
+      posY: 1.35,
+      posZ: -23,
       rotX: 1.5708,
       rotY: 1.5708,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 8': {
     boothInfo: {
@@ -122,13 +122,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint8',
-      posX: 33,
-      posY: 1.4,
-      posZ: -38.5,
+      posX: 35,
+      posY: 1.35,
+      posZ: -35,
       rotX: 1.5708,
       rotY: 1.5708,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 9': {
     boothInfo: {
@@ -138,13 +138,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint9',
-      posX: 33,
-      posY: 1.4,
-      posZ: -51,
+      posX: 35,
+      posY: 1.35,
+      posZ: -47,
       rotX: 1.5708,
       rotY: 1.5708,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 10': {
     boothInfo: {
@@ -154,13 +154,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint10',
-      posX: -35,
-      posY: 1.4,
-      posZ: 47.5,
+      posX: -33,
+      posY: 1.35,
+      posZ: 51,
       rotX: 1.5708,
       rotY: 4.712,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 11': {
     boothInfo: {
@@ -170,13 +170,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint11',
-      posX: -35,
-      posY: 1.4,
-      posZ: 35,
+      posX: -33,
+      posY: 1.35,
+      posZ: 38.5,
       rotX: 1.5708,
       rotY: 4.712,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 12': {
     boothInfo: {
@@ -186,13 +186,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint12',
-      posX: -35,
-      posY: 1.4,
-      posZ: 22.5,
+      posX: -33,
+      posY: 1.35,
+      posZ: 26.5,
       rotX: 1.5708,
       rotY: 4.712,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 13': {
     boothInfo: {
@@ -202,13 +202,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint13',
-      posX: -35,
-      posY: 1.4,
-      posZ: 10.5,
+      posX: -33,
+      posY: 1.35,
+      posZ: 14,
       rotX: 1.5708,
       rotY: 4.712,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 14': {
     boothInfo: {
@@ -218,13 +218,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint14',
-      posX: -35,
-      posY: 1.4,
-      posZ: -2,
+      posX: -33,
+      posY: 1.35,
+      posZ: 2,
       rotX: 1.5708,
       rotY: 4.712,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 15': {
     boothInfo: {
@@ -234,13 +234,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint15',
-      posX: -35,
-      posY: 1.4,
-      posZ: -14,
+      posX: -33,
+      posY: 1.35,
+      posZ: -11,
       rotX: 1.5708,
       rotY: 4.712,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 16': {
     boothInfo: {
@@ -250,13 +250,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint16',
-      posX: -35,
-      posY: 1.4,
-      posZ: -26.5,
+      posX: -33,
+      posY: 1.35,
+      posZ: -23,
       rotX: 1.5708,
       rotY: 4.712,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 17': {
     boothInfo: {
@@ -266,13 +266,13 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint17',
-      posX: -35,
-      posY: 1.4,
-      posZ: -38.5,
+      posX: -33,
+      posY: 1.35,
+      posZ: -35,
       rotX: 1.5708,
       rotY: 4.712,
-      rotZ: 0
-    }
+      rotZ: 0,
+    },
   },
   'Booth 18': {
     boothInfo: {
@@ -284,14 +284,87 @@ export const boothMap = {
     },
     Transform: {
       name: 'waypoint18',
-      posX: -35,
-      posY: 1.4,
-      posZ: -51,
+      posX: -33,
+      posY: 1.35,
+      posZ: -47.5,
       rotX: 1.5708,
       rotY: 4.712,
-      rotZ: 0
-    }
-  }
+      rotZ: 0,
+    },
+  },
+};
+
+export const fmZone = {
+  'Entry 1': {
+    Transform: {
+      name: 'fmWaypoint1',
+      posX: 1.6,
+      posY: 1.35,
+      posZ: -17,
+      rotX: 1.5708,
+      rotY: 0,
+      rotZ: 0,
+    },
+  },
+
+  'Entry 2': {
+    Transform: {
+      name: 'fmWaypoint2',
+      posX: 1.6,
+      posY: 1.35,
+      posZ: 17,
+      rotX: 1.5708,
+      rotY: 3.142,
+      rotZ: 0,
+    },
+  },
+};
+
+export const stairsData = {
+  'groundStair1': {
+    Transform: {
+      name: 'gstair1',
+      posX: -18,
+      posY: 1.35,
+      posZ: -72,
+      rotX: 1.5708,
+      rotY: -0.1745,
+      rotZ: 0,
+    },
+  },
+  'groundStair2': {
+    Transform: {
+      name: 'gstair2',
+      posX: 22,
+      posY: 1.35,
+      posZ: -72,
+      rotX: 1.5708,
+      rotY: 0.3491,
+      rotZ: 0,
+    },
+  },
+  'upStair1': {
+    Transform: {
+      name: 'upstair1',
+      posX: -43.5,
+      posY: 17.3,
+      posZ: 8,
+      rotX: 1.5708,
+      rotY: 3.142,
+      rotZ: 0,
+    },
+  },
+  'upStair2': {
+    Transform: {
+      name: 'upstair2',
+      posX: 47,
+      posY: 17.3,
+      posZ: 8,
+      rotX: 1.5708,
+      rotY: 3.142,
+      rotZ: 0,
+    },
+  },
 };
 export const FMZone = {
   'Data': {
@@ -304,5 +377,5 @@ export const FMZone = {
 
 export const advertisementData = {
   time: '16:11',
-  URL: 'https://www.forevermark.com/en-us/'
+  URL: 'https://www.forevermark.com/en-us/',
 };

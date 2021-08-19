@@ -9,10 +9,11 @@ import CustomModal from '../../../components/modal/CustomModal';
 import studio from '../assets/FFM.glb'
 import BabylonScene from './Scene';
 import type { SceneEventArgs } from './Scene';
-import { mediaData, FM_ZoneData, boothMap, advertisementData, FMZone } from './Database';
+import { mediaData, FM_ZoneData, boothMap, advertisementData, FMZone, fmZone, stairsData } from './Database';
 import LoadingScreen from '../../../components/loading-screen/LoadingScreen';
 import Home from '../assets/home.png';
 import Reticle from '../assets/Reticle.png';
+import Waypoint from '../assets/teleport2.png';
 import TutorialPopup from '../../../components/tutorial-popup/TutorialPopup';
 import Minimap from '../../../components/miniMap/Minimap';
 import { db } from '../../../config/Firebase';
@@ -40,7 +41,7 @@ class ViewerPage extends Component<{}, {}> {
       showModal: false,
       interactables: '',
       url: '',
-      currentAnalytics: ''
+      currentAnalytics: '',
     };
     this.interactablesData = '';
     this.hotspots = '';
@@ -65,7 +66,7 @@ class ViewerPage extends Component<{}, {}> {
     // #region Reticle Setup
     this.reticle = BABYLON.MeshBuilder.CreateDisc('reticle', {
       radius: 0.2,
-      sideOrientation: BABYLON.Mesh.DOUBLESIDE
+      sideOrientation: BABYLON.Mesh.DOUBLESIDE,
     });
     this.reticle.isPickable = false;
 
@@ -82,7 +83,7 @@ class ViewerPage extends Component<{}, {}> {
       this.result = this.raycast();
       if (
         this.result.hit &&
-        this.result.pickedMesh.metadata.tag === 'navigationFloor'
+        this.result.pickedMesh.metadata['tag'] === 'navigationFloor'
       ) {
         this.reticle.isVisible = true;
         this.reticle.position = new BABYLON.Vector3(
@@ -97,10 +98,10 @@ class ViewerPage extends Component<{}, {}> {
       }
     });
 
-    scene.onPointerObservable.add(pointerInfo => {
+    scene.onPointerObservable.add((pointerInfo) => {
       switch (pointerInfo.type) {
         case BABYLON.PointerEventTypes.POINTERTAP: {
-          switch (this.result.pickedMesh.metadata.tag) {
+          switch (this.result.pickedMesh.metadata['tag']) {
             case 'navigationFloor': {
               if (this.reticle.isVisible) {
                 const targetLocation = new BABYLON.Vector3(
@@ -145,7 +146,10 @@ class ViewerPage extends Component<{}, {}> {
               break;
             }
             case 'Screen': {
-              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).Video_url, true)
+              this.setModalView(
+                mediaData.get(this.result.pickedMesh.metadata.name).Video_url,
+                true
+              );
               break;
             }
             case 'wayPoint': {
@@ -162,8 +166,21 @@ class ViewerPage extends Component<{}, {}> {
               this.animate(targetLocation, targetRotation);
               break;
             }
+            case 'groundStairs': {
+              this.goToFirstFloor();
+              break;
+            }
+            case 'upStairs': {
+              this.goToHome();
+              break;
+            }
+            default:
+              break;
           }
+          break;
         }
+        default:
+          break;
       }
     });
 
@@ -175,7 +192,11 @@ class ViewerPage extends Component<{}, {}> {
   };
 
   setupCamera = () => {
-    this.camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0.34, 2.9, -92), this.scene);
+    this.camera = new BABYLON.FreeCamera(
+      'camera1',
+      new BABYLON.Vector3(0.34, 2.9, -92),
+      this.scene
+    );
     this.camera.setTarget(BABYLON.Vector3.Zero());
     this.camera.attachControl(this.canvas, true);
     this.camera.rotation = new BABYLON.Vector3(-0.03, 0.02, 0);
@@ -208,7 +229,6 @@ class ViewerPage extends Component<{}, {}> {
       this.scene
     );
     light2.intensity = 13;
-
   };
 
   setTextureonScreen = (screenName, screenObject) => {
@@ -234,30 +254,42 @@ class ViewerPage extends Component<{}, {}> {
 
 
   setupStudio = () => {
-    const loadingCalc = data => {
+    const loadingCalc = (data) => {
       const { loaded } = data;
       const sceneLoadedPercent = ((loaded * 100) / 26210304).toFixed();
-      this.setState(prevState => ({ ...prevState, sceneLoadedPercent, showLoading: true }));
+      this.setState((prevState) => ({
+        ...prevState,
+        sceneLoadedPercent,
+        showLoading: true,
+      }));
 
       this.scene.executeWhenReady(() => {
-        this.setState(prevState => ({ ...prevState, sceneLoadedPercent: 100, showLoading: false }));
+        this.setState((prevState) => ({
+          ...prevState,
+          sceneLoadedPercent: 100,
+          showLoading: false,
+        }));
       });
-    }
+    };
 
     BABYLON.DracoCompression.Configuration = {
       decoder: {
-        wasmUrl: 'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.js',
-        wasmBinaryUrl: 'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.wasm',
-        fallbackUrl: 'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_wasm_wrapper.js',
-      }
+        wasmUrl:
+          'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.js',
+        wasmBinaryUrl:
+          'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.wasm',
+        fallbackUrl:
+          'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_wasm_wrapper.js',
+      },
     };
     BABYLON.SceneLoader.ImportMeshAsync(
       '',
-      studio, '',
+      'https://storage.googleapis.com/forevermarkforum2021.appspot.com/',
+      'FFM.glb',
       this.scene,
       loadingCalc
-    ).then(studio => {
-      // this.scene.materials.forEach(mat => (mat.unlit = true));
+    ).then((studio) => {
+      // this.scene.materials.forEach((mat) => (mat.unlit = true));
 
       const { meshes } = studio;
       this.mainModel = meshes;
@@ -300,10 +332,40 @@ class ViewerPage extends Component<{}, {}> {
         }
       });
 
+      Object.keys(fmZone).forEach((zone) => {
+        const fmZoneWp = this.makeWaypoint(
+          fmZone[zone].Transform.name,
+          fmZone[zone].Transform.posX,
+          fmZone[zone].Transform.posY,
+          fmZone[zone].Transform.posZ,
+          fmZone[zone].Transform.rotX,
+          fmZone[zone].Transform.rotY,
+          fmZone[zone].Transform.rotZ
+        );
+        fmZoneWp.metadata = { tag: 'wayPoint' };
+      });
+
+      Object.keys(stairsData).forEach((stairs) => {
+        const stairsWp = this.makeWaypoint(
+          stairsData[stairs].Transform.name,
+          stairsData[stairs].Transform.posX,
+          stairsData[stairs].Transform.posY,
+          stairsData[stairs].Transform.posZ,
+          stairsData[stairs].Transform.rotX,
+          stairsData[stairs].Transform.rotY,
+          stairsData[stairs].Transform.rotZ)
+        if (stairs === 'groundStair1' || stairs === 'groundStair2') {
+          stairsWp.metadata = { tag: 'groundStairs' };
+        }
+        else {
+          stairsWp.metadata = { tag: 'upStairs' };
+        }
+      })
+
     });
   };
 
-  getMeshfromMainModel = name => {
+  getMeshfromMainModel = (name) => {
     for (
       let index = 0;
       index < this.mainModel[0]._children.length;
@@ -327,7 +389,7 @@ class ViewerPage extends Component<{}, {}> {
       const broucherButton = Object.keys(boothMap[booth].boothInfo)[4];
       const sec_TV = Object.keys(boothMap[booth].boothInfo)[5];
 
-      this.makeWaypoint(
+      const wayPoint = this.makeWaypoint(
         boothMap[booth].Transform.name,
         boothMap[booth].Transform.posX,
         boothMap[booth].Transform.posY,
@@ -336,6 +398,7 @@ class ViewerPage extends Component<{}, {}> {
         boothMap[booth].Transform.rotY,
         boothMap[booth].Transform.rotZ
       );
+      wayPoint.metadata = { tag: 'wayPoint' }
       const element = this.getMeshfromMainModel(screen);
       const buttonElement = this.getMeshfromMainModel(playButton);
       const chatElement = this.getMeshfromMainModel(chatButton);
@@ -375,7 +438,7 @@ class ViewerPage extends Component<{}, {}> {
   setModalView = (Url, show) => {
     this.setState(() => ({
       url: Url,
-      showModal: show
+      showModal: show,
     }));
   };
 
@@ -472,32 +535,31 @@ class ViewerPage extends Component<{}, {}> {
     );
   };
 
-  tutorialbutton = open => {
+  tutorialbutton = (open) => {
     this.setState({
       ...this.state,
-      tutorialopen: open
+      tutorialopen: open,
     });
   };
 
   makeWaypoint = (name, x, y, z, rotX, rotY, rotZ) => {
     const wayPoint = BABYLON.MeshBuilder.CreateDisc(name, {
       radius: 0.5,
-      sideOrientation: BABYLON.Mesh.DOUBLESIDE
+      sideOrientation: BABYLON.Mesh.DOUBLESIDE,
     });
-    wayPoint.metadata = { tag: 'wayPoint' }
     wayPoint.position = new BABYLON.Vector3(x, y, z);
     wayPoint.rotation = new BABYLON.Vector3(rotX, rotY, rotZ);
     const wpMat = new BABYLON.StandardMaterial('wpMat', this.scene);
-    wpMat.diffuseTexture = new BABYLON.Texture(Reticle, this.scene);
+    wpMat.diffuseTexture = new BABYLON.Texture(Waypoint, this.scene);
     wpMat.unlit = true;
-    wpMat.emissiveTexture = new BABYLON.Texture(Reticle, this.scene);
-    wpMat.opacityTexture = new BABYLON.Texture(Reticle, this.scene);
+    wpMat.emissiveTexture = new BABYLON.Texture(Waypoint, this.scene);
+    wpMat.opacityTexture = new BABYLON.Texture(Waypoint, this.scene);
 
     wayPoint.material = wpMat;
     return wayPoint;
   };
 
-  moveToWayPoint = name => {
+  moveToWayPoint = (name) => {
     const transform = boothMap[name].Transform;
     this.animate(
       new BABYLON.Vector3(
@@ -535,9 +597,9 @@ class ViewerPage extends Component<{}, {}> {
   checkTime = () => {
     const getTime = setTimeout(() => {
       const today = new Date();
-      const currentTime = `${today
-        .getHours()
-        .toLocaleString()}:${today.getMinutes().toLocaleString()}`;
+      const currentTime = `${today.getHours().toLocaleString()}:${today
+        .getMinutes()
+        .toLocaleString()}`;
       if (currentTime === advertisementData.time) {
         this.setModalView(advertisementData.URL, true);
         clearInterval(getTime);
@@ -578,7 +640,7 @@ class ViewerPage extends Component<{}, {}> {
               style={{
                 position: 'fixed',
                 bottom: '1rem',
-                right: '1rem'
+                right: '1rem',
               }}
               onClick={this.goToHome}
             >
@@ -591,7 +653,7 @@ class ViewerPage extends Component<{}, {}> {
               style={{
                 position: 'fixed',
                 bottom: '1rem',
-                right: '5rem'
+                right: '5rem',
               }}
               onClick={this.goToFirstFloor}
             >
@@ -604,7 +666,7 @@ class ViewerPage extends Component<{}, {}> {
               style={{
                 position: 'fixed',
                 bottom: '1rem',
-                left: '1rem'
+                left: '1rem',
               }}
               onClick={() => {
                 this.tutorialbutton(true);
@@ -613,7 +675,7 @@ class ViewerPage extends Component<{}, {}> {
               <HelpIcon />
             </Fab>
             <Minimap
-              moveToWayPoint={name => {
+              moveToWayPoint={(name) => {
                 this.moveToWayPoint(name);
               }}
             />
