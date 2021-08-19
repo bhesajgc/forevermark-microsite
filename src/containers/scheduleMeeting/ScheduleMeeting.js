@@ -6,8 +6,8 @@ import Tab2 from "../../components/scheduleMeeting/Tab2/Tab2";
 import Tab3 from "../../components/scheduleMeeting/Tab3/Tab3";
 import Tab4 from "../../components/scheduleMeeting/Tab4/Tab4";
 import firebase from "firebase";
-import { useHistory } from 'react-router-dom';
-import MeetingHeader from '../meetings/MeetingHeader';
+import { useHistory } from "react-router-dom";
+import MeetingHeader from "../meetings/MeetingHeader";
 
 function ScheduleMeeting() {
   const history = useHistory();
@@ -15,9 +15,9 @@ function ScheduleMeeting() {
 
   useEffect(() => {
     if (!currentUser) {
-      history.push('/signin', { from: '/schedule-meetings' })
+      history.push("/signin", { from: "/schedule-meetings" });
     }
-  }, [currentUser, history])
+  }, [currentUser, history]);
 
   // classes variables
   const [navClass, setNavClass] = useState([
@@ -64,7 +64,12 @@ function ScheduleMeeting() {
               <Tab2 booth={booth} setGuest={setGuest} guest={guest} />
             </div> */}
             <div className={tabClassess[1]}>
-              <Tab3 booth={booth} setGuest={setGuest} guest={guest} setTimeslot={setTimeslot} />
+              <Tab3
+                booth={booth}
+                setGuest={setGuest}
+                guest={guest}
+                setTimeslot={setTimeslot}
+              />
             </div>
             <div className={tabClassess[2]}>
               <Tab4 guest={guest} timeslot={timeslot} zone={zone} />

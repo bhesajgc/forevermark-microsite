@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-import Viewer from './scene/Viewer';
+import React, { Component } from "react";
+import Viewer from "./scene/Viewer";
+import ExperienceUI from "./experience-ui/ExperienceUI";
 
+const Studio = () => {
 
-class Studio extends Component {
-
-  render () {
+  const [currentLocation, setCurrentLocation] = React.useState('Home');
+  const [minimapData, setMinimapData] = React.useState(null);
     return (
       <div>
-        <Viewer/>
+        <Viewer currentLocation={currentLocation} setMinimapData={setMinimapData}/>
+        <ExperienceUI setCurrentLocation={setCurrentLocation} minimapData={minimapData}/>
       </div>
-    )
-  }
+    );
 }
 
 export default Studio;

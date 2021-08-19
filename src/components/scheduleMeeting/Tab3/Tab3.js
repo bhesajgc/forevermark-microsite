@@ -3,7 +3,6 @@ import TimeslotTab from "../TimeslotTab/TimeslotTab";
 import { db } from "../../../config/Firebase";
 
 function Tab3({ booth, setGuest, guest, setTimeslot }) {
-  
   const [guests, setGuests] = useState([]);
   const [active, setActive] = useState({});
   const [timeslots, setTimeslots] = useState(null);
@@ -15,18 +14,18 @@ function Tab3({ booth, setGuest, guest, setTimeslot }) {
   ]);
 
   useEffect(() => {
-    if(booth) {
+    if (booth) {
       db.collection("vcs")
         .where("boothReference", "==", db.collection("booths").doc(booth[0]))
         .get()
         .then((snapshot) => {
           // setGuests(
-            snapshot.docs.map((document) => {
-              // return {
-              //   id: doc.id,
-              //   guestName: doc.data().name,
-              // };
-              db.collection("slots")
+          snapshot.docs.map((document) => {
+            // return {
+            //   id: doc.id,
+            //   guestName: doc.data().name,
+            // };
+            db.collection("slots")
               .where("vcReference", "==", db.collection("vcs").doc(document.id))
               .orderBy("startTime")
               .get()
@@ -42,20 +41,16 @@ function Tab3({ booth, setGuest, guest, setTimeslot }) {
                   })
                 );
               });
-
-            })
+          });
           // );
-        });      
+        });
     }
   }, [booth]);
 
   return (
     <div style={{ maxHeight: "300px", overflowY: "auto", overflowX: "hidden" }}>
       <p>
-        Scheduling Meeting with{" "}
-        <span className="guestnm">
-          {booth[1]}
-        </span>
+        Scheduling Meeting with <span className="guestnm">{booth[1]}</span>
       </p>
       <div className="row">
         <div className="col-md-3">

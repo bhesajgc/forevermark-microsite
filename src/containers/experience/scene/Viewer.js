@@ -1,52 +1,58 @@
-import React, { Component } from 'react';
-import * as BABYLON from 'babylonjs';
-import 'babylonjs-loaders';
-import Fab from '@material-ui/core/Fab';
-import HelpIcon from '@material-ui/icons/Help';
-import PublishIcon from '@material-ui/icons/Publish';
+import React, { Component } from "react";
+import * as BABYLON from "babylonjs";
+import "babylonjs-loaders";
+import Fab from "@material-ui/core/Fab";
+import HelpIcon from "@material-ui/icons/Help";
+import PublishIcon from "@material-ui/icons/Publish";
 
-import CustomModal from '../../../components/modal/CustomModal';
-import BabylonScene from './Scene';
-import type { SceneEventArgs } from './Scene';
-import { mediaData, boothMap, fmZone, stairsData,advertisementData } from './Database';
-import LoadingScreen from '../../../components/loading-screen/LoadingScreen';
-import Home from '../assets/home.png';
-import Reticle from '../assets/Reticle.png';
-import Waypoint from '../assets/teleport2.png';
-import TutorialPopup from '../../../components/tutorial-popup/TutorialPopup';
-import Minimap from '../../../components/miniMap/Minimap';
-import { db } from '../../../config/Firebase';
+import CustomModal from "../../../components/modal/CustomModal";
+import BabylonScene from "./Scene";
+import type { SceneEventArgs } from "./Scene";
+import {
+  mediaData,
+  boothMap,
+  fmZone,
+  stairsData,
+  advertisementData,
+} from "./Database";
+import LoadingScreen from "../../../components/loading-screen/LoadingScreen";
+import Home from "../assets/home.png";
+import Reticle from "../assets/Reticle.png";
+import Waypoint from "../assets/teleport2.png";
+import TutorialPopup from "../../../components/tutorial-popup/TutorialPopup";
+import Minimap from "../../../components/miniMap/Minimap";
+import { db } from "../../../config/Firebase";
 
-const Viewer = () => {
-  return (
-    <div>
-      <ViewerPage />
-    </div>
-  );
-};
 
-class ViewerPage extends Component<{}, {}> {
+type ViewerProps = {
+  currentLocation: string
+}
+
+
+class Viewer extends Component<ViewerProps, {}> {
   constructor(props) {
     super(props);
 
-    this.canvas = '';
-    this.engine = '';
-    this.scene = '';
-    this.camera = '';
-    this.light = '';
+    this.canvas = "";
+    this.engine = "";
+    this.scene = "";
+    this.camera = "";
+    this.light = "";
     this.state = {
       sceneLoadedPercent: 0,
       showLoading: true,
       showModal: false,
-      interactables: '',
-      url: '',
-      currentAnalytics: '',
+      interactables: "",
+      url: "",
+      currentAnalytics: "",
     };
-    this.interactablesData = '';
-    this.hotspots = '';
-    this.result = '';
-    this.reticle = '';
-    this.mainModel = '';
+    this.interactablesData = "";
+    this.hotspots = "";
+    this.result = "";
+    this.reticle = "";
+    this.mainModel = "";
+    this.lastLocation="Home";
+    console.log(this.props.currentLocation)
   }
 
   onSceneMount = (e: SceneEventArgs) => {
@@ -63,13 +69,13 @@ class ViewerPage extends Component<{}, {}> {
     // this.addObservable();
 
     // #region Reticle Setup
-    this.reticle = BABYLON.MeshBuilder.CreateDisc('reticle', {
+    this.reticle = BABYLON.MeshBuilder.CreateDisc("reticle", {
       radius: 0.2,
       sideOrientation: BABYLON.Mesh.DOUBLESIDE,
     });
     this.reticle.isPickable = false;
 
-    const reticleMat = new BABYLON.StandardMaterial('reticleMat', this.scene);
+    const reticleMat = new BABYLON.StandardMaterial("reticleMat", this.scene);
     reticleMat.diffuseTexture = new BABYLON.Texture(Reticle, this.scene);
     reticleMat.unlit = true;
     reticleMat.emissiveTexture = new BABYLON.Texture(Reticle, this.scene);
@@ -82,7 +88,7 @@ class ViewerPage extends Component<{}, {}> {
       this.result = this.raycast();
       if (
         this.result.hit &&
-        this.result.pickedMesh.metadata.tag === 'navigationFloor'
+        this.result.pickedMesh.metadata.tag === "navigationFloor"
       ) {
         this.reticle.isVisible = true;
         this.reticle.position = new BABYLON.Vector3(
@@ -100,7 +106,7 @@ class ViewerPage extends Component<{}, {}> {
       switch (pointerInfo.type) {
         case BABYLON.PointerEventTypes.POINTERTAP: {
           switch (this.result.pickedMesh.metadata.tag) {
-            case 'navigationFloor': {
+            case "navigationFloor": {
               if (this.reticle.isVisible) {
                 const targetLocation = new BABYLON.Vector3(
                   this.result.pickedPoint.x,
@@ -108,9 +114,9 @@ class ViewerPage extends Component<{}, {}> {
                   this.result.pickedPoint.z
                 );
                 BABYLON.Animation.CreateAndStartAnimation(
-                  'Movement',
+                  "Movement",
                   this.camera,
-                  'position',
+                  "position",
                   50,
                   60,
                   this.camera.position,
@@ -120,29 +126,29 @@ class ViewerPage extends Component<{}, {}> {
               }
               break;
             }
-            case 'chat': {
+            case "chat": {
               this.setModalView(
-                'https://tawk.to/chat/603df02c385de407571b8982/1evov4cn5#',
+                "https://tawk.to/chat/603df02c385de407571b8982/1evov4cn5#",
                 true
               );
               break;
             }
-            case 'URL': {
-              this.setModalView('https://www.forevermark.com/', true);
+            case "URL": {
+              this.setModalView("https://www.forevermark.com/", true);
               break;
             }
-            case 'broucher': {
-              this.setModalView('Test.pdf', true);
+            case "broucher": {
+              this.setModalView("Test.pdf", true);
               break;
             }
-            case 'Screen': {
+            case "Screen": {
               this.setModalView(
                 mediaData.get(this.result.pickedMesh.metadata.name).Video_url,
                 true
               );
               break;
             }
-            case 'wayPoint': {
+            case "wayPoint": {
               const targetLocation = new BABYLON.Vector3(
                 this.result.pickedMesh.position.x,
                 this.camera.position.y,
@@ -156,7 +162,7 @@ class ViewerPage extends Component<{}, {}> {
               this.animate(targetLocation, targetRotation);
               break;
             }
-            case 'groundStairs': {
+            case "groundStairs": {
               const targetLocation = new BABYLON.Vector3(
                 this.result.pickedMesh.position.x,
                 this.camera.position.y,
@@ -189,7 +195,7 @@ class ViewerPage extends Component<{}, {}> {
 
   setupCamera = () => {
     this.camera = new BABYLON.FreeCamera(
-      'camera1',
+      "camera1",
       new BABYLON.Vector3(0.34, 2.9, -92),
       this.scene
     );
@@ -198,20 +204,20 @@ class ViewerPage extends Component<{}, {}> {
     this.camera.rotation = new BABYLON.Vector3(-0.03, 0.02, 0);
     this.camera.inputs.remove(this.camera.inputs.attached.keyboard);
 
-    const gl = new BABYLON.GlowLayer('glow', this.scene);
+    const gl = new BABYLON.GlowLayer("glow", this.scene);
     gl.intensity = 0.25;
     gl.blurKernelSize = 16;
   };
 
   setupLights = () => {
     const light = new BABYLON.HemisphericLight(
-      'light1',
+      "light1",
       new BABYLON.Vector3(0, 0, 0),
       this.scene
     );
     light.intensity = 0.5;
     const cubeTex = new BABYLON.CubeTexture(
-      'https://storage.googleapis.com/forevermarkforum2021.appspot.com/skybox/forevermark',
+      "https://storage.googleapis.com/forevermarkforum2021.appspot.com/skybox/forevermark",
       this.scene
     );
     cubeTex.rotationY = 4.3;
@@ -220,7 +226,7 @@ class ViewerPage extends Component<{}, {}> {
     this.scene.environmentIntensity = 0.5;
 
     const light2 = new BABYLON.DirectionalLight(
-      'light2',
+      "light2",
       new BABYLON.Vector3(0, -1, 0),
       this.scene
     );
@@ -229,7 +235,7 @@ class ViewerPage extends Component<{}, {}> {
 
   setTextureonScreen = (screenName, screenObject) => {
     const thumbnailTexture = mediaData.get(screenName);
-    const screenMat = new BABYLON.StandardMaterial('screenMat', this.scene);
+    const screenMat = new BABYLON.StandardMaterial("screenMat", this.scene);
     screenObject.material = screenMat;
     screenObject.material.emissiveTexture = thumbnailTexture.thumbnail;
     screenObject.material.diffuseColor = new BABYLON.Color3.Black();
@@ -258,17 +264,17 @@ class ViewerPage extends Component<{}, {}> {
     BABYLON.DracoCompression.Configuration = {
       decoder: {
         wasmUrl:
-          'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.js',
+          "https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.js",
         wasmBinaryUrl:
-          'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.wasm',
+          "https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_decoder.wasm",
         fallbackUrl:
-          'https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_wasm_wrapper.js',
+          "https://www.gstatic.com/draco/versioned/decoders/1.4.1/draco_wasm_wrapper.js",
       },
     };
     BABYLON.SceneLoader.ImportMeshAsync(
-      '',
-      'https://storage.googleapis.com/forevermarkforum2021.appspot.com/',
-      'FFM.glb',
+      "",
+      "https://storage.googleapis.com/forevermarkforum2021.appspot.com/",
+      "FFM.glb",
       this.scene,
       loadingCalc
     ).then((studio) => {
@@ -277,28 +283,28 @@ class ViewerPage extends Component<{}, {}> {
       const { meshes } = studio;
       this.mainModel = meshes;
 
-      const floor = this.scene.getMaterialByName('Floor');
+      const floor = this.scene.getMaterialByName("Floor");
       floor.environmentIntensity = 0.8;
       floor.directIntensity = 0.25;
 
       for (let index = 0; index < meshes[0]._children.length; index += 1) {
         const element = meshes[0]._children[index];
-        if (element.name === '893672') {
-          this.setTextureonScreen('Main Screen', element);
-          element.metadata.tag = 'Screen';
-          element.metadata.name = 'Main Screen';
-        } else if (element.name === 'Audi') {
-          this.setTextureonScreen('Audi Screen', element);
-          element.metadata.tag = 'Screen';
-          element.metadata.name = 'Audi Screen';
-        } else if (element.name === 'XRC_Image_01_TV') {
-          element.metadata.tag = 'chat';
-        } else if (element.name === 'Booth  Kiosk Branding') {
-          element.metadata.tag = 'broucher';
-        } else if (element.name === 'Booth Kisok Branding_02') {
-          element.metadata.tag = 'URL';
-        } else if (element.name === 'ground' || element.name === 'Booth Base') {
-          element.metadata.tag = 'navigationFloor';
+        if (element.name === "893672") {
+          this.setTextureonScreen("Main Screen", element);
+          element.metadata.tag = "Screen";
+          element.metadata.name = "Main Screen";
+        } else if (element.name === "Audi") {
+          this.setTextureonScreen("Audi Screen", element);
+          element.metadata.tag = "Screen";
+          element.metadata.name = "Audi Screen";
+        } else if (element.name === "XRC_Image_01_TV") {
+          element.metadata.tag = "chat";
+        } else if (element.name === "Booth  Kiosk Branding") {
+          element.metadata.tag = "broucher";
+        } else if (element.name === "Booth Kisok Branding_02") {
+          element.metadata.tag = "URL";
+        } else if (element.name === "ground" || element.name === "Booth Base") {
+          element.metadata.tag = "navigationFloor";
         }
       }
 
@@ -314,11 +320,11 @@ class ViewerPage extends Component<{}, {}> {
           boothMap[booth].Transform.rotY,
           boothMap[booth].Transform.rotZ
         );
-        waypoints.metadata = { tag: 'wayPoint' };
+        waypoints.metadata = { tag: "wayPoint" };
         const element = this.getMeshfromMainModel(screen);
         if (element) {
           this.setTextureonScreen(boothMap[booth].TV[screen], element);
-          element.metadata.tag = 'Screen';
+          element.metadata.tag = "Screen";
           element.metadata.name = boothMap[booth].TV[screen];
         }
       });
@@ -333,10 +339,10 @@ class ViewerPage extends Component<{}, {}> {
           fmZone[zone].Transform.rotY,
           fmZone[zone].Transform.rotZ
         );
-        fmZoneWp.metadata = { tag: 'wayPoint' };
+        fmZoneWp.metadata = { tag: "wayPoint" };
       });
 
-      Object.keys(stairsData).forEach((stairs) =>{
+      Object.keys(stairsData).forEach((stairs) => {
         const stairsWp = this.makeWaypoint(
           stairsData[stairs].Transform.name,
           stairsData[stairs].Transform.posX,
@@ -344,14 +350,14 @@ class ViewerPage extends Component<{}, {}> {
           stairsData[stairs].Transform.posZ,
           stairsData[stairs].Transform.rotX,
           stairsData[stairs].Transform.rotY,
-          stairsData[stairs].Transform.rotZ)
-           if(stairs === 'groundStair1' || stairs === 'groundStair2'){
-             stairsWp.metadata = {tag: 'groundStairs'};
-           }
-           else{
-             stairsWp.metadata = {tag: 'upStairs'};
-           }
-      })
+          stairsData[stairs].Transform.rotZ
+        );
+        if (stairs === "groundStair1" || stairs === "groundStair2") {
+          stairsWp.metadata = { tag: "groundStairs" };
+        } else {
+          stairsWp.metadata = { tag: "upStairs" };
+        }
+      });
     });
   };
 
@@ -378,13 +384,13 @@ class ViewerPage extends Component<{}, {}> {
 
   // function to fetch data from database and load it based on URL
   loadMediaData = () => {
-    db.collection('boothdata')
+    db.collection("boothdata")
       .get()
       .then(async (doc) => {
         doc.docs.map((data) => {
           const fetchedData = data.data();
           const thumbnail = new BABYLON.Texture(
-            fetchedData['thumbnail-URL'],
+            fetchedData["thumbnail-URL"],
             this.scene
           );
           const tempObject = {
@@ -392,6 +398,7 @@ class ViewerPage extends Component<{}, {}> {
             Video_url: fetchedData.asset_url,
           };
           mediaData.set(data.id, { ...tempObject });
+
           return null;
         });
       });
@@ -408,9 +415,9 @@ class ViewerPage extends Component<{}, {}> {
     const fromPosition = this.camera.position;
     const toPosition = new BABYLON.Vector3(0.34, 2.9, -92);
     BABYLON.Animation.CreateAndStartAnimation(
-      'camRot',
+      "camRot",
       this.camera,
-      'rotation',
+      "rotation",
       30,
       30,
       fromRotation,
@@ -418,9 +425,9 @@ class ViewerPage extends Component<{}, {}> {
       BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
     );
     BABYLON.Animation.CreateAndStartAnimation(
-      'camRot',
+      "camRot",
       this.camera,
-      'position',
+      "position",
       30,
       30,
       fromPosition,
@@ -436,9 +443,9 @@ class ViewerPage extends Component<{}, {}> {
     const toPos = new BABYLON.Vector3(0, 20, 5);
 
     BABYLON.Animation.CreateAndStartAnimation(
-      'camRotation',
+      "camRotation",
       this.camera,
-      'rotation',
+      "rotation",
       30,
       30,
       currentRot,
@@ -446,22 +453,15 @@ class ViewerPage extends Component<{}, {}> {
       BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
     );
     BABYLON.Animation.CreateAndStartAnimation(
-      'camPosition',
+      "camPosition",
       this.camera,
-      'position',
+      "position",
       30,
       30,
       currentPos,
       toPos,
       BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
     );
-  };
-
-  tutorialbutton = (open) => {
-    this.setState({
-      ...this.state,
-      tutorialopen: open,
-    });
   };
 
   makeWaypoint = (name, x, y, z, rotX, rotY, rotZ) => {
@@ -472,7 +472,7 @@ class ViewerPage extends Component<{}, {}> {
     wayPoint.position = new BABYLON.Vector3(x, y, z);
     wayPoint.rotation = new BABYLON.Vector3(rotX, rotY, rotZ);
 
-    const wpMat = new BABYLON.StandardMaterial('wpMat', this.scene);
+    const wpMat = new BABYLON.StandardMaterial("wpMat", this.scene);
     wpMat.diffuseTexture = new BABYLON.Texture(Waypoint, this.scene);
     wpMat.unlit = true;
     wpMat.emissiveTexture = new BABYLON.Texture(Waypoint, this.scene);
@@ -496,9 +496,9 @@ class ViewerPage extends Component<{}, {}> {
 
   animate = (targetLocation, targetRotation) => {
     BABYLON.Animation.CreateAndStartAnimation(
-      'Movement',
+      "Movement",
       this.camera,
-      'position',
+      "position",
       50,
       60,
       this.camera.position,
@@ -506,9 +506,9 @@ class ViewerPage extends Component<{}, {}> {
       BABYLON.Animation.ANIMATIONLOOPMODE_CONSTANT
     );
     BABYLON.Animation.CreateAndStartAnimation(
-      'Movement',
+      "Movement",
       this.camera,
-      'rotation',
+      "rotation",
       50,
       60,
       this.camera.rotation,
@@ -541,73 +541,8 @@ class ViewerPage extends Component<{}, {}> {
 
     return (
       <>
-        <TutorialPopup
-          open={this.state.tutorialopen}
-          setOpen={() => {
-            this.tutorialbutton(false);
-          }}
-        />
-
-        <CustomModal
-          url={this.state.url}
-          show={this.state.showModal}
-          onHide={() => {
-            this.setModalView('', false);
-          }}
-        />
-
         <BabylonScene onSceneMount={this.onSceneMount} />
         <LoadingScreen show={showLoading} loadedPercent={sceneLoadedPercent} />
-        {!showLoading && (
-          <div>
-            <Fab
-              color="primary"
-              aria-label="add"
-              size="large"
-              style={{
-                position: 'fixed',
-                bottom: '1rem',
-                right: '1rem',
-              }}
-              onClick={this.goToHome}
-            >
-              <img src={Home} alt="Home icon" style={{ width: '24px' }} />
-            </Fab>
-            <Fab
-              color="primary"
-              aria-label="add"
-              size="large"
-              style={{
-                position: 'fixed',
-                bottom: '1rem',
-                right: '5rem',
-              }}
-              onClick={this.showDebugLayer}
-            >
-              <PublishIcon />
-            </Fab>
-            <Fab
-              color="primary"
-              aria-label="add"
-              size="large"
-              style={{
-                position: 'fixed',
-                bottom: '1rem',
-                left: '1rem',
-              }}
-              onClick={() => {
-                this.tutorialbutton(true);
-              }}
-            >
-              <HelpIcon />
-            </Fab>
-            <Minimap
-              moveToWayPoint={(name) => {
-                this.moveToWayPoint(name);
-              }}
-            />
-          </div>
-        )}
       </>
     );
   }

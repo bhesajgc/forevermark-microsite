@@ -1,10 +1,10 @@
-import * as BABYLON from 'babylonjs';
-import React, { Component } from 'react';
+import * as BABYLON from "babylonjs";
+import React, { Component } from "react";
 
 export type SceneEventArgs = {
   engine: BABYLON.Engine,
   scene: BABYLON.Scene,
-  canvas: HTMLCanvasElement
+  canvas: HTMLCanvasElement,
 };
 
 export type SceneProps = {
@@ -13,18 +13,15 @@ export type SceneProps = {
   // eslint-disable-next-line react/require-default-props
   adaptToDeviceRatio?: boolean,
   // eslint-disable-next-line react/require-default-props
-  onSceneMount?: (args: SceneEventArgs) => void
+  onSceneMount?: (args: SceneEventArgs) => void,
 };
 
-export default class BabylonScene extends Component<SceneProps & React.HTMLAttributes<HTMLCanvasElement>, {}> {
-
+export default class BabylonScene extends Component<
+  SceneProps & React.HTMLAttributes<HTMLCanvasElement>,
+  {}
+> {
   componentDidMount() {
-
-    const {
-      engineOptions,
-      adaptToDeviceRatio,
-      onSceneMount
-    } = this.props;
+    const { engineOptions, adaptToDeviceRatio, onSceneMount } = this.props;
 
     this.engine = new BABYLON.Engine(
       this.canvas,
@@ -37,7 +34,7 @@ export default class BabylonScene extends Component<SceneProps & React.HTMLAttri
     this.scene = scene;
     this.scene.clearColor = new BABYLON.Color3(0, 0, 0);
 
-    if (typeof onSceneMount === 'function') {
+    if (typeof onSceneMount === "function") {
       onSceneMount({
         scene,
         engine: this.engine,
@@ -45,11 +42,11 @@ export default class BabylonScene extends Component<SceneProps & React.HTMLAttri
       });
     }
 
-    window.addEventListener('resize', this.onResizeWindow);
+    window.addEventListener("resize", this.onResizeWindow);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.onResizeWindow);
+    window.removeEventListener("resize", this.onResizeWindow);
   }
 
   onCanvasLoaded = (c: HTMLCanvasElement) => {
@@ -63,8 +60,7 @@ export default class BabylonScene extends Component<SceneProps & React.HTMLAttri
       this.engine.resize();
       this.forceUpdate();
     }
-  }
-
+  };
 
   render() {
     return (

@@ -48,10 +48,12 @@ function Header({ logo, optionsShow }) {
               My meetings
             </a>
             <span>|</span>
-            <button onClick={() => {
-              auth.signOut();
-              history.push('/');
-            }}>
+            <button
+              onClick={() => {
+                auth.signOut();
+                history.push("/");
+              }}
+            >
               <span
                 style={{ marginRight: "5px", fontSize: "inherit" }}
                 className="material-icons"

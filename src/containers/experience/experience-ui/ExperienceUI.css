@@ -1,0 +1,12 @@
+#experience-ui {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+
+#btn-controls {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+}

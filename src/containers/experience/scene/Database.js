@@ -1,9 +1,9 @@
 export const mediaData = new Map();
 export const boothMap = {
-  'Booth 1': {
-    TV: { 'XRC_Image_01_TV.001': 'BoothScreen 1' },
+  "Booth 1": {
+    TV: { "XRC_Image_01_TV.001": "BoothScreen 1" },
     Transform: {
-      name: 'waypoint1',
+      name: "waypoint1",
       posX: 35,
       posY: 1.35,
       posZ: 51,
@@ -12,10 +12,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 2': {
-    TV: { 'XRC_Image_01_TV.003': 'BoothScreen 2' },
+  "Booth 2": {
+    TV: { "XRC_Image_01_TV.003": "BoothScreen 2" },
     Transform: {
-      name: 'waypoint2',
+      name: "waypoint2",
       posX: 35,
       posY: 1.35,
       posZ: 38.5,
@@ -24,10 +24,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 3': {
-    TV: { 'XRC_Image_01_TV.002': 'BoothScreen 3' },
+  "Booth 3": {
+    TV: { "XRC_Image_01_TV.002": "BoothScreen 3" },
     Transform: {
-      name: 'waypoint3',
+      name: "waypoint3",
       posX: 35,
       posY: 1.35,
       posZ: 26,
@@ -36,10 +36,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 4': {
-    TV: { 'XRC_Image_01_TV.004': 'BoothScreen 4' },
+  "Booth 4": {
+    TV: { "XRC_Image_01_TV.004": "BoothScreen 4" },
     Transform: {
-      name: 'waypoint4',
+      name: "waypoint4",
       posX: 35,
       posY: 1.35,
       posZ: 13.5,
@@ -48,10 +48,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 5': {
-    TV: { 'XRC_Image_01_TV.005': 'BoothScreen 5' },
+  "Booth 5": {
+    TV: { "XRC_Image_01_TV.005": "BoothScreen 5" },
     Transform: {
-      name: 'waypoint5',
+      name: "waypoint5",
       posX: 35,
       posY: 1.35,
       posZ: 2,
@@ -60,10 +60,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 6': {
-    TV: { 'XRC_Image_01_TV.006': 'BoothScreen 6' },
+  "Booth 6": {
+    TV: { "XRC_Image_01_TV.006": "BoothScreen 6" },
     Transform: {
-      name: 'waypoint6',
+      name: "waypoint6",
       posX: 35,
       posY: 1.35,
       posZ: -11,
@@ -72,10 +72,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 7': {
-    TV: { 'XRC_Image_01_TV.007': 'BoothScreen 7' },
+  "Booth 7": {
+    TV: { "XRC_Image_01_TV.007": "BoothScreen 7" },
     Transform: {
-      name: 'waypoint7',
+      name: "waypoint7",
       posX: 35,
       posY: 1.35,
       posZ: -23,
@@ -84,10 +84,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 8': {
-    TV: { 'XRC_Image_01_TV.008': 'BoothScreen 8' },
+  "Booth 8": {
+    TV: { "XRC_Image_01_TV.008": "BoothScreen 8" },
     Transform: {
-      name: 'waypoint8',
+      name: "waypoint8",
       posX: 35,
       posY: 1.35,
       posZ: -35,
@@ -96,10 +96,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 9': {
-    TV: { 'XRC_Image_01_TV.009': 'BoothScreen 9' },
+  "Booth 9": {
+    TV: { "XRC_Image_01_TV.009": "BoothScreen 9" },
     Transform: {
-      name: 'waypoint9',
+      name: "waypoint9",
       posX: 35,
       posY: 1.35,
       posZ: -47,
@@ -108,10 +108,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 10': {
-    TV: { 'XRC_Image_01_TV.010': 'BoothScreen 10' },
+  "Booth 10": {
+    TV: { "XRC_Image_01_TV.010": "BoothScreen 10" },
     Transform: {
-      name: 'waypoint10',
+      name: "waypoint10",
       posX: -33,
       posY: 1.35,
       posZ: 51,
@@ -120,10 +120,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 11': {
-    TV: { 'XRC_Image_01_TV.011': 'BoothScreen 11' },
+  "Booth 11": {
+    TV: { "XRC_Image_01_TV.011": "BoothScreen 11" },
     Transform: {
-      name: 'waypoint11',
+      name: "waypoint11",
       posX: -33,
       posY: 1.35,
       posZ: 38.5,
@@ -132,10 +132,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 12': {
-    TV: { 'XRC_Image_01_TV.012': 'BoothScreen 12' },
+  "Booth 12": {
+    TV: { "XRC_Image_01_TV.012": "BoothScreen 12" },
     Transform: {
-      name: 'waypoint12',
+      name: "waypoint12",
       posX: -33,
       posY: 1.35,
       posZ: 26.5,
@@ -144,10 +144,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 13': {
-    TV: { 'XRC_Image_01_TV.013': 'BoothScreen 13' },
+  "Booth 13": {
+    TV: { "XRC_Image_01_TV.013": "BoothScreen 13" },
     Transform: {
-      name: 'waypoint13',
+      name: "waypoint13",
       posX: -33,
       posY: 1.35,
       posZ: 14,
@@ -156,10 +156,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 14': {
-    TV: { 'XRC_Image_01_TV.014': 'BoothScreen 14' },
+  "Booth 14": {
+    TV: { "XRC_Image_01_TV.014": "BoothScreen 14" },
     Transform: {
-      name: 'waypoint14',
+      name: "waypoint14",
       posX: -33,
       posY: 1.35,
       posZ: 2,
@@ -168,10 +168,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 15': {
-    TV: { 'XRC_Image_01_TV.015': 'BoothScreen 15' },
+  "Booth 15": {
+    TV: { "XRC_Image_01_TV.015": "BoothScreen 15" },
     Transform: {
-      name: 'waypoint15',
+      name: "waypoint15",
       posX: -33,
       posY: 1.35,
       posZ: -11,
@@ -180,10 +180,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 16': {
-    TV: { 'XRC_Image_01_TV.016': 'BoothScreen 16' },
+  "Booth 16": {
+    TV: { "XRC_Image_01_TV.016": "BoothScreen 16" },
     Transform: {
-      name: 'waypoint16',
+      name: "waypoint16",
       posX: -33,
       posY: 1.35,
       posZ: -23,
@@ -192,10 +192,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 17': {
-    TV: { 'XRC_Image_01_TV.017': 'BoothScreen 17' },
+  "Booth 17": {
+    TV: { "XRC_Image_01_TV.017": "BoothScreen 17" },
     Transform: {
-      name: 'waypoint17',
+      name: "waypoint17",
       posX: -33,
       posY: 1.35,
       posZ: -35,
@@ -204,10 +204,10 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 18': {
-    TV: { 'XRC_Image_01_TV.018': 'BoothScreen 18' },
+  "Booth 18": {
+    TV: { "XRC_Image_01_TV.018": "BoothScreen 18" },
     Transform: {
-      name: 'waypoint18',
+      name: "waypoint18",
       posX: -33,
       posY: 1.35,
       posZ: -47.5,
@@ -219,9 +219,9 @@ export const boothMap = {
 };
 
 export const fmZone = {
-  'Entry 1': {
+  "Entry 1": {
     Transform: {
-      name: 'fmWaypoint1',
+      name: "fmWaypoint1",
       posX: 1.6,
       posY: 1.35,
       posZ: -17,
@@ -231,9 +231,9 @@ export const fmZone = {
     },
   },
 
-  'Entry 2': {
+  "Entry 2": {
     Transform: {
-      name: 'fmWaypoint2',
+      name: "fmWaypoint2",
       posX: 1.6,
       posY: 1.35,
       posZ: 17,
@@ -245,9 +245,9 @@ export const fmZone = {
 };
 
 export const stairsData = {
-  'groundStair1': {
+  groundStair1: {
     Transform: {
-      name: 'gstair1',
+      name: "gstair1",
       posX: -18,
       posY: 1.35,
       posZ: -72,
@@ -256,9 +256,9 @@ export const stairsData = {
       rotZ: 0,
     },
   },
-  'groundStair2': {
+  groundStair2: {
     Transform: {
-      name: 'gstair2',
+      name: "gstair2",
       posX: 22,
       posY: 1.35,
       posZ: -72,
@@ -267,9 +267,9 @@ export const stairsData = {
       rotZ: 0,
     },
   },
-  'upStair1': {
+  upStair1: {
     Transform: {
-      name: 'upstair1',
+      name: "upstair1",
       posX: 1.6,
       posY: 1.35,
       posZ: -17,
@@ -278,9 +278,9 @@ export const stairsData = {
       rotZ: 0,
     },
   },
-  'upStair2': {
+  upStair2: {
     Transform: {
-      name: 'upstair2',
+      name: "upstair2",
       posX: 1.6,
       posY: 1.35,
       posZ: -17,
@@ -292,6 +292,6 @@ export const stairsData = {
 };
 
 export const advertisementData = {
-  time: '16:11',
-  URL: 'https://www.forevermark.com/en-us/',
+  time: "16:11",
+  URL: "https://www.forevermark.com/en-us/",
 };

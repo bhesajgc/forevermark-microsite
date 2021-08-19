@@ -10,7 +10,13 @@ function About() {
         <div className="col-md-12">
           <div className="cmn-container">
             <div className="abt-event">
-              <h2 style={{ fontFamily: "Didot-HTF-L42",fontWeight:'bold', fontSize: "27.5px" }}>
+              <h2
+                style={{
+                  fontFamily: "Didot-HTF-L42",
+                  fontWeight: "bold",
+                  fontSize: "27.5px",
+                }}
+              >
                 About the Event
               </h2>
               <p>
@@ -70,8 +76,9 @@ function About() {
               </p>
               <p>
                 Catch a glimpse of our previous Forums here:{" "}
-                <a href="https://www.youtube.com/watch?v=pd9JRyIa0BE">2020</a> | <a href="https://www.youtube.com/watch?v=4doovnI1y9I">2019</a> |{" "}
-                <a href="https://www.youtube.com/watch?v=kVPmwmRwHTs">2018</a> 
+                <a href="https://www.youtube.com/watch?v=pd9JRyIa0BE">2020</a> |{" "}
+                <a href="https://www.youtube.com/watch?v=4doovnI1y9I">2019</a> |{" "}
+                <a href="https://www.youtube.com/watch?v=kVPmwmRwHTs">2018</a>
               </p>
               <button
                 className="cmn-register-btn"

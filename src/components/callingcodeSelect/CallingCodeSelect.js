@@ -1,11 +1,11 @@
 import React from "react";
 
-function CallingCodeSelect({countryCode,setCountryCode}) {
+function CallingCodeSelect({ countryCode, setCountryCode }) {
   return (
     <select
       required=""
       value={countryCode}
-      onChange={e=>setCountryCode(e.target.value)}
+      onChange={(e) => setCountryCode(e.target.value)}
       className="custom-select ng-untouched ng-pristine ng-invalid"
     >
       <option value="91"> IN (+91) </option>

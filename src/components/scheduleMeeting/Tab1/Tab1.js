@@ -68,28 +68,28 @@ function Tab1({ setZone, zone, setBooth }) {
             </select>
           </div>
         </div> */}
-          <div className="form-group row cmn-form-field">
-            <label htmlFor="subcategogy" className="col-sm-4 col-form-label">
-              Choose Booth
-            </label>
-            <div className="col-sm-8">
-              <select
-                onChange={(e) => {
-                  setBooth(e.target.value.split('-'));
-                }}
-                className="custom-select"
-              >
-                <option></option>
-                {booths?.map((item) => {
-                  return (
-                    <option key={item.id} value={item.id+ "-" + item.boothName}>
-                      {item.boothName}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
+        <div className="form-group row cmn-form-field">
+          <label htmlFor="subcategogy" className="col-sm-4 col-form-label">
+            Choose Booth
+          </label>
+          <div className="col-sm-8">
+            <select
+              onChange={(e) => {
+                setBooth(e.target.value.split("-"));
+              }}
+              className="custom-select"
+            >
+              <option></option>
+              {booths?.map((item) => {
+                return (
+                  <option key={item.id} value={item.id + "-" + item.boothName}>
+                    {item.boothName}
+                  </option>
+                );
+              })}
+            </select>
           </div>
+        </div>
 
         <button
           onClick={(e) => {

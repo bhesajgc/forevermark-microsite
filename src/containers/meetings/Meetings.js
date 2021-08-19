@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 // import { Statecontext } from "../../context/Dataprovider";
-import MeetingHeader from './MeetingHeader';
+import MeetingHeader from "./MeetingHeader";
 import MeetingDetail from "./MeetingDetail";
 import { db } from "../../config/Firebase";
 import firebase from "firebase";
 import "./meetings.css";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 function Meetings() {
   const history = useHistory();
@@ -21,17 +21,16 @@ function Meetings() {
     let isMounted = true;
     if (currentUser) {
       db.collection("meetings")
-        .where(
-          "phoneNumber",
-          "==",
-          currentUser.phoneNumber
-        )
-        .get().then((snap) => {
+        .where("phoneNumber", "==", currentUser.phoneNumber)
+        .get()
+        .then((snap) => {
           let arr = [];
           // snap.docs.forEach(function (meet) {
           //   arr.push({ id: meet.id, value: meet.data() })
           // })
-          snap.docs.map(meet => arr.push({ id: meet.id, value: meet.data() }));
+          snap.docs.map((meet) =>
+            arr.push({ id: meet.id, value: meet.data() })
+          );
 
           // setMeetings(snap.docs.map((doc) => {
           //   return doc.data();
@@ -41,7 +40,7 @@ function Meetings() {
           }
         });
     } else {
-      history.push('/signin', { from: '/my-meetings' })
+      history.push("/signin", { from: "/my-meetings" });
     }
     return () => {
       isMounted = false;

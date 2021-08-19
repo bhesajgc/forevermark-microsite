@@ -5,13 +5,13 @@ import Logo from "../../images/logo.png";
 const CommingSoon = () => {
   return (
     <div>
-        <div className="coming-soon-content text-center">
-          {/* <img src={Logo} alt="logo" className="fullwidth" /> */}
-          <img src={Logo} alt="logo" className="fullwidth" />
-          <p className="coming-soon-white">Coming Soon</p>
-          {/* <p className="coming-soon-white">Coming Soon</p> */}
+      <div className="coming-soon-content text-center">
+        {/* <img src={Logo} alt="logo" className="fullwidth" /> */}
+        <img src={Logo} alt="logo" className="fullwidth" />
+        <p className="coming-soon-white">Coming Soon</p>
+        {/* <p className="coming-soon-white">Coming Soon</p> */}
 
-          {/*
+        {/*
           <div className="mt-5 text-center footer-after-register">
             <ul className="footer-links">
               <li>
@@ -38,10 +38,8 @@ const CommingSoon = () => {
        
           */}
       </div>
-      </div>
+    </div>
   );
-}
+};
 
 export default CommingSoon;
-
-

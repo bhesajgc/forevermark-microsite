@@ -67,7 +67,6 @@
   color: #fff;
   position: relative;
   border: 2px solid #142342;
-  
 }
 
 .cmn-register-btn:after {
@@ -181,13 +180,13 @@ img {
   color: #fff;
   background-color: #dc3545;
 }
-.badge-resheduled{
+.badge-resheduled {
   color: #fff;
   background-color: #5f5859;
 }
 /* @   Media Queries */
 /* *************************************************/
-@media only screen and (max-width: 360px){
+@media only screen and (max-width: 360px) {
   body {
     font-size: 13px;
   }
@@ -201,12 +200,12 @@ img {
   }
   .coming-soon-content {
     max-width: 90%;
+  }
+  .coming-soon-content img {
+    min-width: 230px;
+  }
 }
-.coming-soon-content img{
-  min-width: 230px;
-}
-}
-@media only screen and (min-width:360px) and (max-width: 575px) {
+@media only screen and (min-width: 360px) and (max-width: 575px) {
   body {
     font-size: 13px;
   }

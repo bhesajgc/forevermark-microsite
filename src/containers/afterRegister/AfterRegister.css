@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap");
 
 .coming-soon-content {
   background-color: rgba(255, 255, 255, 0.7);
@@ -42,13 +41,13 @@
   letter-spacing: 2px;
 }
 
-.footer-after-register{
+.footer-after-register {
   position: absolute;
   bottom: -50%;
 }
 
 @media only screen and (max-width: 1048px) {
-  .coming-soon-content{
+  .coming-soon-content {
     max-width: 80%;
     padding: 2em;
   }

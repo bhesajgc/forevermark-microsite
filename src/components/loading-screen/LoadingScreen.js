@@ -1,9 +1,14 @@
-import React from 'react';
-import { Container, CircularProgress, withStyles, Grid } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import LoadingScreenStyles from '../../Styles/LoadingScreenStyles'
-import foreverMarkLogo from './assets/forevermark_logo.png';
+import React from "react";
+import {
+  Container,
+  CircularProgress,
+  withStyles,
+  Grid,
+} from "@material-ui/core";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import LoadingScreenStyles from "../../Styles/LoadingScreenStyles";
+import foreverMarkLogo from "./assets/forevermark_logo.png";
 
 const LinearProgressWithLabel = (props) => {
   return (
@@ -19,32 +24,44 @@ const LinearProgressWithLabel = (props) => {
         alignItems="center"
         justifyContent="center"
       >
-        <Typography variant="caption" component="div" color="textSecondary">{`${Math.round(
-          props.value,
-        )}%`}</Typography>
+        <Typography
+          variant="caption"
+          component="div"
+          color="textSecondary"
+        >{`${Math.round(props.value)}%`}</Typography>
       </Box>
     </Box>
   );
-}
+};
 
 class LoadingScreen extends React.Component {
-
   render() {
-
     const { classes, show, loadedPercent } = this.props;
 
     return (
       <div>
-        {show && <Container maxWidth='xl' className={`d-flex justify-content-center align-items-center ${classes.root}`}>
-          <Grid container className={`justify-content-center ${classes.loading}`}>
-            <Grid item xs={12} md={12} className='text-center mb-2'>
-              <img className={classes.logo} src={foreverMarkLogo} alt='Viatris logo' />
+        {show && (
+          <Container
+            maxWidth="xl"
+            className={`d-flex justify-content-center align-items-center ${classes.root}`}
+          >
+            <Grid
+              container
+              className={`justify-content-center ${classes.loading}`}
+            >
+              <Grid item xs={12} md={12} className="text-center mb-2">
+                <img
+                  className={classes.logo}
+                  src={foreverMarkLogo}
+                  alt="Viatris logo"
+                />
+              </Grid>
+              <Grid item style={{ marginTop: "8vh" }}>
+                <LinearProgressWithLabel value={Number(loadedPercent)} />
+              </Grid>
             </Grid>
-            <Grid item style={{ marginTop: '8vh' }}>
-              <LinearProgressWithLabel value={Number(loadedPercent)} />
-            </Grid>
-          </Grid>
-        </Container>}
+          </Container>
+        )}
       </div>
     );
   }

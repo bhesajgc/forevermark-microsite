@@ -153,7 +153,6 @@
   flex-direction: column;
 }
 
-
 @media only screen and (max-width: 900px) {
   .form-wrapper h1 {
     font-size: 18px;
@@ -174,6 +173,6 @@
     padding: 0.7rem 3rem;
   }
   .MuiFormLabel-root {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 }

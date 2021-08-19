@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import firebase from "firebase";
 import Signin from "../../components/login/signin/Signin";
 import Otp from "../../components/login/otp/Otp";
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from "react-router-dom";
 
 function Login() {
   const location = useLocation();
@@ -14,21 +14,25 @@ function Login() {
     let isMounted = true;
     var loop = setInterval(() => {
       if (isMounted) {
-        setCheck(!check)
+        setCheck(!check);
       }
-    }, 2000)
+    }, 2000);
     if (currentUser && location.state) {
       history.push(location.state.from);
     }
     return () => {
-      isMounted = false
-      clearInterval(loop)
-    }
-  }, [currentUser, history, check])
+      isMounted = false;
+      clearInterval(loop);
+    };
+  }, [currentUser, history, check]);
 
   let LoginObject;
-  const [loginObject, setLoginObject] = useState({ confirm: null, object: "Signin" });
-  if (loginObject.object === "otp") LoginObject = <Otp confirm={loginObject.confirm} />;
+  const [loginObject, setLoginObject] = useState({
+    confirm: null,
+    object: "Signin",
+  });
+  if (loginObject.object === "otp")
+    LoginObject = <Otp confirm={loginObject.confirm} />;
   else LoginObject = <Signin setObject={setLoginObject} />;
   return (
     <div className="container">
