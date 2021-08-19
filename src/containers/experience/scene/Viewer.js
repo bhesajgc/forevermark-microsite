@@ -56,7 +56,6 @@ class ViewerPage extends Component<{}, {}> {
     this.canvas = canvas;
     this.engine = engine;
     this.scene = scene;
-    scene.debugLayer.show();
     this.setupCamera();
     this.setupLights();
     this.loadMediaData();
@@ -131,24 +130,20 @@ class ViewerPage extends Component<{}, {}> {
               break;
             }
             case 'URL_Button': {
-              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).site_URL, true);
+              this.setModalView(this.result.pickedMesh.metadata.siteUrl, true);
               break;
             }
             case 'Broucher': {
-              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).PDF_Url, true);
+              this.setModalView(this.result.pickedMesh.metadata.pdfUrl, true);
               break;
             }
             case 'PlayButton': {
-              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).Video_url, true)
-              break;
-            }
-            case 'ZonePlayButton': {
-              // this.setModalView(FM_ZoneData.get(this.result.pickedMesh.metadata.name).Video_url, true)
+              this.setModalView(this.result.pickedMesh.metadata.videoUrl, true)
               break;
             }
             case 'Screen': {
               this.setModalView(
-                mediaData.get(this.result.pickedMesh.metadata.name).Video_url,
+                this.result.pickedMesh.metadata.videoUrl,
                 true
               );
               break;
@@ -194,20 +189,317 @@ class ViewerPage extends Component<{}, {}> {
 
   setupFMZone = () => {
     FM_ZoneData.forEach((value, key) => {
-      console.log(value);
-      console.log(key);
+
       switch (key) {
         case 'Partner Testimonials': {
           const mesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[0])
           const playButton = this.getMeshfromMainModel(Object.keys(FMZone[key])[1])
-          playButton.metadata.tag = 'ZonePlayButton';
-          playButton.metadata.name = value.Videos[0].value;
-          if (mesh) {
-            const screenThumbnail = new BABYLON.Texture(value.Videos[0].thumbnail, this.scene, false, true);
+          if (mesh && playButton) {
+            playButton.metadata.tag = 'PlayButton';
+            playButton.metadata.videoUrl = value['Videos'][0].value;
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene, false, true);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             mesh.material = mat;
           }
+          break;
+        }
+        case 'What\'s New?': {
+          const wateringHoleMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[0]);
+          const COOvideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[1]);
+          const COOPDFMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[2]);
+          const jewelleryCertiMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[3]);
+          const newLogoVideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[4]);
+          const aiInteractiveVideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[5]);
+          const aiInteractivePlayVideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[6]);
+          const buildingForeverVideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[7]);
+          const buildingForeverPlayVideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[8]);
+          const buildingForeverPDFMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[9]);
+          const pursuitPlayVideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[10]);
+          const pursuitVideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[11]);
+
+          if (wateringHoleMesh) {
+            wateringHoleMesh.metadata.tag = 'URL_Button';
+            wateringHoleMesh.metadata.siteUrl = value['Web-URL'][0].value
+          }
+          if (COOvideoMesh) {
+            COOvideoMesh.metadata.tag = 'PlayButton';
+            COOvideoMesh.metadata.videoUrl = value['Videos'][0].value
+          }
+          if (COOPDFMesh) {
+            COOPDFMesh.metadata.tag = 'Broucher';
+            COOPDFMesh.metadata.pdfUrl = value['PDF'][0].value
+          }
+          if (jewelleryCertiMesh) {
+            jewelleryCertiMesh.metadata.tag = 'Broucher';
+            jewelleryCertiMesh.metadata.pdfUrl = value['PDF'][1].value
+          }
+          if (newLogoVideoMesh) {
+            newLogoVideoMesh.metadata.tag = 'PlayButton';
+            newLogoVideoMesh.metadata.videoUrl = value['Videos'][3].value
+          }
+          if (aiInteractiveVideoMesh && aiInteractivePlayVideoMesh) {
+            aiInteractivePlayVideoMesh.metadata.tag = 'PlayButton';
+            aiInteractivePlayVideoMesh.metadata.videoUrl = value['Videos'][4].value;
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][4].thumbnail, this.scene, false, true);
+            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            mat.diffuseTexture = screenThumbnail;
+            aiInteractiveVideoMesh.material = mat;
+          }
+          if (buildingForeverVideoMesh && buildingForeverPlayVideoMesh && buildingForeverPDFMesh) {
+            buildingForeverPlayVideoMesh.metadata.tag = 'PlayButton';
+            buildingForeverPlayVideoMesh.metadata.videoUrl = value['Videos'][2].value;
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][2].thumbnail, this.scene, false, true);
+            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            mat.diffuseTexture = screenThumbnail;
+            buildingForeverVideoMesh.material = mat;
+            buildingForeverPDFMesh.metadata.tag = 'Broucher';
+            buildingForeverPDFMesh.metadata.pdfUrl = value['PDF'][2].value
+          }
+          if (pursuitPlayVideoMesh && pursuitVideoMesh) {
+            pursuitPlayVideoMesh.metadata.tag = 'PlayButton';
+            pursuitPlayVideoMesh.metadata.videoUrl = value['Videos'][1].value;
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][1].thumbnail, this.scene, false, true);
+            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            mat.diffuseTexture = screenThumbnail;
+            pursuitVideoMesh.material = mat;
+          }
+          break;
+        }
+        case 'Yash Innovation': {
+          const yashInnovationPlayMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[0]);
+          const yashInnovationVideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[1]);
+          if (yashInnovationPlayMesh && yashInnovationVideoMesh) {
+            yashInnovationPlayMesh.metadata.tag = 'PlayButton';
+            yashInnovationPlayMesh.metadata.videoUrl = value['Videos'][0].value;
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene, false, true);
+            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            mat.diffuseTexture = screenThumbnail;
+            yashInnovationVideoMesh.material = mat;
+          }
+          break;
+        }
+        case 'Brand Corner': {
+          const brandEntry1VideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[0]);
+          const brandEntry1PlayMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[1]);
+          const brandEntry2VideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[2]);
+          const brandEntry2PlayMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[3]);
+          if (brandEntry1VideoMesh && brandEntry1PlayMesh) {
+            brandEntry1PlayMesh.metadata.tag = 'PlayButton';
+            brandEntry1PlayMesh.metadata.videoUrl = value['Videos'][0].value;
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene, false, true);
+            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            mat.diffuseTexture = screenThumbnail;
+            brandEntry1VideoMesh.material = mat;
+          }
+          if (brandEntry2PlayMesh && brandEntry2VideoMesh) {
+            brandEntry2PlayMesh.metadata.tag = 'PlayButton';
+            brandEntry2PlayMesh.metadata.videoUrl = value['Videos'][1].value;
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][1].thumbnail, this.scene, false, true);
+            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            mat.diffuseTexture = screenThumbnail;
+            brandEntry2VideoMesh.material = mat;
+          }
+          break;
+        }
+        case 'Consumer Marketing': {
+          const consumerMarketingVideoMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[0]);
+          const consumerMarketingPlayMesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[1]);
+          if (consumerMarketingVideoMesh && consumerMarketingPlayMesh) {
+            consumerMarketingPlayMesh.metadata.tag = 'PlayButton';
+            consumerMarketingPlayMesh.metadata.videoUrl = value['Video'][0].value;
+            const screenThumbnail = new BABYLON.Texture(value['Video'][0].thumbnail, this.scene, false, true);
+            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            mat.diffuseTexture = screenThumbnail;
+            consumerMarketingVideoMesh.material = mat;
+          }
+          break;
+        }
+        case 'Virtual Showrooms': {
+          const foreverbooth = this.getMeshfromMainModel(Object.keys(FMZone[key])[0])
+          const Obsesbooth = this.getMeshfromMainModel(Object.keys(FMZone[key])[1])
+          if (foreverbooth) {
+            foreverbooth.metadata.tag = 'URL_Button';
+            foreverbooth.metadata.siteUrl = value['Web-URL'][0].value;
+          }
+          if (Obsesbooth) {
+            Obsesbooth.metadata.tag = 'URL_Button';
+            Obsesbooth.metadata.siteUrl = value['Web-URL'][1].value;
+          }
+          break;
+        }
+        case 'Designs & Collections': {
+          const trendsurl = this.getMeshfromMainModel(Object.keys(FMZone[key])[0])
+          const trendsVideo = this.getMeshfromMainModel(Object.keys(FMZone[key])[1])
+          const trendsVideoPlay = this.getMeshfromMainModel(Object.keys(FMZone[key])[2])
+          const trendsPDF1 = this.getMeshfromMainModel(Object.keys(FMZone[key])[3])
+          const trendsPDF2 = this.getMeshfromMainModel(Object.keys(FMZone[key])[4])
+          if (trendsurl) {
+            trendsurl.metadata.tag = 'URL_Button';
+            trendsurl.metadata.siteUrl = value['Web-URL'][0].value
+          }
+          if (trendsVideo && trendsVideoPlay) {
+            trendsVideoPlay.metadata.tag = 'PlayButton';
+            trendsVideoPlay.metadata.videoUrl = value['Videos'][0].value;
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene, false, true);
+            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            mat.diffuseTexture = screenThumbnail;
+            trendsVideo.material = mat;
+          }
+          if (trendsPDF1) {
+            trendsPDF1.metadata.tag = 'Broucher';
+            trendsPDF1.metadata.pdfUrl = value['PDF'][0].value
+          }
+          if (trendsPDF2) {
+            trendsPDF2.metadata.tag = 'Broucher';
+            trendsPDF2.metadata.pdfUrl = value['PDF'][1].value
+          }
+          break;
+        }
+        case 'Forevermark Training': {
+          const trainingPDF = this.getMeshfromMainModel(Object.keys(FMZone[key])[0])
+          const trainingVideo = this.getMeshfromMainModel(Object.keys(FMZone[key])[1])
+          const trainingVideoPlay = this.getMeshfromMainModel(Object.keys(FMZone[key])[2])
+          const trainingurl = this.getMeshfromMainModel(Object.keys(FMZone[key])[3])
+          if (trainingPDF) {
+            trainingPDF.metadata.tag = 'Broucher';
+            trainingPDF.metadata.pdfUrl = value['PDF'][0].value
+          }
+          if (trainingVideo && trainingVideoPlay) {
+            trainingVideoPlay.metadata.tag = 'PlayButton';
+            trainingVideoPlay.metadata.videoUrl = value['Videos'][0].value;
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene, false, true);
+            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            mat.diffuseTexture = screenThumbnail;
+            trainingVideo.material = mat;
+          }
+          if (trainingurl) {
+            trainingurl.metadata.tag = 'URL_Button';
+            trainingurl.metadata.siteUrl = value['Web-URL'][0].value
+          }
+          break;
+        }
+        case 'New Campaigns': {
+          const cotPDF = this.getMeshfromMainModel(Object.keys(FMZone[key])[0])
+          const cotVideoPlay = this.getMeshfromMainModel(Object.keys(FMZone[key])[1])
+          const tsPDF = this.getMeshfromMainModel(Object.keys(FMZone[key])[2])
+          const tsVideoPlay = this.getMeshfromMainModel(Object.keys(FMZone[key])[3])
+          const fashionPDF = this.getMeshfromMainModel(Object.keys(FMZone[key])[4])
+          const fashionPlay = this.getMeshfromMainModel(Object.keys(FMZone[key])[5])
+          const ECUrl = this.getMeshfromMainModel(Object.keys(FMZone[key])[6])
+
+          if (cotPDF) {
+            cotPDF.metadata.tag = 'Broucher';
+            cotPDF.metadata.pdfUrl = value['PDF'][0].value
+          }
+          if (cotVideoPlay) {
+            cotVideoPlay.metadata.tag = 'PlayButton';
+            cotVideoPlay.metadata.videoUrl = value['Videos'][0].value;
+          }
+          if (tsPDF) {
+            tsPDF.metadata.tag = 'Broucher';
+            tsPDF.metadata.pdfUrl = value['PDF'][1].value
+          }
+          if (tsVideoPlay) {
+            tsVideoPlay.metadata.tag = 'PlayButton';
+            tsVideoPlay.metadata.videoUrl = value['Videos'][1].value;
+          }
+          if (fashionPDF) {
+            fashionPDF.metadata.tag = 'Broucher';
+            fashionPDF.metadata.pdfUrl = value['PDF'][2].value
+          }
+          if (fashionPlay) {
+            fashionPlay.metadata.tag = 'PlayButton';
+            fashionPlay.metadata.videoUrl = value['Videos'][2].value;
+          }
+          if (ECUrl) {
+            ECUrl.metadata.tag = 'URL_Button';
+            ECUrl.metadata.siteUrl = value['Web-URL'][3].value
+          }
+          break;
+        }
+        case 'Consumer Insights': {
+          const CIPDF = this.getMeshfromMainModel(Object.keys(FMZone[key])[0])
+          if (CIPDF) {
+            CIPDF.metadata.tag = 'Broucher';
+            CIPDF.metadata.pdfUrl = value['PDF'][0].value
+          }
+          break;
+        }
+        case 'Gamification': {
+          for (let index = 0; index < Object.keys(FMZone[key]).length; index += 1) {
+            const element = Object.keys(FMZone[key])[index];
+            console.log()
+            switch (FMZone[key][element]) {
+              case 'Screen': {
+                const screen = this.getMeshfromMainModel(element)
+                const screenThumbnail = new BABYLON.Texture(value['Web-URL'][0].thumbnail, this.scene, false, true);
+                const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+                mat.diffuseTexture = screenThumbnail;
+                screen.material = mat;
+                break;
+              }
+              case 'Game Button': {
+                const gameButton = this.getMeshfromMainModel(element)
+                if (gameButton) {
+                  gameButton.metadata.tag = 'URL_Button';
+                  gameButton.metadata.siteUrl = value['Web-URL'][0].value
+                }
+                break;
+              }
+            }
+
+          }
+          break;
+        }
+        case 'Grand Launch': {
+          for (let index = 0; index < Object.keys(FMZone[key]).length; index += 1) {
+            const element = Object.keys(FMZone[key])[index];
+            switch (FMZone[key][element]) {
+              case 'Play': {
+                const Play = this.getMeshfromMainModel(element)
+                Play.metadata.tag = 'PlayButton';
+                Play.metadata.videoUrl = value['Videos'][0].value;
+                break;
+              }
+              case 'URL': {
+                const gameButton = this.getMeshfromMainModel(element)
+                if (gameButton) {
+                  gameButton.metadata.tag = 'URL_Button';
+                  gameButton.metadata.siteUrl = value['Web-URL'][0].value
+                }
+                break;
+              }
+              case 'PDF': {
+                const PDF = this.getMeshfromMainModel(element)
+                if (PDF) {
+                  PDF.metadata.tag = 'Broucher';
+                  PDF.metadata.pdfUrl = value['PDF'][0].value
+                }
+                break;
+              }
+            }
+
+          }
+          break;
+        }
+        case 'Visual Search Tool': {
+          const VSTUrl = this.getMeshfromMainModel(Object.keys(FMZone[key])[0])
+          const VSTVideoPlay = this.getMeshfromMainModel(Object.keys(FMZone[key])[1])
+          const VSTPDF = this.getMeshfromMainModel(Object.keys(FMZone[key])[2])
+          if (VSTPDF) {
+            VSTPDF.metadata.tag = 'Broucher';
+            VSTPDF.metadata.pdfUrl = value['PDF'][0].value
+          }
+          if (VSTVideoPlay) {
+            VSTVideoPlay.metadata.tag = 'PlayButton';
+            VSTVideoPlay.metadata.videoUrl = value['Videos'][0].value;
+          }
+          if (VSTUrl) {
+            VSTUrl.metadata.tag = 'URL_Button';
+            VSTUrl.metadata.siteUrl = value['Web-URL'][0].value
+          }
+          break;
         }
       }
     })
@@ -278,7 +570,8 @@ class ViewerPage extends Component<{}, {}> {
   setupStudio = () => {
     const loadingCalc = (data) => {
       const { loaded } = data;
-      const sceneLoadedPercent = ((loaded * 100) / 26210304).toFixed();
+      console.log(data)
+      const sceneLoadedPercent = ((loaded * 100) / 24535888).toFixed();
       this.setState((prevState) => ({
         ...prevState,
         sceneLoadedPercent,
@@ -307,7 +600,7 @@ class ViewerPage extends Component<{}, {}> {
     BABYLON.SceneLoader.ImportMeshAsync(
       '',
       studio,
-      "",
+      '',
       this.scene,
       loadingCalc
     ).then((studio) => {
@@ -322,12 +615,12 @@ class ViewerPage extends Component<{}, {}> {
 
       for (let index = 0; index < meshes[0]._children.length; index += 1) {
         const element = meshes[0]._children[index];
-        if (element.name === '893672') {
+        if (element.name === '893672' || element.name === 'Audi Video') {
           this.setVideoTextureonScreen('Main Screen', element);
         } else if (element.name === 'Audi') {
           this.setTextureonScreen('Audi Screen', element);
-          element.metadata.tag = 'Screen';
-          element.metadata.name = 'Audi Screen';
+          element.metadata.tag = 'PlayButton';
+          element.metadata.videoUrl = mediaData.get('Audi Screen').Video_url;
         } else if (element.name === 'Booth  Kiosk Branding') {
           element.metadata.tag = 'broucher';
         } else if (
@@ -370,7 +663,6 @@ class ViewerPage extends Component<{}, {}> {
           stairsWp.metadata = { tag: 'upStairs' };
         }
       })
-
     });
   };
 
@@ -421,18 +713,18 @@ class ViewerPage extends Component<{}, {}> {
       }
       if (buttonElement) {
         buttonElement.metadata.tag = boothMap[booth].boothInfo[playButton];
-        buttonElement.metadata.name = boothMap[booth].boothInfo[screen];
+        buttonElement.metadata.videoUrl = mediaData.get(boothMap[booth].boothInfo[screen]).Video_url;
       }
       if (chatElement) {
         chatElement.metadata.tag = boothMap[booth].boothInfo[chatButton];
       }
       if (urlElement) {
         urlElement.metadata.tag = boothMap[booth].boothInfo[urlButton];
-        urlElement.metadata.name = boothMap[booth].boothInfo[screen];
+        urlElement.metadata.siteUrl = mediaData.get(boothMap[booth].boothInfo[screen]).site_URL;
       }
       if (broucherElement) {
         broucherElement.metadata.tag = boothMap[booth].boothInfo[broucherButton];
-        broucherElement.metadata.name = boothMap[booth].boothInfo[screen];
+        broucherElement.metadata.pdfUrl = mediaData.get(boothMap[booth].boothInfo[screen]).PDF_Url;
       }
       if (sec_TVElement) {
         const newMat = new BABYLON.StandardMaterial("screenMat", this.scene);

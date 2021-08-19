@@ -166,36 +166,36 @@
           "name": "Building Forever (PDF)",
           "value": "https://angloamerican.box.com/s/5ce3rjxrmg654ebrpascf2oubyfctb0x"
         }
+      ],
+      "Web-URL": [
+        {
+          "name": "Watering Hole",
+          "value": "https://www.debeersgroup.com/sustainability-and-ethics/protecting-the-natural-world/watch-natures-wonders-live"
+        }
+      ],
+      "Videos": [
+        {
+          "name": "CoO (Video)",
+          "value": "https://youtu.be/PHvE-VR9TzU"
+        },
+        {
+          "name": "Pursuit of absolute beauty",
+          "value": "https://youtu.be/vNkLJ1yUOTY"
+        },
+        {
+          "name": "Building Forever (Video)",
+          "value": "https://youtube.com/playlist?list=PL98KgmAyNtRNt9LP_dbUOZe5mIOzwJxJ9"
+        },
+        {
+          "name": "New logo (Video)",
+          "value": "https://youtu.be/h_QWUl4rzLs"
+        },
+        {
+          "name": "AI Interactive Window Display",
+          "value": "https://youtu.be/WC00IzHQLS8"
+        }
       ]
-    },
-    "Web-URL": [
-      {
-        "name": "Watering Hole",
-        "value": "https://www.debeersgroup.com/sustainability-and-ethics/protecting-the-natural-world/watch-natures-wonders-live"
-      }
-    ],
-    "Videos": [
-      {
-        "name": "CoO (Video)",
-        "value": "https://youtu.be/PHvE-VR9TzU"
-      },
-      {
-        "name": "Pursuit of absolute beauty",
-        "value": "https://youtu.be/vNkLJ1yUOTY"
-      },
-      {
-        "name": "Building Forever (Video)",
-        "value": "https://youtube.com/playlist?list=PL98KgmAyNtRNt9LP_dbUOZe5mIOzwJxJ9"
-      },
-      {
-        "name": "New logo (Video)",
-        "value": "https://youtu.be/h_QWUl4rzLs"
-      },
-      {
-        "name": "AI Interactive Window Display",
-        "value": "https://youtu.be/WC00IzHQLS8"
-      }
-    ]
+    }
   },
   {
     "subzone": "Visual Search Tool",

@@ -5,7 +5,7 @@ export const boothMap = {
     boothInfo: {
       'XRC_Image_01_TV.001': 'BoothScreen 1', "Play Button_06.014": 'PlayButton', 'XRC_Image_01_TV': 'Chat',
       'Booth Kisok Branding_02': 'URL_Button', 'Booth  Kiosk Branding': 'Broucher',
-      'XRC_Image_01_TV1111': 'Sec_Tv',
+      'XRC_Image_01_TV1111': 'Sec_Tv'
     },
     Transform: {
       name: 'waypoint1',
@@ -370,6 +370,84 @@ export const FMZone = {
   'Partner Testimonials': {
     'Inner Brandings.009': 'ZoneVideoScreen',
     'Play Button_05': 'ZonePlayButton',
+  },
+  'What\'s New?': {
+    'XRC_Image_01_TV.037': 'Watering Hole',
+    'Play Button_11.001': 'COO(Video)',
+    'XRC_Image_01_TV.023': 'COO(PDF)',
+    'XRC_Image_01_TV.026': 'Jewellery Certificate',
+    'XRC_Image_01_TV.029': 'New Logo',
+    'Inner Brandings.006': 'AI Interactive Video',
+    'Eye Button_09': 'AI Interactive Video Play',
+    'Inner Brandings.007': 'Building Forever Video', //Common Mesh
+    'Eye Button_08': 'Building Forever Play',
+    'Eye Button_04.004': 'Building Forever PDF',
+    'Eye Button_09.001': 'Pursuit of Beauty Play', //Common Mesh
+    'Eye Button_09.001': 'Pursuit of Beauty Video', //Common Mesh
+  },
+  'Yash Innovation': {
+    'Eye Button_08.001': 'Yash Technovation Play',
+    'Inner Brandings.007': 'Yash Technovation Video', //Common Mesh
+  },
+  'Brand Corner': {
+    'Inner Brandings.001': 'Brand Corner Video Entry 1',
+    'Play Button _04': 'Brand Corner Play Entry 1',
+    'Inner Brandings.011': 'Brand Corner Video Entry 2',
+    'Play button_12': 'Brand Corner Play Entry 2',
+  },
+  'Consumer Marketing': {
+    'Inner Brandings': 'Consumer Marketing Video',
+    'Play Button_03': 'Consumer Marketing Play'
+  },
+  'Virtual Showrooms': {
+    'XRC_Image_01_TV.035': 'Forever Boutique',
+    'XRC_Image_01_TV.031': 'Obses Virtual Store'
+  },
+  'Designs & Collections': {
+    'XRC_Image_01_TV.025': 'Forever Mark Big Ideas url',
+    'Inner Brandings.002': 'Trender and Red Carpet Video',
+    'Play Button_02': "Trender and Red Carpet Play",
+    'Eye Buton.002': 'Trender and Red Carpet PDF 1',
+    'Eye Buton.001': 'Trender and Red Carpet PDF 2'
+  },
+  'Forevermark Training': {
+    'XRC_Image_01_TV.039': 'PDF',
+    'Inner Brandings.008': 'Video',
+    'Play Button_06': 'Play Button',
+    'XRC_Image_01_TV.034': 'URL'
+  },
+  'New Campaigns': {
+    'XRC_Image_01_TV.036': 'COT PDF',
+    'Play Button_07.001': 'COT Play',
+    'XRC_Image_01_TV.032': 'TS PDF',
+    'Play Button_07.002': 'TS Play',
+    'XRC_Image_01_TV.027': 'Icon Fashion PDF',
+    'Play Button_07.003': 'Icon Fashion Play',
+    'XRC_Image_01_TV.028': "URL"
+  },
+  'Consumer Insights': {
+    'XRC_Image_01_TV.033': 'Consumer Insights PDF'
+  },
+  'Gamification': {
+    'Inner Branding_02': 'Screen',
+    'Inner Branding_02.001': 'Screen',
+    'Inner Branding_02.002': 'Screen',
+    'Game Button': 'Game Button',
+    'Game Button.001': 'Game Button',
+    'Game Button.002': 'Game Button'
+  },
+  'Grand Launch': {
+    'Eye Buton.003': 'PDF',
+    'Blue_02.001': 'URL',
+    'Play Button_02.001': 'Play',
+    'Eye Buton.005': 'PDF',
+    'Blue_02.002': 'URL',
+    'Play Button_02.003': 'Play'
+  },
+  'Visual Search Tool': {
+    'XRC_Image_01_TV.030': 'URL',
+    'Play Button_07': 'Play',
+    'Eye Button_04': 'PDF'
   }
 }
 
