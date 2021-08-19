@@ -367,11 +367,9 @@ export const stairsData = {
   },
 };
 export const FMZone = {
-  'Data': {
-    'Partner Testimonials': {
-      'Inner Brandings.009': 'ZoneVideoScreen',
-      'Play Button_05': 'ZonePlayButton',
-    }
+  'Partner Testimonials': {
+    'Inner Brandings.009': 'ZoneVideoScreen',
+    'Play Button_05': 'ZonePlayButton',
   }
 }
 

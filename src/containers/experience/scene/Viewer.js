@@ -56,6 +56,7 @@ class ViewerPage extends Component<{}, {}> {
     this.canvas = canvas;
     this.engine = engine;
     this.scene = scene;
+    scene.debugLayer.show();
     this.setupCamera();
     this.setupLights();
     this.loadMediaData();
@@ -124,7 +125,7 @@ class ViewerPage extends Component<{}, {}> {
             }
             case 'Chat': {
               this.setModalView(
-                'https://tawk.to/chat/603df02c385de407571b8982/1evov4cn5#',
+                'https://links.collect.chat/611e4de5ef0a6c4814d29ab0',
                 true
               );
               break;
@@ -142,7 +143,7 @@ class ViewerPage extends Component<{}, {}> {
               break;
             }
             case 'ZonePlayButton': {
-              this.setModalView(FM_ZoneData.get(this.result.pickedMesh.metadata.name).Video_url, true)
+              // this.setModalView(FM_ZoneData.get(this.result.pickedMesh.metadata.name).Video_url, true)
               break;
             }
             case 'Screen': {
@@ -190,6 +191,27 @@ class ViewerPage extends Component<{}, {}> {
       }
     });
   };
+
+  setupFMZone = () => {
+    FM_ZoneData.forEach((value, key) => {
+      console.log(value);
+      console.log(key);
+      switch (key) {
+        case 'Partner Testimonials': {
+          const mesh = this.getMeshfromMainModel(Object.keys(FMZone[key])[0])
+          const playButton = this.getMeshfromMainModel(Object.keys(FMZone[key])[1])
+          playButton.metadata.tag = 'ZonePlayButton';
+          playButton.metadata.name = value.Videos[0].value;
+          if (mesh) {
+            const screenThumbnail = new BABYLON.Texture(value.Videos[0].thumbnail, this.scene, false, true);
+            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            mat.diffuseTexture = screenThumbnail;
+            mesh.material = mat;
+          }
+        }
+      }
+    })
+  }
 
   setupCamera = () => {
     this.camera = new BABYLON.FreeCamera(
@@ -242,7 +264,7 @@ class ViewerPage extends Component<{}, {}> {
 
   setVideoTextureonScreen = (screenName, screenObject) => {
     const videoTextureURL = mediaData.get(screenName).Video_url;
-    const videoTexture = new BABYLON.VideoTexture("texture", videoTextureURL, this.scene);
+    const videoTexture = new BABYLON.VideoTexture("texture", videoTextureURL, this.scene, false, true);
     videoTexture.video.muted = true;
     videoTexture.video.autoplay = true;
     const screenMat = new BABYLON.StandardMaterial('screenMat', this.scene);
@@ -284,8 +306,8 @@ class ViewerPage extends Component<{}, {}> {
     };
     BABYLON.SceneLoader.ImportMeshAsync(
       '',
-      'https://storage.googleapis.com/forevermarkforum2021.appspot.com/',
-      'FFM.glb',
+      studio,
+      "",
       this.scene,
       loadingCalc
     ).then((studio) => {
@@ -317,20 +339,7 @@ class ViewerPage extends Component<{}, {}> {
       }
 
       this.setupBooths();
-
-      Object.keys(FMZone.Data).forEach(booth => {
-        const PartnerTestiplayButton = Object.keys(FMZone.Data[booth])[1];
-        const PartnerTestiplayScreen = Object.keys(FMZone.Data[booth])[0];
-        const PartnerTestiplayElement = this.getMeshfromMainModel(PartnerTestiplayButton)
-        const PartnerTestiScreenElement = this.getMeshfromMainModel(PartnerTestiplayScreen)
-        if (PartnerTestiplayElement && PartnerTestiScreenElement) {
-          const tempMat = new BABYLON.StandardMaterial("screenMat", this.scene)
-          PartnerTestiScreenElement.material = tempMat;
-          tempMat.diffuseTexture = new BABYLON.Texture('home.png', this.scene);
-          PartnerTestiplayElement.metadata.tag = FMZone.Data[booth][PartnerTestiplayButton];
-          PartnerTestiplayElement.metadata.name = booth;
-        }
-      });
+      this.setupFMZone();
 
       Object.keys(fmZone).forEach((zone) => {
         const fmZoneWp = this.makeWaypoint(

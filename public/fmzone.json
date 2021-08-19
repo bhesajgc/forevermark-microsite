@@ -1,129 +1,285 @@
-{
-  "Consumer Marketing": {
-    "Video_Url": "https://youtube.com/playlist?list=PL98KgmAyNtROryGYRFkD0WAjt0VxQNIf1"
-  },
-  "Virtual Showrooms": {
-    "Forevermark Boutique, New Delhi (Virtual Tour)": {
-      "Web_Page_Url": "https://kanuka.viewin360.co/share/collection/7lBHB?fs=1&vr=0&zoom=1&gyro=0&initload=0&thumbs=-1&alpha=0.60&chromeless=1&logo=1&logosize=62"
-    },
-    "Obsess Virtual Store (JC)": {
-      "Web_Page_Url": ""
+[
+  {
+    "subzone": "Consumer Marketing",
+    "data": {
+      "Video": [
+        {
+          "name": "Video_Url",
+          "value": "https://youtube.com/playlist?list=PL98KgmAyNtROryGYRFkD0WAjt0VxQNIf1"
+        }
+      ]
     }
   },
-  "Brand Corner": {
-    "New plug and play pop-up": {
-      "Video_Url": "https://youtu.be/dh0gjz63gRA"
-    },
-    "New Boutique Video": {
-      "Video_Url": "https://youtu.be/HbgJaGmdIo0"
+  {
+    "subzone": "Virtual Showrooms",
+    "data": {
+      "Web-URL": [
+        {
+          "name": "Forevermark Boutique, New Delhi (Virtual Tour)",
+          "value": "https://kanuka.viewin360.co/share/collection/7lBHB?fs=1&vr=0&zoom=1&gyro=0&initload=0&thumbs=-1&alpha=0.60&chromeless=1&logo=1&logosize=62"
+        },
+        {
+          "name": "Obsess Virtual Store (JC)",
+          "value": ""
+        }
+      ]
     }
   },
-  "Designs & Collections": {
-    "Forevermark Big Ideas (Check with PVM on Collections on display)": {
-      "Web_Page_Url": "https://www.forevermark.com/en-in/collections/"
-    },
-    "Trends (Video)": {
-      "Video_Url": "https://youtu.be/2iLL2oaT5QY"
-    },
-    "Trends (PDF)": {
-      "PDF_Link": "https://angloamerican.box.com/s/u63nurbykmhk63x58ze5gf7ga4616f07"
-    },
-    "Red Carpet (PDF)": {
-      "PDF_Link": "https://angloamerican.box.com/s/xt7vpx1z812womr6qi3d7t4cu95om47d"
+  {
+    "subzone": "Brand Corner",
+    "data": {
+      "Videos": [
+        {
+          "name": "New plug and play pop-up",
+          "value": "https://youtu.be/dh0gjz63gRA"
+        },
+        {
+          "name": "New Boutique Video",
+          "value": "https://youtu.be/HbgJaGmdIo0"
+        }
+      ]
     }
   },
-  "Grand Launch": {
-    "Avaanti Collection (Video)": {
-      "Video_Url": "https://youtube.com/playlist?list=PL98KgmAyNtRNJy-k_hcWPhwE3qoGgR4z5"
-    },
-    "Avaanti Collection (PDF)": {
-      "PDF_Link": "https://angloamerican.box.com/s/c89aayr9rf87ng55gxc6mrjh2vmzi46o"
+  {
+    "subzone": "Designs & Collections",
+    "data": {
+      "Web-URL": [
+        {
+          "name": "Forevermark Big Ideas",
+          "value": "https://www.forevermark.com/en-in/collections/"
+        }
+      ],
+      "Videos": [
+        {
+          "name": "Trends (Video)",
+          "value": "https://youtu.be/2iLL2oaT5QY"
+        }
+      ],
+      "PDF": [
+        {
+          "name": "Trends (PDF)",
+          "value": "https://angloamerican.box.com/s/u63nurbykmhk63x58ze5gf7ga4616f07"
+        },
+        {
+          "name": "Red Carpet (PDF)",
+          "value": "https://angloamerican.box.com/s/xt7vpx1z812womr6qi3d7t4cu95om47d"
+        }
+      ]
     }
   },
-  "New Campaigns": {
-    "COT (Video)": {
-      "Video_Url": "https://youtube.com/playlist?list=PL98KgmAyNtRM7d4GI1GCaPrDadtj0ZlZ7"
-    },
-    "COT (Image)": {
-      "Image_Link": "https://angloamerican.box.com/s/2oi7xtq6liintnqzzwuvy9wc5swa4gxk"
-    },
-    "COT (PDF)": {
-      "PDF_Link": "https://angloamerican.box.com/s/jxrnqb1u2k1up8nglb58mxzdjjfjtypn"
-    },
-    "TS (Video)": {
-      "Video_Url": "https://youtube.com/playlist?list=PL98KgmAyNtRPOyW_nr_UdnUfYYgpX_cg2"
-    },
-    "TS (Image)": {
-      "Image_Link": "https://angloamerican.box.com/s/vwf6qmw8psajkykshq3lpxd3ggrh460n"
-    },
-    "TS (PDF)": {
-      "PDF_Link": "https://angloamerican.box.com/s/lcplg4dapmyzpvlqmc5qfjnplt9tpyw4"
-    },
-    "Icon Fashion (Video)": {
-      "Video_Url": "https://youtube.com/playlist?list=PL98KgmAyNtRPtGjF1ItO6k079JIjouTP3"
-    },
-    "Icon Fashion (Image)": {
-      "Image_Link": "https://angloamerican.box.com/s/3w65qcysfwb51j0lfnq9jyu4wa8op2ne"
-    },
-    "Icon Fashion (PDF)": {
-      "PDF_Link": "https://angloamerican.box.com/s/b7xohlzlcmi7m2u1cmhe7776s0rti4bs"
-    },
-    "Exclusive Boutiques": {
-      "PDF_Link": "https://angloamerican.box.com/s/k0nqs8cbui22t54kzh3zwyiv5u3cx6c4"
+  {
+    "subzone": "Grand Launch",
+    "data": {
+      "Videos": [
+        {
+          "name": "Avaanti Collection (Video)",
+          "value": "https://youtube.com/playlist?list=PL98KgmAyNtRNJy-k_hcWPhwE3qoGgR4z5"
+        }
+      ],
+      "PDF": [
+        {
+          "name": "Avaanti Collection (PDF)",
+          "value": "https://angloamerican.box.com/s/c89aayr9rf87ng55gxc6mrjh2vmzi46o"
+        }
+      ]
     }
   },
-  "Consumer Insights": {
-    "PDF_Link": "https://angloamerican.box.com/s/4kgzjhhd3di8heuhdvjeb6h7k9yq7m2f"
-  },
-  "What's New?": {
-    "Watering Hole": {
-      "Web_Page_Url": "https://www.debeersgroup.com/sustainability-and-ethics/protecting-the-natural-world/watch-natures-wonders-live"
-    },
-    "CoO (PDF)": {
-      "PDF_Link": "https://angloamerican.box.com/s/fxl5sugbxatps6hbsdxa50ar0m4yoeny"
-    },
-    "CoO (Video)": {
-      "Video_Url": "https://youtu.be/PHvE-VR9TzU"
-    },
-    "Jewellery Certificate (PDF)": {
-      "PDF_Link": "https://angloamerican.box.com/s/3c42q1qz9wr75sgp7ef7dw13xmdktoee"
-    },
-    "Pursuit of absolute beauty": {
-      "Video_Url": "https://youtu.be/vNkLJ1yUOTY"
-    },
-    "Building Forever (Video)": {
-      "Video_Url": "https://youtube.com/playlist?list=PL98KgmAyNtRNt9LP_dbUOZe5mIOzwJxJ9"
-    },
-    "Building Forever (PDF)": {
-      "PDF_Link": "https://angloamerican.box.com/s/5ce3rjxrmg654ebrpascf2oubyfctb0x"
-    },
-    "New logo (Video)": {
-      "Video_Url": "https://youtu.be/h_QWUl4rzLs"
-    },
-    "AI Interactive Window Display": {
-      "Video_Url": "https://youtu.be/WC00IzHQLS8"
-    },
-    "Visual Search Tool": {
-      "Web_Page_Url": "https://www.forevermark.com/en-in/visual-search-tool/",
-      "Video_Url": "https://youtu.be/6kYCcDGRB7o",
-      "PDF_Link": "https://angloamerican.box.com/s/ffc2eze2pm8fvp4w8a4lbjkvjs0mydov"
-    },
-    "Yash Innovation": {
-      "Video_Url": "https://youtu.be/Ix1mC76TInI"
+  {
+    "subzone": "New Campaigns",
+    "data": {
+      "Videos": [
+        {
+          "name": "COT (Video)",
+          "value": "https://youtube.com/playlist?list=PL98KgmAyNtRM7d4GI1GCaPrDadtj0ZlZ7"
+        },
+        {
+          "name": "TS (Video)",
+          "value": "https://youtube.com/playlist?list=PL98KgmAyNtRPOyW_nr_UdnUfYYgpX_cg2"
+        },
+        {
+          "name": "Icon Fashion (Video)",
+          "value": "https://youtube.com/playlist?list=PL98KgmAyNtRPtGjF1ItO6k079JIjouTP3"
+        }
+      ],
+      "PDF": [
+        {
+          "name": "COT (PDF)",
+          "value": "https://angloamerican.box.com/s/jxrnqb1u2k1up8nglb58mxzdjjfjtypn"
+        },
+        {
+          "name": "TS (PDF)",
+          "value": "https://angloamerican.box.com/s/lcplg4dapmyzpvlqmc5qfjnplt9tpyw4"
+        },
+        {
+          "name": "Icon Fashion (PDF)",
+          "value": "https://angloamerican.box.com/s/b7xohlzlcmi7m2u1cmhe7776s0rti4bs"
+        }
+      ],
+      "Web-URL": [
+        {
+          "name": "COT (Image)",
+          "value": "https://angloamerican.box.com/s/2oi7xtq6liintnqzzwuvy9wc5swa4gxk"
+        },
+        {
+          "name": "TS (Image)",
+          "value": "https://angloamerican.box.com/s/vwf6qmw8psajkykshq3lpxd3ggrh460n"
+        },
+        {
+          "name": "Icon Fashion (Image)",
+          "value": "https://angloamerican.box.com/s/3w65qcysfwb51j0lfnq9jyu4wa8op2ne"
+        },
+        {
+          "name": "Exclusive Boutiques",
+          "value": "https://angloamerican.box.com/s/k0nqs8cbui22t54kzh3zwyiv5u3cx6c4"
+        }
+      ]
     }
   },
-  "Forevermark Training": {
-    "Video_Url": "https://www.youtube.com/embed/videoseries?list=PL98KgmAyNtRPPW5G7A03SxgUArhIjhg5I",
-    "PDF_Link": "https://angloamerican.box.com/s/bwn5eig2mvmjgk4ysr5nvkbr9i1dgf16",
-    "Web_Page_Url": "http://fmselectthediamonds.com/FMGAMES/ForevermarkJourneyQuiz.html"
+  {
+    "subzone": "Consumer Insights",
+    "data": {
+      "PDF": [
+        {
+          "name": "PDF_Link",
+          "value": "https://angloamerican.box.com/s/4kgzjhhd3di8heuhdvjeb6h7k9yq7m2f"
+        }
+      ]
+    }
   },
-  "Gamification (rework on design)": {
-    "Web_Page_Url": "http://fmselectthediamonds.com/FMGAMES/"
+  {
+    "subzone": "What's New?",
+    "data": {
+      "PDF": [
+        {
+          "name": "PDF_Link",
+          "value": "https://angloamerican.box.com/s/4kgzjhhd3di8heuhdvjeb6h7k9yq7m2f"
+        },
+        {
+          "name": "CoO (PDF)",
+          "value": "https://angloamerican.box.com/s/fxl5sugbxatps6hbsdxa50ar0m4yoeny"
+        },
+        {
+          "name": "Jewellery Certificate (PDF)",
+          "value": "https://angloamerican.box.com/s/3c42q1qz9wr75sgp7ef7dw13xmdktoee"
+        },
+        {
+          "name": "Building Forever (PDF)",
+          "value": "https://angloamerican.box.com/s/5ce3rjxrmg654ebrpascf2oubyfctb0x"
+        }
+      ]
+    },
+    "Web-URL": [
+      {
+        "name": "Watering Hole",
+        "value": "https://www.debeersgroup.com/sustainability-and-ethics/protecting-the-natural-world/watch-natures-wonders-live"
+      }
+    ],
+    "Videos": [
+      {
+        "name": "CoO (Video)",
+        "value": "https://youtu.be/PHvE-VR9TzU"
+      },
+      {
+        "name": "Pursuit of absolute beauty",
+        "value": "https://youtu.be/vNkLJ1yUOTY"
+      },
+      {
+        "name": "Building Forever (Video)",
+        "value": "https://youtube.com/playlist?list=PL98KgmAyNtRNt9LP_dbUOZe5mIOzwJxJ9"
+      },
+      {
+        "name": "New logo (Video)",
+        "value": "https://youtu.be/h_QWUl4rzLs"
+      },
+      {
+        "name": "AI Interactive Window Display",
+        "value": "https://youtu.be/WC00IzHQLS8"
+      }
+    ]
   },
-  "Partner Testimonials": {
-    "Video_Url": "https://youtube.com/playlist?list=PL98KgmAyNtRMeoZ-xcD-d_KfJapUBgL7P"
+  {
+    "subzone": "Visual Search Tool",
+    "data": {
+      "Web-URL": [
+        {
+          "name": "url",
+          "value": "https://www.forevermark.com/en-in/visual-search-tool/"
+        }
+      ],
+      "PDF": [
+        {
+          "name": "PDF_Link",
+          "value": "https://angloamerican.box.com/s/ffc2eze2pm8fvp4w8a4lbjkvjs0mydov"
+        }
+      ],
+      "Videos": [
+        {
+          "name": "Video",
+          "value": "https://youtu.be/6kYCcDGRB7o"
+        }
+      ]
+    }
   },
-  "Team Profile": {
-    "PDF_Link": "https://angloamerican.box.com/s/qlq5lzp4njc01fhg6h6bg5w7sutx6yne"
+  {
+    "subzone": "Yash Innovation",
+    "data": {
+      "Videos": [
+        {
+          "name": "Video",
+          "value": "https://youtu.be/Ix1mC76TInI"
+        }
+      ]
+    }
+  },
+  {
+    "subzone": "Forevermark Training",
+    "data": {
+      "Web-URL": [
+        {
+          "name": "url",
+          "value": "http://fmselectthediamonds.com/FMGAMES/ForevermarkJourneyQuiz.html"
+        }
+      ],
+      "PDF": [
+        {
+          "name": "PDF_Link",
+          "value": "https://angloamerican.box.com/s/bwn5eig2mvmjgk4ysr5nvkbr9i1dgf16"
+        }
+      ],
+      "Videos": [
+        {
+          "name": "Video",
+          "value": "https://www.youtube.com/embed/videoseries?list=PL98KgmAyNtRPPW5G7A03SxgUArhIjhg5I"
+        }
+      ]
+    }
+  },
+  {
+    "subzone": "Gamification",
+    "data": {
+      "Web-URL": [
+        {
+          "name": "url",
+          "value": "http://fmselectthediamonds.com/FMGAMES/"
+        }
+      ]
+    }
+  },
+  {
+    "subzone": "Partner Testimonials",
+    "data": {
+      "Videos": [
+        {
+          "name": "Video",
+          "value": "https://youtube.com/playlist?list=PL98KgmAyNtRMeoZ-xcD-d_KfJapUBgL7P"
+        }
+      ],
+      "PDF": [
+        {
+          "name": "PDF",
+          "value": "https://angloamerican.box.com/s/qlq5lzp4njc01fhg6h6bg5w7sutx6yne"
+        }
+      ]
+    }
   }
-}
+]
