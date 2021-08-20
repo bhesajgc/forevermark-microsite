@@ -22,7 +22,6 @@ import { AppTheme } from "./Styles/AppTheme";
 import Experience from "./containers/experience/Experience";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-import Footer from './components/footer/Footer'
 import { addtoData } from "./config/add";
 
 const theme = createMuiTheme(AppTheme);

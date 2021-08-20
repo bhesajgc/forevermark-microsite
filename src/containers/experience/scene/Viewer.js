@@ -903,10 +903,17 @@ class Viewer extends Component<ViewerProps, {}> {
   };
 
   render() {
-    const { sceneLoadedPercent, showLoading } = this.state;
+    const { sceneLoadedPercent, showLoading, url, showModal } = this.state;
 
     return (
       <>
+        <CustomModal
+          url={url}
+          show={showModal}
+          onHide={() => {
+            this.setModalView('', false);
+          }}
+        />
         <BabylonScene onSceneMount={this.onSceneMount} />
         <LoadingScreen show={showLoading} loadedPercent={sceneLoadedPercent} />
 

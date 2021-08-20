@@ -383,7 +383,6 @@ export const FMZone = {
     'Eye Button_08': 'Building Forever Play',
     'Eye Button_04.004': 'Building Forever PDF',
     'Eye Button_09.001': 'Pursuit of Beauty Play', //Common Mesh
-    'Eye Button_09.001': 'Pursuit of Beauty Video', //Common Mesh
   },
   'Yash Innovation': {
     'Eye Button_08.001': 'Yash Technovation Play',

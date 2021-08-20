@@ -28,7 +28,7 @@ export default function SimpleMenu() {
   const [openModal, setOpenModal] = React.useState(false);
   const [modalData, setModalData] = React.useState(null);
   const [tutorialOpen, setTutorialOpen] = React.useState(false);
-  const [showLeaderboard, setShowLeaderboard] = React.useState(true);
+  const [showLeaderboard, setShowLeaderboard] = React.useState(false);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -95,18 +95,18 @@ export default function SimpleMenu() {
             }}/>
           </Paper>
         </MenuItem>
-        <MenuItem onClick={() => handleModalOpen('https://www.youtube.com/watch?v=_ZSTUGLOIzM')}>
-          <Paper id={"menu-items"} elevation={0}>
-            <AdjustOutlinedIcon id={'menu-item-icon'}/>
-            FM Zone
-          </Paper>
-        </MenuItem>
-        <MenuItem onClick={() => handleModalOpen('https://www.youtube.com/watch?v=_ZSTUGLOIzM')}>
-          <Paper id={"menu-items"} elevation={0}>
-            <AirplayIcon id={'menu-item-icon'}/>
-            Auditorium
-          </Paper>
-        </MenuItem>
+          {/*<MenuItem onClick={() => handleModalOpen('https://www.youtube.com/watch?v=_ZSTUGLOIzM')}>*/}
+          {/*  <Paper id={"menu-items"} elevation={0}>*/}
+          {/*    <AdjustOutlinedIcon id={'menu-item-icon'}/>*/}
+          {/*    FM Zone*/}
+          {/*  </Paper>*/}
+          {/*</MenuItem>*/}
+          {/*<MenuItem onClick={() => handleModalOpen('https://www.youtube.com/watch?v=_ZSTUGLOIzM')}>*/}
+          {/*  <Paper id={"menu-items"} elevation={0}>*/}
+          {/*    <AirplayIcon id={'menu-item-icon'}/>*/}
+          {/*    Auditorium*/}
+          {/*  </Paper>*/}
+          {/*</MenuItem>*/}
         <MenuItem onClick={() => handleModalOpen('https://www.youtube.com/watch?v=_ZSTUGLOIzM')}>
           <Paper id={"menu-items"} elevation={0}>
             <EventNoteOutlinedIcon id={'menu-item-icon'}/>
