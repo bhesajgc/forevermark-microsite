@@ -454,4 +454,13 @@ export const FMZone = {
 export const advertisementData = {
   time: '16:11',
   URL: 'https://www.forevermark.com/en-us/',
-};
+
+export const advertisementData = [
+  {
+    Day: 'Day 1',
+    startTime: 1629393770000,
+    endTime: 1629393844000,
+    videoURL: 'https://vimeo.com/event/1217337/embed',
+    chatURL: 'https://vimeo.com/event/1217311/chat/',
+  },
+];

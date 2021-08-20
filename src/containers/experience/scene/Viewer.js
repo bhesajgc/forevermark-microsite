@@ -6,10 +6,19 @@ import HelpIcon from '@material-ui/icons/Help';
 import PublishIcon from '@material-ui/icons/Publish';
 
 import CustomModal from '../../../components/modal/CustomModal';
-import studio from '../assets/FFM.glb'
+import MyCustomModal from '../../../components/modal/MyCustomModal';
+import studio from '../assets/FFM.glb';
 import BabylonScene from './Scene';
 import type { SceneEventArgs } from './Scene';
-import { mediaData, FM_ZoneData, boothMap, advertisementData, FMZone, fmZone, stairsData } from './Database';
+import {
+  mediaData,
+  FM_ZoneData,
+  boothMap,
+  advertisementData,
+  FMZone,
+  fmZone,
+  stairsData,
+} from './Database';
 import LoadingScreen from '../../../components/loading-screen/LoadingScreen';
 import Home from '../assets/home.png';
 import Reticle from '../assets/Reticle.png';
@@ -39,6 +48,9 @@ class Viewer extends Component<ViewerProps, {}> {
       interactables: '',
       url: '',
       currentAnalytics: '',
+      chatURL: '',
+      videoURL: '',
+      showMyModal: false,
     };
     this.interactablesData = '';
     this.hotspots = '';
@@ -91,8 +103,7 @@ class Viewer extends Component<ViewerProps, {}> {
           this.result.pickedPoint.z
         );
         this.reticle.rotation.set(Math.PI / 2, this.camera.rotation.y, Math.PI);
-      }
-      else {
+      } else {
         this.reticle.isVisible = false;
       }
 
@@ -768,6 +779,14 @@ class Viewer extends Component<ViewerProps, {}> {
     }));
   };
 
+  setMyModalView = (chatURL, videoURL, show) => {
+    this.setState(() => ({
+      chatURL: chatURL,
+      videoURL: videoURL,
+      showMyModal: show,
+    }));
+  };
+
   // function to fetch data from database and load it based on URL
   loadMediaData = () => {
     db.collection('boothdata').get().then(async doc => {
@@ -931,18 +950,31 @@ class Viewer extends Component<ViewerProps, {}> {
   };
 
   checkTime = () => {
-    const getTime = setTimeout(() => {
-      const today = new Date();
-      const currentTime = `${today.getHours().toLocaleString()}:${today
-        .getMinutes()
-        .toLocaleString()}`;
-      if (currentTime === advertisementData.time) {
-        this.setModalView(advertisementData.URL, true);
-        clearInterval(getTime);
-      } else {
-        this.checkTime();
-      }
-    }, 1000);
+    const startTime = new Date(advertisementData[0].startTime);
+    const endTime = new Date(advertisementData[0].endTime);
+    const currentTime = new Date();
+    if (currentTime > endTime) {
+      return;
+    }
+    if (currentTime > startTime && currentTime < endTime) {
+      this.setMyModalView(
+        advertisementData[0].chatURL,
+        advertisementData[0].videoURL,
+        true
+      );
+      setTimeout(() => {
+        this.setMyModalView('', '', false);
+      }, endTime - currentTime);
+    }
+    if (currentTime < startTime) {
+      setTimeout(() => {
+        this.setMyModalView(
+          advertisementData[0].chatURL,
+          advertisementData[0].videoURL,
+          true
+        );
+      }, startTime - currentTime);
+    }
   };
 
   render() {
@@ -955,6 +987,14 @@ class Viewer extends Component<ViewerProps, {}> {
           show={showModal}
           onHide={() => {
             this.setModalView('', false);
+          }}
+        />
+        <MyCustomModal
+          videoURL={this.state.videoURL}
+          chatURL={this.state.chatURL}
+          show={this.state.showMyModal}
+          onHide={() => {
+            this.setMyModalView('', '', false);
           }}
         />
         <BabylonScene onSceneMount={this.onSceneMount} />
