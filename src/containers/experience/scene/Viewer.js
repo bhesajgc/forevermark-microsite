@@ -102,7 +102,6 @@ class Viewer extends Component<ViewerProps, {}> {
           this.goToFirstFloor();
         }
         else if(destinationLoc === "Home"){
-          console.log(destinationLoc)
           this.goToHome();
         }
         else{
@@ -871,11 +870,18 @@ class Viewer extends Component<ViewerProps, {}> {
   };
 
   moveToWayPoint = (name) => {
-    const transform = boothMap[name].Transform;
+    let transform;
+    if(name === "fmWaypoint1")
+    {
+      console.log(name);
+      transform = fmZone["Entry 1"].Transform;
+    }else{
+      transform = boothMap[name].Transform;  
+    }
     this.animate(
       new BABYLON.Vector3(
         transform.posX,
-        this.camera.position.y,
+        transform.posY+1.5,
         transform.posZ
       ),
       new BABYLON.Vector3(0, transform.rotY, this.camera.rotation.z)
@@ -919,6 +925,21 @@ class Viewer extends Component<ViewerProps, {}> {
       }
     }, 1000);
   };
+
+  logAnalytics = (areaName, interactionType, Url) =>{
+    db.collection("analytics").add({
+      'startedAt': Date.now(),
+      'areaName': areaName,
+      'eventType': 'interaction',
+      'interactionType': interactionType,
+      'interactionLink': Url,
+      'userInfo': 'userinfo'
+  })
+  .catch((error) => {
+      console.error("Error adding document: ", error);
+  });
+  };
+
 
   render() {
     const { sceneLoadedPercent, showLoading, url, showModal } = this.state;
