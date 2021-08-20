@@ -197,7 +197,7 @@ class ViewerPage extends Component<{}, {}> {
           if (mesh && playButton) {
             playButton.metadata.tag = 'PlayButton';
             playButton.metadata.videoUrl = value['Videos'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene, false, true);
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             mesh.material = mat;
@@ -241,7 +241,7 @@ class ViewerPage extends Component<{}, {}> {
           if (aiInteractiveVideoMesh && aiInteractivePlayVideoMesh) {
             aiInteractivePlayVideoMesh.metadata.tag = 'PlayButton';
             aiInteractivePlayVideoMesh.metadata.videoUrl = value['Videos'][4].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][4].thumbnail, this.scene, false, true);
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][4].thumbnail, this.scene);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             aiInteractiveVideoMesh.material = mat;
@@ -249,7 +249,7 @@ class ViewerPage extends Component<{}, {}> {
           if (buildingForeverVideoMesh && buildingForeverPlayVideoMesh && buildingForeverPDFMesh) {
             buildingForeverPlayVideoMesh.metadata.tag = 'PlayButton';
             buildingForeverPlayVideoMesh.metadata.videoUrl = value['Videos'][2].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][2].thumbnail, this.scene, false, true);
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][2].thumbnail, this.scene);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             buildingForeverVideoMesh.material = mat;
@@ -259,7 +259,7 @@ class ViewerPage extends Component<{}, {}> {
           if (pursuitPlayVideoMesh && pursuitVideoMesh) {
             pursuitPlayVideoMesh.metadata.tag = 'PlayButton';
             pursuitPlayVideoMesh.metadata.videoUrl = value['Videos'][1].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][1].thumbnail, this.scene, false, true);
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][1].thumbnail, this.scene);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             pursuitVideoMesh.material = mat;
@@ -272,7 +272,7 @@ class ViewerPage extends Component<{}, {}> {
           if (yashInnovationPlayMesh && yashInnovationVideoMesh) {
             yashInnovationPlayMesh.metadata.tag = 'PlayButton';
             yashInnovationPlayMesh.metadata.videoUrl = value['Videos'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene, false, true);
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             yashInnovationVideoMesh.material = mat;
@@ -287,7 +287,7 @@ class ViewerPage extends Component<{}, {}> {
           if (brandEntry1VideoMesh && brandEntry1PlayMesh) {
             brandEntry1PlayMesh.metadata.tag = 'PlayButton';
             brandEntry1PlayMesh.metadata.videoUrl = value['Videos'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene, false, true);
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             brandEntry1VideoMesh.material = mat;
@@ -295,7 +295,7 @@ class ViewerPage extends Component<{}, {}> {
           if (brandEntry2PlayMesh && brandEntry2VideoMesh) {
             brandEntry2PlayMesh.metadata.tag = 'PlayButton';
             brandEntry2PlayMesh.metadata.videoUrl = value['Videos'][1].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][1].thumbnail, this.scene, false, true);
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][1].thumbnail, this.scene);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             brandEntry2VideoMesh.material = mat;
@@ -308,7 +308,7 @@ class ViewerPage extends Component<{}, {}> {
           if (consumerMarketingVideoMesh && consumerMarketingPlayMesh) {
             consumerMarketingPlayMesh.metadata.tag = 'PlayButton';
             consumerMarketingPlayMesh.metadata.videoUrl = value['Video'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Video'][0].thumbnail, this.scene, false, true);
+            const screenThumbnail = new BABYLON.Texture(value['Video'][0].thumbnail, this.scene);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             consumerMarketingVideoMesh.material = mat;
@@ -341,7 +341,7 @@ class ViewerPage extends Component<{}, {}> {
           if (trendsVideo && trendsVideoPlay) {
             trendsVideoPlay.metadata.tag = 'PlayButton';
             trendsVideoPlay.metadata.videoUrl = value['Videos'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene, false, true);
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             trendsVideo.material = mat;
@@ -368,7 +368,7 @@ class ViewerPage extends Component<{}, {}> {
           if (trainingVideo && trainingVideoPlay) {
             trainingVideoPlay.metadata.tag = 'PlayButton';
             trainingVideoPlay.metadata.videoUrl = value['Videos'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene, false, true);
+            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
             const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
             mat.diffuseTexture = screenThumbnail;
             trainingVideo.material = mat;
@@ -429,11 +429,10 @@ class ViewerPage extends Component<{}, {}> {
         case 'Gamification': {
           for (let index = 0; index < Object.keys(FMZone[key]).length; index += 1) {
             const element = Object.keys(FMZone[key])[index];
-            console.log()
             switch (FMZone[key][element]) {
               case 'Screen': {
                 const screen = this.getMeshfromMainModel(element)
-                const screenThumbnail = new BABYLON.Texture(value['Web-URL'][0].thumbnail, this.scene, false, true);
+                const screenThumbnail = new BABYLON.Texture(value['Web-URL'][0].thumbnail, this.scene);
                 const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
                 mat.diffuseTexture = screenThumbnail;
                 screen.material = mat;
@@ -570,8 +569,7 @@ class ViewerPage extends Component<{}, {}> {
   setupStudio = () => {
     const loadingCalc = (data) => {
       const { loaded } = data;
-      console.log(data)
-      const sceneLoadedPercent = ((loaded * 100) / 24535888).toFixed();
+      const sceneLoadedPercent = ((loaded * 100) / 24631616).toFixed();
       this.setState((prevState) => ({
         ...prevState,
         sceneLoadedPercent,
@@ -689,6 +687,8 @@ class ViewerPage extends Component<{}, {}> {
       const urlButton = Object.keys(boothMap[booth].boothInfo)[3];
       const broucherButton = Object.keys(boothMap[booth].boothInfo)[4];
       const sec_TV = Object.keys(boothMap[booth].boothInfo)[5];
+      const logo = Object.keys(boothMap[booth].boothInfo)[6];
+
 
       const wayPoint = this.makeWaypoint(
         boothMap[booth].Transform.name,
@@ -706,7 +706,7 @@ class ViewerPage extends Component<{}, {}> {
       const urlElement = this.getMeshfromMainModel(urlButton);
       const broucherElement = this.getMeshfromMainModel(broucherButton);
       const sec_TVElement = this.getMeshfromMainModel(sec_TV);
-
+      const logoElement = this.getMeshfromMainModel(logo);
 
       if (element) {
         this.setTextureonScreen(boothMap[booth].boothInfo[screen], element);
@@ -733,6 +733,15 @@ class ViewerPage extends Component<{}, {}> {
         newMat.diffuseTexture.hasAlpha = true
         sec_TVElement.material = newMat;
       }
+      if (logoElement) {
+        const newMat = new BABYLON.StandardMaterial("screenMat", this.scene);
+        newMat.diffuseTexture = mediaData.get(boothMap[booth].boothInfo[screen])[['logo']];
+        if (newMat.diffuseTexture) {
+          newMat.useAlphaFromDiffuseTexture = true
+          newMat.diffuseTexture.hasAlpha = true
+        }
+        logoElement.material = newMat;
+      }
     });
   }
 
@@ -750,8 +759,13 @@ class ViewerPage extends Component<{}, {}> {
         const fetchedData = data.data();
         const thumbnail = new BABYLON.Texture(fetchedData['thumbnail-URL'], this.scene, false, false)
         let Sec_Tv_Texture = null;
+        let Logo_Texture = null;
+
         if (fetchedData['Sec_TV'] != "") {
           Sec_Tv_Texture = new BABYLON.Texture(fetchedData['Sec_TV'], this.scene, false, false)
+        }
+        if (fetchedData['logo'] != "") {
+          Logo_Texture = new BABYLON.Texture(fetchedData['logo'], this.scene, false, false)
         }
 
         const tempObject = {
@@ -761,7 +775,8 @@ class ViewerPage extends Component<{}, {}> {
           'PDF_Url': fetchedData.PDF_Url,
           'site_URL': fetchedData.site_URL,
           'pamplate_Url': fetchedData.pamplate_Url,
-          'Sec_Tv': Sec_Tv_Texture
+          'Sec_Tv': Sec_Tv_Texture,
+          'logo': Logo_Texture
         };
         mediaData.set(data.id, { ...tempObject })
         return null
