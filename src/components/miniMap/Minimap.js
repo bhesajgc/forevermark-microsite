@@ -131,7 +131,9 @@ function Minimap(props) {
             </ListSubheader>
           }
         >
-          <ListItem button>
+          <ListItem button onClick={() => {
+            setCurrentLocation('Auditorium');
+          }}>
             <ListItemIcon>
               <AirplayOutlinedIcon/>
             </ListItemIcon>
@@ -153,7 +155,9 @@ function Minimap(props) {
             </ListItemIcon>
             <ListItemText primary="FM Zone" />
           </ListItem>
-          <ListItem button onClick={handleClick}>
+          <ListItem button onClick={() => {
+            setCurrentLocation('fmWaypoint1');
+          }}>
             <ListItemIcon>
               <TableChartOutlinedIcon />
             </ListItemIcon>
