@@ -19,6 +19,7 @@ import TutorialPopup from '../tutorial-popup/TutorialPopup';
 import ForeverMarkLogo  from '../loading-screen/assets/forevermark_logo.png';
 import AirplayIcon from '@material-ui/icons/Airplay';
 import AdjustOutlinedIcon from '@material-ui/icons/AdjustOutlined';
+import LeaderBoards from '../leaderboards/Leaderboards';
 
 const ITEM_HEIGHT = 120;
 
@@ -27,6 +28,7 @@ export default function SimpleMenu() {
   const [openModal, setOpenModal] = React.useState(false);
   const [modalData, setModalData] = React.useState(null);
   const [tutorialOpen, setTutorialOpen] = React.useState(false);
+  const [showLeaderboard, setShowLeaderboard] = React.useState(true);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -44,6 +46,11 @@ export default function SimpleMenu() {
 
   const handleTutorialOpen = () => {
     setTutorialOpen(true);
+    handleClose();
+  }
+
+  const handleLeaderboardOpen = () => {
+    setShowLeaderboard(true);
     handleClose();
   }
 
@@ -106,13 +113,13 @@ export default function SimpleMenu() {
             Agenda
           </Paper>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLeaderboardOpen}>
           <Paper id={"menu-items"} elevation={0}>
             <EqualizerOutlinedIcon id={'menu-item-icon'}/>
             Leaderboard
           </Paper>
         </MenuItem>
-        <MenuItem onClick={handleTutorialOpen}>
+        <MenuItem onClick={() => handleModalOpen('https://tawk.to/chat/611e4a61649e0a0a5cd1e812/1fdf553pt')}>
           <Paper id={"menu-items"} elevation={0}>
             <HelpOutlineIcon id={'menu-item-icon'}/>
             Help
@@ -133,6 +140,10 @@ export default function SimpleMenu() {
       <TutorialPopup
         open = {tutorialOpen}
         handleClose = {() => setTutorialOpen(false)}
+      />
+      <LeaderBoards
+        open={showLeaderboard}
+        handleClose={() => setShowLeaderboard(false)}
       />
     </div>
   );
