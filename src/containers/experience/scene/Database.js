@@ -451,9 +451,6 @@ export const FMZone = {
   }
 }
 
-export const advertisementData = {
-  time: '16:11',
-  URL: 'https://www.forevermark.com/en-us/',
 
 export const advertisementData = [
   {
