@@ -45,6 +45,7 @@ class Viewer extends Component<ViewerProps, {}> {
     this.result = '';
     this.reticle = '';
     this.mainModel = '';
+    this.oldDataProp = 'Home';
   }
 
   onSceneMount = (e: SceneEventArgs) => {
@@ -92,6 +93,27 @@ class Viewer extends Component<ViewerProps, {}> {
       }
       else {
         this.reticle.isVisible = false;
+      }
+
+      //
+      const destinationLoc = this.props.currentLocation;
+
+      if(this.oldDataProp !== destinationLoc)
+      {
+        if(destinationLoc === "Auditorium" ){
+          this.goToFirstFloor();
+          return;
+        }
+        if(destinationLoc === "Home"){
+          this.goToHome();
+          return;
+        }
+        else{
+          this.moveToWayPoint(destinationLoc);
+        }
+
+        this.oldDataProp = destinationLoc;
+
       }
     });
 
