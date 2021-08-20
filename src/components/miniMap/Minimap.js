@@ -118,7 +118,7 @@ function Minimap(props) {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleMinimapClose}>
-            <CloseOutlinedIcon/>
+            <CloseOutlinedIcon />
           </IconButton>
         </div>
         <Divider />
@@ -135,7 +135,7 @@ function Minimap(props) {
             setCurrentLocation('Auditorium');
           }}>
             <ListItemIcon>
-              <AirplayOutlinedIcon/>
+              <AirplayOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary="Auditorium" />
           </ListItem>
@@ -145,7 +145,7 @@ function Minimap(props) {
           aria-labelledby="nested-list-subheader"
           subheader={
             <ListSubheader component="div" id="nested-list-subheader">
-             Level One
+              Level One
             </ListSubheader>
           }
         >
@@ -153,7 +153,7 @@ function Minimap(props) {
             setCurrentLocation('fmWaypoint1');
           }}>
             <ListItemIcon>
-              <AdjustOutlinedIcon/>
+              <AdjustOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary="FM Zone" />
           </ListItem>
@@ -166,40 +166,21 @@ function Minimap(props) {
           </ListItem>
           <Collapse in={openList} timeout="auto" unmountOnExit>
             {
-              minimapData !== null ? <div style={{padding:'1rem'}}>Please wait while we load booths data</div> :
+              minimapData === null ? <div style={{ padding: '1rem' }}>Please wait while we load booths data</div> :
                 <List className={classes.nested}>
                   {" "}
-                  {[
-                    "Booth 1",
-                    "Booth 2",
-                    "Booth 3",
-                    "Booth 4",
-                    "Booth 5",
-                    "Booth 6",
-                    "Booth 7",
-                    "Booth 8",
-                    "Booth 9",
-                    "Booth 10",
-                    "Booth 11",
-                    "Booth 12",
-                    "Booth 13",
-                    "Booth 14",
-                    "Booth 15",
-                    "Booth 16",
-                    "Booth 17",
-                    "Booth 18",
-                  ].map((text, index) => (
+                  {minimapData.map((text, index) => (
                     <ListItem
                       button
-                      key={text}
+                      key={text.id}
                       onClick={() => {
-                        setCurrentLocation(text);
+                        setCurrentLocation(text.id);
                       }}
                     >
                       <ListItemIcon>
-                       <TableChartOutlinedIcon/>
+                        <TableChartOutlinedIcon />
                       </ListItemIcon>
-                      <ListItemText primary={text}/>
+                      <ListItemText primary={text.name} />
                     </ListItem>
                   ))}{" "}
                 </List>

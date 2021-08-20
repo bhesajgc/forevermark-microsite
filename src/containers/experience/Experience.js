@@ -6,12 +6,12 @@ const Studio = () => {
 
   const [currentLocation, setCurrentLocation] = React.useState('Home');
   const [minimapData, setMinimapData] = React.useState(null);
-    return (
-      <div>
-        <Viewer currentLocation={currentLocation} setMinimapData={setMinimapData}/>
-        <ExperienceUI setCurrentLocation={setCurrentLocation} minimapData={minimapData}/>
-      </div>
-    );
+  return (
+    <div>
+      <Viewer currentLocation={currentLocation} setMinimapData={setMinimapData} />
+      <ExperienceUI setCurrentLocation={setCurrentLocation} minimapData={minimapData} />
+    </div>
+  );
 }
 
 export default Studio;

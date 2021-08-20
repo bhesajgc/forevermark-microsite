@@ -46,6 +46,7 @@ class Viewer extends Component<ViewerProps, {}> {
     this.reticle = '';
     this.mainModel = '';
     this.oldDataProp = 'Home';
+    this.boothData = []
   }
 
   onSceneMount = (e: SceneEventArgs) => {
@@ -108,7 +109,6 @@ class Viewer extends Component<ViewerProps, {}> {
           this.moveToWayPoint(destinationLoc);
         }
         this.oldDataProp = destinationLoc;
-
       }
     });
 
@@ -211,10 +211,10 @@ class Viewer extends Component<ViewerProps, {}> {
           if (mesh && playButton) {
             playButton.metadata.tag = 'PlayButton';
             playButton.metadata.videoUrl = value['Videos'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-            mat.diffuseTexture = screenThumbnail;
-            mesh.material = mat;
+            // const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
+            // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            // mat.diffuseTexture = screenThumbnail;
+            // mesh.material = mat;
           }
           break;
         }
@@ -255,28 +255,28 @@ class Viewer extends Component<ViewerProps, {}> {
           if (aiInteractiveVideoMesh && aiInteractivePlayVideoMesh) {
             aiInteractivePlayVideoMesh.metadata.tag = 'PlayButton';
             aiInteractivePlayVideoMesh.metadata.videoUrl = value['Videos'][4].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][4].thumbnail, this.scene);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-            mat.diffuseTexture = screenThumbnail;
-            aiInteractiveVideoMesh.material = mat;
+            // const screenThumbnail = new BABYLON.Texture(value['Videos'][4].thumbnail, this.scene);
+            // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            // mat.diffuseTexture = screenThumbnail;
+            // aiInteractiveVideoMesh.material = mat;
           }
           if (buildingForeverVideoMesh && buildingForeverPlayVideoMesh && buildingForeverPDFMesh) {
             buildingForeverPlayVideoMesh.metadata.tag = 'PlayButton';
             buildingForeverPlayVideoMesh.metadata.videoUrl = value['Videos'][2].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][2].thumbnail, this.scene);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-            mat.diffuseTexture = screenThumbnail;
-            buildingForeverVideoMesh.material = mat;
+            // const screenThumbnail = new BABYLON.Texture(value['Videos'][2].thumbnail, this.scene);
+            // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            // mat.diffuseTexture = screenThumbnail;
+            // buildingForeverVideoMesh.material = mat;
             buildingForeverPDFMesh.metadata.tag = 'Broucher';
             buildingForeverPDFMesh.metadata.pdfUrl = value['PDF'][2].value
           }
           if (pursuitPlayVideoMesh && pursuitVideoMesh) {
             pursuitPlayVideoMesh.metadata.tag = 'PlayButton';
             pursuitPlayVideoMesh.metadata.videoUrl = value['Videos'][1].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][1].thumbnail, this.scene);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-            mat.diffuseTexture = screenThumbnail;
-            pursuitVideoMesh.material = mat;
+            // const screenThumbnail = new BABYLON.Texture(value['Videos'][1].thumbnail, this.scene);
+            // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            // mat.diffuseTexture = screenThumbnail;
+            // pursuitVideoMesh.material = mat;
           }
           break;
         }
@@ -286,10 +286,10 @@ class Viewer extends Component<ViewerProps, {}> {
           if (yashInnovationPlayMesh && yashInnovationVideoMesh) {
             yashInnovationPlayMesh.metadata.tag = 'PlayButton';
             yashInnovationPlayMesh.metadata.videoUrl = value['Videos'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-            mat.diffuseTexture = screenThumbnail;
-            yashInnovationVideoMesh.material = mat;
+            // const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
+            // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            // mat.diffuseTexture = screenThumbnail;
+            // yashInnovationVideoMesh.material = mat;
           }
           break;
         }
@@ -301,18 +301,18 @@ class Viewer extends Component<ViewerProps, {}> {
           if (brandEntry1VideoMesh && brandEntry1PlayMesh) {
             brandEntry1PlayMesh.metadata.tag = 'PlayButton';
             brandEntry1PlayMesh.metadata.videoUrl = value['Videos'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-            mat.diffuseTexture = screenThumbnail;
-            brandEntry1VideoMesh.material = mat;
+            // const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
+            // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            // mat.diffuseTexture = screenThumbnail;
+            // brandEntry1VideoMesh.material = mat;
           }
           if (brandEntry2PlayMesh && brandEntry2VideoMesh) {
             brandEntry2PlayMesh.metadata.tag = 'PlayButton';
             brandEntry2PlayMesh.metadata.videoUrl = value['Videos'][1].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][1].thumbnail, this.scene);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-            mat.diffuseTexture = screenThumbnail;
-            brandEntry2VideoMesh.material = mat;
+            // const screenThumbnail = new BABYLON.Texture(value['Videos'][1].thumbnail, this.scene);
+            // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            // mat.diffuseTexture = screenThumbnail;
+            // brandEntry2VideoMesh.material = mat;
           }
           break;
         }
@@ -322,10 +322,10 @@ class Viewer extends Component<ViewerProps, {}> {
           if (consumerMarketingVideoMesh && consumerMarketingPlayMesh) {
             consumerMarketingPlayMesh.metadata.tag = 'PlayButton';
             consumerMarketingPlayMesh.metadata.videoUrl = value['Video'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Video'][0].thumbnail, this.scene);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-            mat.diffuseTexture = screenThumbnail;
-            consumerMarketingVideoMesh.material = mat;
+            // const screenThumbnail = new BABYLON.Texture(value['Video'][0].thumbnail, this.scene);
+            // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            // mat.diffuseTexture = screenThumbnail;
+            // consumerMarketingVideoMesh.material = mat;
           }
           break;
         }
@@ -355,10 +355,10 @@ class Viewer extends Component<ViewerProps, {}> {
           if (trendsVideo && trendsVideoPlay) {
             trendsVideoPlay.metadata.tag = 'PlayButton';
             trendsVideoPlay.metadata.videoUrl = value['Videos'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-            mat.diffuseTexture = screenThumbnail;
-            trendsVideo.material = mat;
+            // const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
+            // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            // mat.diffuseTexture = screenThumbnail;
+            // trendsVideo.material = mat;
           }
           if (trendsPDF1) {
             trendsPDF1.metadata.tag = 'Broucher';
@@ -382,10 +382,10 @@ class Viewer extends Component<ViewerProps, {}> {
           if (trainingVideo && trainingVideoPlay) {
             trainingVideoPlay.metadata.tag = 'PlayButton';
             trainingVideoPlay.metadata.videoUrl = value['Videos'][0].value;
-            const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
-            const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-            mat.diffuseTexture = screenThumbnail;
-            trainingVideo.material = mat;
+            // const screenThumbnail = new BABYLON.Texture(value['Videos'][0].thumbnail, this.scene);
+            // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+            // mat.diffuseTexture = screenThumbnail;
+            // trainingVideo.material = mat;
           }
           if (trainingurl) {
             trainingurl.metadata.tag = 'URL_Button';
@@ -445,11 +445,11 @@ class Viewer extends Component<ViewerProps, {}> {
             const element = Object.keys(FMZone[key])[index];
             switch (FMZone[key][element]) {
               case 'Screen': {
-                const screen = this.getMeshfromMainModel(element)
-                const screenThumbnail = new BABYLON.Texture(value['Web-URL'][0].thumbnail, this.scene);
-                const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
-                mat.diffuseTexture = screenThumbnail;
-                screen.material = mat;
+                // const screen = this.getMeshfromMainModel(element)
+                // const screenThumbnail = new BABYLON.Texture(value['Web-URL'][0].thumbnail, this.scene);
+                // const mat = new BABYLON.StandardMaterial("screenMat", this.scene);
+                // mat.diffuseTexture = screenThumbnail;
+                // screen.material = mat;
                 break;
               }
               case 'Game Button': {
@@ -583,7 +583,8 @@ class Viewer extends Component<ViewerProps, {}> {
   setupStudio = () => {
     const loadingCalc = (data) => {
       const { loaded } = data;
-      const sceneLoadedPercent = ((loaded * 100) / 24631616).toFixed();
+      console.log(data);
+      const sceneLoadedPercent = ((loaded * 100) / 36918332).toFixed();
       this.setState((prevState) => ({
         ...prevState,
         sceneLoadedPercent,
@@ -793,6 +794,11 @@ class Viewer extends Component<ViewerProps, {}> {
           'Sec_Tv': Sec_Tv_Texture,
           'logo': Logo_Texture
         };
+
+        if (tempObject.name !== '') {
+          this.boothData.push({ id: data.id, name: tempObject.name });
+        }
+        this.props.setMinimapData(this.boothData);
         mediaData.set(data.id, { ...tempObject })
         return null
       }

@@ -1,7 +1,7 @@
 export const mediaData = new Map();
 export const FM_ZoneData = new Map();
 export const boothMap = {
-  'Booth 1': {
+  'BoothScreen 1': {
     boothInfo: {
       'XRC_Image_01_TV.001': 'BoothScreen 1', "Play Button_06.014": 'PlayButton', 'XRC_Image_01_TV': 'Chat',
       'Booth Kisok Branding_02': 'URL_Button', 'Booth  Kiosk Branding': 'Broucher',
@@ -17,7 +17,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 2': {
+  'BoothScreen 2': {
     boothInfo: {
       'XRC_Image_01_TV.003': 'BoothScreen 2', "Play Button_06.013": 'PlayButton', 'XRC_Image_01_TV.041': 'Chat',
       'Booth Kisok Branding_02.002': 'URL_Button', 'Booth  Kiosk Branding.002': 'Broucher',
@@ -33,7 +33,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 3': {
+  'BoothScreen 3': {
     boothInfo: {
       'XRC_Image_01_TV.002': 'BoothScreen 3', "Play Button_06.012": 'PlayButton', 'XRC_Image_01_TV.040': 'Chat',
       'Booth Kisok Branding_02.001': 'URL_Button', 'Booth  Kiosk Branding.001': 'Broucher',
@@ -49,7 +49,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 4': {
+  'BoothScreen 4': {
     boothInfo: {
       'XRC_Image_01_TV.004': 'BoothScreen 4', 'Play Button_06.011': 'PlayButton',
       'XRC_Image_01_TV.043': 'Chat', 'Booth Kisok Branding_02.004': 'URL_Button'
@@ -66,7 +66,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 5': {
+  'BoothScreen 5': {
     boothInfo: {
       'XRC_Image_01_TV.005': 'BoothScreen 5', 'Play Button_06.010': 'PlayButton', 'XRC_Image_01_TV.042': 'Chat',
       'Booth Kisok Branding_02.003': 'URL_Button', 'Booth  Kiosk Branding.003': 'Broucher',
@@ -82,7 +82,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 6': {
+  'BoothScreen 6': {
     boothInfo: {
       'XRC_Image_01_TV.006': 'BoothScreen 6', 'Play Button_06.15': 'PlayButton', 'XRC_Image_01_TV.045': 'Chat',
       'Booth Kisok Branding_02.006': 'URL_Button', 'Booth  Kiosk Branding.006': 'Broucher',
@@ -98,7 +98,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 7': {
+  'BoothScreen 7': {
     boothInfo: {
       'XRC_Image_01_TV.007': 'BoothScreen 7', 'Play Button_06.17': 'PlayButton', 'XRC_Image_01_TV.044': 'Chat',
       'Booth Kisok Branding_02.005': 'URL_Button', 'Booth  Kiosk Branding.005': 'Broucher',
@@ -114,7 +114,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 8': {
+  'BoothScreen 8': {
     boothInfo: {
       'XRC_Image_01_TV.008': 'BoothScreen 8', 'Play Button_06.16': 'PlayButton', 'XRC_Image_01_TV.047': 'Chat',
       'Booth Kisok Branding_02.008': 'URL_Button', 'Booth  Kiosk Branding.008': 'Broucher',
@@ -130,7 +130,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 9': {
+  'BoothScreen 9': {
     boothInfo: {
       'XRC_Image_01_TV.009': 'BoothScreen 9', 'Play Button_06.18': 'PlayButton', 'XRC_Image_01_TV.046': 'Chat',
       'Booth Kisok Branding_02.007': 'URL_Button', 'Booth  Kiosk Branding.007': 'Broucher',
@@ -146,7 +146,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 10': {
+  'BoothScreen 10': {
     boothInfo: {
       'XRC_Image_01_TV.010': 'BoothScreen 10', 'Play Button_06.009': 'PlayButton', 'XRC_Image_01_TV.048': 'Chat',
       'Booth Kisok Branding_02.014': 'URL_Button', 'Booth  Kiosk Branding.014': 'Broucher',
@@ -162,7 +162,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 11': {
+  'BoothScreen 11': {
     boothInfo: {
       'XRC_Image_01_TV.011': 'BoothScreen 11', 'Play Button_06.007': 'PlayButton', 'XRC_Image_01_TV.049': 'Chat',
       'Booth Kisok Branding_02.011': 'URL_Button', 'Booth  Kiosk Branding.011': 'Broucher',
@@ -178,7 +178,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 12': {
+  'BoothScreen 12': {
     boothInfo: {
       'XRC_Image_01_TV.012': 'BoothScreen 12', 'Play Button_06.008': 'PlayButton', 'XRC_Image_01_TV.055': 'Chat',
       'Booth Kisok Branding_02.012': 'URL_Button', 'Booth  Kiosk Branding.012': 'Broucher',
@@ -194,7 +194,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 13': {
+  'BoothScreen 13': {
     boothInfo: {
       'XRC_Image_01_TV.013': 'BoothScreen 13', 'Play Button_06.006': 'PlayButton', 'XRC_Image_01_TV.056': 'Chat',
       'Booth Kisok Branding_02.015': 'URL_Button', 'Booth  Kiosk Branding.015': 'Broucher',
@@ -210,7 +210,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 14': {
+  'BoothScreen 14': {
     boothInfo: {
       'XRC_Image_01_TV.014': 'BoothScreen 14', 'Play Button_06.001': 'PlayButton', 'XRC_Image_01_TV.052': 'Chat',
       'Booth Kisok Branding_02.013': 'URL_Button', 'Booth  Kiosk Branding.013': 'Broucher',
@@ -226,7 +226,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 15': {
+  'BoothScreen 15': {
     boothInfo: {
       'XRC_Image_01_TV.015': 'BoothScreen 15', 'Play Button_06.002': 'PlayButton', 'XRC_Image_01_TV.054': 'Chat',
       'Booth Kisok Branding_02.017': 'URL_Button', 'Booth  Kiosk Branding.017': 'Broucher',
@@ -242,7 +242,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 16': {
+  'BoothScreen 16': {
     boothInfo: {
       'XRC_Image_01_TV.016': 'BoothScreen 16', 'Play Button_06.003': 'PlayButton', 'XRC_Image_01_TV.051': 'Chat',
       'Booth Kisok Branding_02.016': 'URL_Button', 'Booth  Kiosk Branding.016': 'Broucher',
@@ -258,7 +258,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 17': {
+  'BoothScreen 17': {
     boothInfo: {
       'XRC_Image_01_TV.017': 'BoothScreen 17', 'Play Button_06.004': 'PlayButton', 'XRC_Image_01_TV.050': 'Chat',
       'Booth Kisok Branding_02.010': 'URL_Button', 'Booth  Kiosk Branding.010': 'Broucher',
@@ -274,7 +274,7 @@ export const boothMap = {
       rotZ: 0,
     },
   },
-  'Booth 18': {
+  'BoothScreen 18': {
     boothInfo: {
       'XRC_Image_01_TV.018': 'BoothScreen 18', 'Play Button_06.005': 'PlayButton',
       'XRC_Image_01_TV.053': 'Chat',
