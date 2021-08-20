@@ -98,11 +98,11 @@ class Viewer extends Component<ViewerProps, {}> {
       const destinationLoc = this.props.currentLocation;
       if(this.oldDataProp !== destinationLoc)
       {
+        console.log(destinationLoc);
         if(destinationLoc === "Auditorium" ){
           this.goToFirstFloor();
         }
         else if(destinationLoc === "Home"){
-          console.log(destinationLoc)
           this.goToHome();
         }
         else{
@@ -677,7 +677,7 @@ class Viewer extends Component<ViewerProps, {}> {
         else {
           stairsWp.metadata = { tag: 'upStairs' };
         }
-           console.log(stairsWp)
+        console.log(stairsWp)
       })
     });
   };
@@ -763,25 +763,25 @@ class Viewer extends Component<ViewerProps, {}> {
   loadMediaData = () => {
     db.collection('boothdata').get().then(async doc => {
       doc.docs.map((data) => {
-        const fetchedData = data.data();
-        const thumbnail = new BABYLON.Texture(fetchedData['thumbnail-URL'], this.scene, false, false)
-        let Sec_Tv_Texture = null;
-        if (fetchedData['Sec_TV'] != "") {
-          Sec_Tv_Texture = new BABYLON.Texture(fetchedData['Sec_TV'], this.scene, false, false)
-        }
+          const fetchedData = data.data();
+          const thumbnail = new BABYLON.Texture(fetchedData['thumbnail-URL'], this.scene, false, false)
+          let Sec_Tv_Texture = null;
+          if (fetchedData['Sec_TV'] != "") {
+            Sec_Tv_Texture = new BABYLON.Texture(fetchedData['Sec_TV'], this.scene, false, false)
+          }
 
-        const tempObject = {
-          'name': fetchedData.name,
-          'thumbnail': thumbnail,
-          'Video_url': fetchedData.asset_url,
-          'PDF_Url': fetchedData.PDF_Url,
-          'site_URL': fetchedData.site_URL,
-          'pamplate_Url': fetchedData.pamplate_Url,
-          'Sec_Tv': Sec_Tv_Texture
-        };
-        mediaData.set(data.id, { ...tempObject })
-        return null
-      }
+          const tempObject = {
+            'name': fetchedData.name,
+            'thumbnail': thumbnail,
+            'Video_url': fetchedData.asset_url,
+            'PDF_Url': fetchedData.PDF_Url,
+            'site_URL': fetchedData.site_URL,
+            'pamplate_Url': fetchedData.pamplate_Url,
+            'Sec_Tv': Sec_Tv_Texture
+          };
+          mediaData.set(data.id, { ...tempObject })
+          return null
+        }
       )
     })
     db.collection("FM-Zone Data").get().then(async doc => {
@@ -871,11 +871,17 @@ class Viewer extends Component<ViewerProps, {}> {
   };
 
   moveToWayPoint = (name) => {
-    const transform = boothMap[name].Transform;
+    let transform = '';
+    if(name === "fmWaypoint1")
+    {
+      transform = fmZone['Entry 1'].Transform;
+    } else {
+      transform = boothMap[name].Transform;
+    }
     this.animate(
       new BABYLON.Vector3(
         transform.posX,
-        this.camera.position.y,
+        transform.posY+1.5,
         transform.posZ
       ),
       new BABYLON.Vector3(0, transform.rotY, this.camera.rotation.z)
