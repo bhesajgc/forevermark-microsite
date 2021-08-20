@@ -6,9 +6,10 @@ import HelpIcon from '@material-ui/icons/Help';
 import PublishIcon from '@material-ui/icons/Publish';
 
 import CustomModal from '../../../components/modal/CustomModal';
+import studio from '../assets/FFM.glb'
 import BabylonScene from './Scene';
 import type { SceneEventArgs } from './Scene';
-import { mediaData, boothMap, fmZone, stairsData,advertisementData } from './Database';
+import { mediaData, FM_ZoneData, boothMap, advertisementData, FMZone, fmZone, stairsData } from './Database';
 import LoadingScreen from '../../../components/loading-screen/LoadingScreen';
 import Home from '../assets/home.png';
 import Reticle from '../assets/Reticle.png';
@@ -44,7 +45,6 @@ class Viewer extends Component<ViewerProps, {}> {
     this.result = '';
     this.reticle = '';
     this.mainModel = '';
-    console.log(this.props.currentLocation);
   }
 
   onSceneMount = (e: SceneEventArgs) => {
@@ -80,7 +80,7 @@ class Viewer extends Component<ViewerProps, {}> {
       this.result = this.raycast();
       if (
         this.result.hit &&
-        this.result.pickedMesh.metadata.tag === 'navigationFloor'
+        this.result.pickedMesh.metadata['tag'] === 'navigationFloor'
       ) {
         this.reticle.isVisible = true;
         this.reticle.position = new BABYLON.Vector3(
@@ -89,7 +89,8 @@ class Viewer extends Component<ViewerProps, {}> {
           this.result.pickedPoint.z
         );
         this.reticle.rotation.set(Math.PI / 2, this.camera.rotation.y, Math.PI);
-      } else {
+      }
+      else {
         this.reticle.isVisible = false;
       }
     });
@@ -97,7 +98,7 @@ class Viewer extends Component<ViewerProps, {}> {
     scene.onPointerObservable.add((pointerInfo) => {
       switch (pointerInfo.type) {
         case BABYLON.PointerEventTypes.POINTERTAP: {
-          switch (this.result.pickedMesh.metadata.tag) {
+          switch (this.result.pickedMesh.metadata['tag']) {
             case 'navigationFloor': {
               if (this.reticle.isVisible) {
                 const targetLocation = new BABYLON.Vector3(
@@ -118,19 +119,27 @@ class Viewer extends Component<ViewerProps, {}> {
               }
               break;
             }
-            case 'chat': {
+            case 'Chat': {
               this.setModalView(
                 'https://tawk.to/chat/603df02c385de407571b8982/1evov4cn5#',
                 true
               );
               break;
             }
-            case 'URL': {
-              this.setModalView('https://www.forevermark.com/', true);
+            case 'URL_Button': {
+              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).site_URL, true);
               break;
             }
-            case 'broucher': {
-              this.setModalView('Test.pdf', true);
+            case 'Broucher': {
+              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).PDF_Url, true);
+              break;
+            }
+            case 'PlayButton': {
+              this.setModalView(mediaData.get(this.result.pickedMesh.metadata.name).Video_url, true)
+              break;
+            }
+            case 'ZonePlayButton': {
+              this.setModalView(FM_ZoneData.get(this.result.pickedMesh.metadata.name).Video_url, true)
               break;
             }
             case 'Screen': {
@@ -155,7 +164,7 @@ class Viewer extends Component<ViewerProps, {}> {
               break;
             }
             case 'groundStairs': {
-            this.goToFirstFloor();
+              this.goToFirstFloor();
               break;
             }
             case 'upStairs': {
@@ -228,6 +237,19 @@ class Viewer extends Component<ViewerProps, {}> {
     screenObject.material.specularColor = new BABYLON.Color3.Black();
   };
 
+  setVideoTextureonScreen = (screenName, screenObject) => {
+    const videoTextureURL = mediaData.get(screenName).Video_url;
+    const videoTexture = new BABYLON.VideoTexture("texture", videoTextureURL, this.scene);
+    videoTexture.video.muted = true;
+    videoTexture.video.autoplay = true;
+    const screenMat = new BABYLON.StandardMaterial('screenMat', this.scene);
+    screenMat.emissiveTexture = videoTexture;
+    screenMat.diffuseColor = new BABYLON.Color3.Black();
+    screenMat.specularColor = new BABYLON.Color3.Black();
+    screenObject.material = screenMat;
+  };
+
+
   setupStudio = () => {
     const loadingCalc = (data) => {
       const { loaded } = data;
@@ -276,42 +298,34 @@ class Viewer extends Component<ViewerProps, {}> {
       for (let index = 0; index < meshes[0]._children.length; index += 1) {
         const element = meshes[0]._children[index];
         if (element.name === '893672') {
-          this.setTextureonScreen('Main Screen', element);
-          element.metadata.tag = 'Screen';
-          element.metadata.name = 'Main Screen';
+          this.setVideoTextureonScreen('Main Screen', element);
         } else if (element.name === 'Audi') {
           this.setTextureonScreen('Audi Screen', element);
           element.metadata.tag = 'Screen';
           element.metadata.name = 'Audi Screen';
-        } else if (element.name === 'XRC_Image_01_TV') {
-          element.metadata.tag = 'chat';
         } else if (element.name === 'Booth  Kiosk Branding') {
           element.metadata.tag = 'broucher';
-        } else if (element.name === 'Booth Kisok Branding_02') {
-          element.metadata.tag = 'URL';
-        } else if (element.name === 'ground' || element.name === 'Booth Base') {
+        } else if (
+          element.name === 'ground' ||
+          element.name === 'Booth Base'
+        ) {
           element.metadata.tag = 'navigationFloor';
         }
       }
 
-      // Putting Videos on Screen
-      Object.keys(boothMap).forEach((booth) => {
-        const screen = Object.keys(boothMap[booth].TV)[0];
-        const waypoints = this.makeWaypoint(
-          boothMap[booth].Transform.name,
-          boothMap[booth].Transform.posX,
-          boothMap[booth].Transform.posY,
-          boothMap[booth].Transform.posZ,
-          boothMap[booth].Transform.rotX,
-          boothMap[booth].Transform.rotY,
-          boothMap[booth].Transform.rotZ
-        );
-        waypoints.metadata = { tag: 'wayPoint' };
-        const element = this.getMeshfromMainModel(screen);
-        if (element) {
-          this.setTextureonScreen(boothMap[booth].TV[screen], element);
-          element.metadata.tag = 'Screen';
-          element.metadata.name = boothMap[booth].TV[screen];
+      this.setupBooths();
+
+      Object.keys(FMZone.Data).forEach(booth => {
+        const PartnerTestiplayButton = Object.keys(FMZone.Data[booth])[1];
+        const PartnerTestiplayScreen = Object.keys(FMZone.Data[booth])[0];
+        const PartnerTestiplayElement = this.getMeshfromMainModel(PartnerTestiplayButton)
+        const PartnerTestiScreenElement = this.getMeshfromMainModel(PartnerTestiplayScreen)
+        if (PartnerTestiplayElement && PartnerTestiScreenElement) {
+          const tempMat = new BABYLON.StandardMaterial("screenMat", this.scene)
+          PartnerTestiScreenElement.material = tempMat;
+          tempMat.diffuseTexture = new BABYLON.Texture('home.png', this.scene);
+          PartnerTestiplayElement.metadata.tag = FMZone.Data[booth][PartnerTestiplayButton];
+          PartnerTestiplayElement.metadata.name = booth;
         }
       });
 
@@ -337,12 +351,12 @@ class Viewer extends Component<ViewerProps, {}> {
           stairsData[stairs].Transform.rotX,
           stairsData[stairs].Transform.rotY,
           stairsData[stairs].Transform.rotZ)
-           if(stairs === 'groundStair1' || stairs === 'groundStair2'){
-             stairsWp.metadata = {tag: 'groundStairs'};
-           }
-           else{
-             stairsWp.metadata = {tag: 'upStairs'};
-           }
+        if (stairs === 'groundStair1' || stairs === 'groundStair2') {
+          stairsWp.metadata = { tag: 'groundStairs' };
+        }
+        else {
+          stairsWp.metadata = { tag: 'upStairs' };
+        }
            console.log(stairsWp)
       })
     });
@@ -362,6 +376,62 @@ class Viewer extends Component<ViewerProps, {}> {
     return null;
   };
 
+  setupBooths = () => {
+    // Putting Videos on Screen
+    Object.keys(boothMap).forEach(booth => {
+      const screen = Object.keys(boothMap[booth].boothInfo)[0];
+      const playButton = Object.keys(boothMap[booth].boothInfo)[1];
+      const chatButton = Object.keys(boothMap[booth].boothInfo)[2];
+      const urlButton = Object.keys(boothMap[booth].boothInfo)[3];
+      const broucherButton = Object.keys(boothMap[booth].boothInfo)[4];
+      const sec_TV = Object.keys(boothMap[booth].boothInfo)[5];
+
+      const wayPoint = this.makeWaypoint(
+        boothMap[booth].Transform.name,
+        boothMap[booth].Transform.posX,
+        boothMap[booth].Transform.posY,
+        boothMap[booth].Transform.posZ,
+        boothMap[booth].Transform.rotX,
+        boothMap[booth].Transform.rotY,
+        boothMap[booth].Transform.rotZ
+      );
+      wayPoint.metadata = { tag: 'wayPoint' }
+      const element = this.getMeshfromMainModel(screen);
+      const buttonElement = this.getMeshfromMainModel(playButton);
+      const chatElement = this.getMeshfromMainModel(chatButton);
+      const urlElement = this.getMeshfromMainModel(urlButton);
+      const broucherElement = this.getMeshfromMainModel(broucherButton);
+      const sec_TVElement = this.getMeshfromMainModel(sec_TV);
+
+
+      if (element) {
+        this.setTextureonScreen(boothMap[booth].boothInfo[screen], element);
+      }
+      if (buttonElement) {
+        buttonElement.metadata.tag = boothMap[booth].boothInfo[playButton];
+        buttonElement.metadata.name = boothMap[booth].boothInfo[screen];
+      }
+      if (chatElement) {
+        chatElement.metadata.tag = boothMap[booth].boothInfo[chatButton];
+      }
+      if (urlElement) {
+        urlElement.metadata.tag = boothMap[booth].boothInfo[urlButton];
+        urlElement.metadata.name = boothMap[booth].boothInfo[screen];
+      }
+      if (broucherElement) {
+        broucherElement.metadata.tag = boothMap[booth].boothInfo[broucherButton];
+        broucherElement.metadata.name = boothMap[booth].boothInfo[screen];
+      }
+      if (sec_TVElement) {
+        const newMat = new BABYLON.StandardMaterial("screenMat", this.scene);
+        newMat.useAlphaFromDiffuseTexture = true
+        newMat.diffuseTexture = mediaData.get(boothMap[booth].boothInfo[screen])[['Sec_Tv']];
+        newMat.diffuseTexture.hasAlpha = true
+        sec_TVElement.material = newMat;
+      }
+    });
+  }
+
   setModalView = (Url, show) => {
     this.setState(() => ({
       url: Url,
@@ -371,23 +441,35 @@ class Viewer extends Component<ViewerProps, {}> {
 
   // function to fetch data from database and load it based on URL
   loadMediaData = () => {
-    db.collection('boothdata')
-      .get()
-      .then(async (doc) => {
-        doc.docs.map((data) => {
-          const fetchedData = data.data();
-          const thumbnail = new BABYLON.Texture(
-            fetchedData['thumbnail-URL'],
-            this.scene
-          );
-          const tempObject = {
-            thumbnail: thumbnail,
-            Video_url: fetchedData.asset_url,
-          };
-          mediaData.set(data.id, { ...tempObject });
-          return null;
-        });
-      });
+    db.collection('boothdata').get().then(async doc => {
+      doc.docs.map((data) => {
+        const fetchedData = data.data();
+        const thumbnail = new BABYLON.Texture(fetchedData['thumbnail-URL'], this.scene, false, false)
+        let Sec_Tv_Texture = null;
+        if (fetchedData['Sec_TV'] != "") {
+          Sec_Tv_Texture = new BABYLON.Texture(fetchedData['Sec_TV'], this.scene, false, false)
+        }
+
+        const tempObject = {
+          'name': fetchedData.name,
+          'thumbnail': thumbnail,
+          'Video_url': fetchedData.asset_url,
+          'PDF_Url': fetchedData.PDF_Url,
+          'site_URL': fetchedData.site_URL,
+          'pamplate_Url': fetchedData.pamplate_Url,
+          'Sec_Tv': Sec_Tv_Texture
+        };
+        mediaData.set(data.id, { ...tempObject })
+        return null
+      }
+      )
+    })
+    db.collection("FM-Zone Data").get().then(async doc => {
+      doc.docs.map((data) => {
+        const fetchedData = data.data();
+        FM_ZoneData.set(data.id, { ...fetchedData })
+      })
+    })
   };
 
   raycast = () => {
@@ -516,10 +598,6 @@ class Viewer extends Component<ViewerProps, {}> {
         this.checkTime();
       }
     }, 1000);
-  };
-
-  showDebugLayer = () => {
-    this.scene.debugLayer.show();
   };
 
   render() {

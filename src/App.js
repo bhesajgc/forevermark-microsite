@@ -22,6 +22,8 @@ import { AppTheme } from "./Styles/AppTheme";
 import Experience from "./containers/experience/Experience";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import Footer from './components/footer/Footer'
+import { addtoData } from "./config/add";
 
 const theme = createMuiTheme(AppTheme);
 
@@ -106,6 +108,7 @@ function App() {
                 <Header logo={Logo} />
                 <Navbar key={8} />
                 <CommingSoon />
+
               </div>
             </Route>
             <Route exact path="/after-register">
@@ -126,3 +129,4 @@ function App() {
 }
 
 export default App;
+
